@@ -1,0 +1,51 @@
+@startuml
+
+circle data
+
+
+package view <<View>> {
+    interface View
+    dataclass ViewContext
+
+    package rnd <<Render>>{
+        dataclass RenderFrame
+        abstract class RenderNode
+        class Text
+        class Ractangle
+        class Sprite
+    }
+
+    package ui <<User interface>>{
+        abstract class UIElement
+        abstract class LinearLayout
+        class VBox
+        class HBox
+        class Text
+        class Ractangle
+        class Sprite
+    }
+}
+
+data --* view.ViewContext : consumed by
+
+view.ViewContext --> view.ui.UIElement : consumed by
+view.ui.UIElement --> view.rnd.RenderFrame: interpreted
+view.rnd.RenderFrame --> view.View: being drawn
+
+
+view.rnd.RenderNode <|-- view.rnd.Text
+view.rnd.RenderNode <|-- view.rnd.Ractangle
+view.rnd.RenderNode <|-- view.rnd.Sprite
+view.rnd.RenderFrame *-- view.rnd.RenderNode
+
+view.ui.UIElement <|-- view.ui.LinearLayout
+view.ui.UIElement <|-- view.ui.Text
+view.ui.UIElement <|-- view.ui.Ractangle
+view.ui.UIElement <|-- view.ui.Sprite
+
+view.ui.LinearLayout <|.. view.ui.VBox
+view.ui.LinearLayout <|.. view.ui.HBox
+
+
+
+@enduml

@@ -1,0 +1,115 @@
+cmake_minimum_required(VERSION 3.20)
+
+# -----------------------------------------
+# Standards and Compiler Settings
+# -----------------------------------------
+
+# We specify the c++ standard
+set(CMAKE_CXX_STANDARD 20)
+# If the compiler can't support it, it's an error
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# We force the compiler to disable all extensions and strictly follow the standard
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+add_compile_options(-Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion)
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_definitions(-D_DEBUG)
+    message("-- Debugmod on")
+endif()
+
+# -----------------------------------------
+# Create an executable file/target
+# -----------------------------------------
+
+# Specify the name of the project
+project(Pacman LANGUAGES CXX)
+# We specify the name of the executable file
+set(APP_TARGET App)
+
+# -----------------------------------------
+# Specifying global variables
+# -----------------------------------------
+
+
+
+# -----------------------------------------
+# Collect all the logical units of the project
+# -----------------------------------------
+
+# Collecting additional files that do not fall into general categories
+file(GLOB_RECURSE RELEASE_SOURCE_FILES "src/*.cpp")
+
+# Collecting Function Resources
+
+add_subdirectory(lib/infra)
+add_subdirectory(lib/view)
+
+
+# -----------------------------------------
+# We connect all logical units of the project to the executable file/target
+# -----------------------------------------
+
+add_executable(${APP_TARGET}
+        ${RELEASE_SOURCE_FILES}
+)
+
+target_link_libraries(${APP_TARGET}
+        PRIVATE
+        infra_lib
+        view_lib
+)
+
+
+if(WIN32)
+
+    set(SFML_ABSOLUTE_DIR "${SFML_ROOT}")
+
+    message("SFML_ABSOLUTE_DIR - ${SFML_ABSOLUTE_DIR}")
+
+    set(BAT_FILE "${CMAKE_CURRENT_BINARY_DIR}/run_${APP_TARGET}.bat")
+    add_custom_command(
+            OUTPUT "${BAT_FILE}"
+            COMMAND ${CMAKE_COMMAND} -E echo "@echo off" >  "${BAT_FILE}"
+            COMMAND ${CMAKE_COMMAND} -E echo "set PATH=${SFML_ABSOLUTE_DIR}/bin;%PATH%" >> "${BAT_FILE}"
+            COMMAND ${CMAKE_COMMAND} -E echo "\"%~dp0\\${APP_TARGET}.exe\"" >> "${BAT_FILE}"
+            DEPENDS ${APP_TARGET}
+    )
+    add_custom_target(run_bat ALL DEPENDS "${BAT_FILE}")
+
+elseif(UNIX)
+    # Linux: add RPATH so that ELF searches for .so in SFML/lib
+    set_target_properties(${APP_TARGET} PROPERTIES
+            BUILD_RPATH "${SFML_ROOT}/lib"
+            INSTALL_RPATH "${SFML_ROOT}/lib"
+    )
+endif()
+target_compile_definitions(${APP_TARGET} PRIVATE ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets/")
+
+
+# -----------------------------------------
+# Doxygen Documentation
+# -----------------------------------------
+
+find_package(Doxygen REQUIRED)
+
+if(DOXYGEN_FOUND)
+    message("DOXYGEN found")
+    # Path to the Doxygen configuration file
+    set(DOXYGEN_IN ${CMAKE_SOURCE_DIR}/Doxyfile.in)
+    set(DOXYGEN_OUT ${CMAKE_BINARY_DIR}/Doxyfile)
+    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+
+
+    # Creating a goal for compiling documentation
+    add_custom_target(doc
+            COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+            COMMENT "Generating API documentation with Doxygen"
+            VERBATIM
+    )
+else ()
+    message("DOXYGEN not found")
+endif()
+
+
