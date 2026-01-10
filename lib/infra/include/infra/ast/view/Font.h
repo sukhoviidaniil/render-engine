@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Font.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_AST_FONT_H
-#define PACMAN_AST_FONT_H
+#ifndef RENDER_ENGINE_AST_FONT_H
+#define RENDER_ENGINE_AST_FONT_H
 #include "ViewNode.h"
 
 namespace infra::ast {
@@ -31,4 +31,4 @@ namespace infra::ast {
         std::string file; ///< File path to the font resource
     };
 }
-#endif //PACMAN_AST_FONT_H
+#endif //RENDER_ENGINE_AST_FONT_H

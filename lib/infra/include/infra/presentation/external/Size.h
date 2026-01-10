@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Size.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_SIZE_H
-#define PACMAN_SIZE_H
+#ifndef RENDER_ENGINE_SIZE_H
+#define RENDER_ENGINE_SIZE_H
 
 namespace infra::ui {
     /**
@@ -50,4 +50,4 @@ namespace infra::ui {
     };
 }
 
-#endif //PACMAN_SIZE_H
+#endif //RENDER_ENGINE_SIZE_H

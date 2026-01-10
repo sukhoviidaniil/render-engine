@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          LogScope.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_LOGSCOPE_H
-#define PACMAN_LOGSCOPE_H
+#ifndef RENDER_ENGINE_LOGSCOPE_H
+#define RENDER_ENGINE_LOGSCOPE_H
 
 #ifdef _DEBUG
 #define LOG_SCOPE() ::infra::diag::LogScope UNIQUE_NAME(__scope){}
@@ -53,4 +53,4 @@ namespace infra::diag {
     };
 }
 
-#endif //PACMAN_LOGSCOPE_H
+#endif //RENDER_ENGINE_LOGSCOPE_H

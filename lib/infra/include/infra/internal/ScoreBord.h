@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          ScoreBord.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_SCOREBORD_H
-#define PACMAN_SCOREBORD_H
+#ifndef RENDER_ENGINE_SCOREBORD_H
+#define RENDER_ENGINE_SCOREBORD_H
 
 
 #include <memory>
@@ -89,4 +89,4 @@ namespace infra {
     };
 }
 
-#endif //PACMAN_SCOREBORD_H
+#endif //RENDER_ENGINE_SCOREBORD_H

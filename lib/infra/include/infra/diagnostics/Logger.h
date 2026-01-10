@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Logger.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_LOGGER_H
-#define PACMAN_LOGGER_H
+#ifndef RENDER_ENGINE_LOGGER_H
+#define RENDER_ENGINE_LOGGER_H
 
 #include <fstream>
 #include <string>
@@ -91,4 +91,4 @@ namespace infra::diag {
 
 
 
-#endif //PACMAN_LOGGER_H
+#endif //RENDER_ENGINE_LOGGER_H

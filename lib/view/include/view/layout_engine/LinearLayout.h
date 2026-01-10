@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          LinearLayout.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_LINEARLAYOUT_H
-#define PACMAN_LINEARLAYOUT_H
+#ifndef RENDER_ENGINE_LINEARLAYOUT_H
+#define RENDER_ENGINE_LINEARLAYOUT_H
 
 #include "view/presentation/layout_engine/UIElement.h"
 #include "infra/math/Vector2.h"
@@ -174,4 +174,4 @@ namespace view::ui {
         }
     };
 }
-#endif //PACMAN_LINEARLAYOUT_H
+#endif //RENDER_ENGINE_LINEARLAYOUT_H

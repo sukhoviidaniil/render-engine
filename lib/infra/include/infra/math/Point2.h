@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Point2.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_POINT2_H
-#define PACMAN_POINT2_H
+#ifndef RENDER_ENGINE_POINT2_H
+#define RENDER_ENGINE_POINT2_H
 
 #include <iosfwd>
 
@@ -114,4 +114,4 @@ namespace infra::math {
     };
 }
 
-#endif //PACMAN_POINT2_H
+#endif //RENDER_ENGINE_POINT2_H

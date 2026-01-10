@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Reader_JSON.h
  *
  * Author:        Sukhovii Daniil
@@ -12,12 +12,12 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#ifndef PACMAN_READER_JSON_H
-#define PACMAN_READER_JSON_H
+#ifndef RENDER_ENGINE_READER_JSON_H
+#define RENDER_ENGINE_READER_JSON_H
 
 #include "infra/io/Reader.h"
 #include "json.hpp"
@@ -48,4 +48,4 @@ namespace infra::io {
     };
 }
 
-#endif //PACMAN_READER_JSON_H
+#endif //RENDER_ENGINE_READER_JSON_H

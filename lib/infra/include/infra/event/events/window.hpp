@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          window.hpp
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_EV_WINDOW_HPP
-#define PACMAN_EV_WINDOW_HPP
+#ifndef RENDER_ENGINE_EV_WINDOW_HPP
+#define RENDER_ENGINE_EV_WINDOW_HPP
 #include <utility>
 
 #include "infra/event/Event.h"
@@ -54,4 +54,4 @@ namespace infra::event::window {
     };
 }
 
-#endif //PACMAN_EV_WINDOW_HPP
+#endif //RENDER_ENGINE_EV_WINDOW_HPP

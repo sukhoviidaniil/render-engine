@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Grid.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_GRID_H
-#define PACMAN_GRID_H
+#ifndef RENDER_ENGINE_GRID_H
+#define RENDER_ENGINE_GRID_H
 
 #include "infra/ast/Node.h"
 #include <vector>
@@ -32,7 +32,7 @@ namespace infra::ast {
         Wall,
         CoinSpawn,
         PowerPelletSpawn,
-        PacmanSpawn,
+        render-engineSpawn,
         GhostSpawn,
         Barrier
     };
@@ -50,4 +50,4 @@ namespace infra::ast {
         std::vector<std::vector<Tile>> grid; ///< 2D array of tile values
     };
 }
-#endif //PACMAN_GRID_H
+#endif //RENDER_ENGINE_GRID_H

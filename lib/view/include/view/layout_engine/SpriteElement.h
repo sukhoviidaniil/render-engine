@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          SpriteElement.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_UI_SPRITEELEMENT_H
-#define PACMAN_UI_SPRITEELEMENT_H
+#ifndef RENDER_ENGINE_UI_SPRITEELEMENT_H
+#define RENDER_ENGINE_UI_SPRITEELEMENT_H
 #include <utility>
 
 #include "UIElement.h"
@@ -70,4 +70,4 @@ namespace view::ui {
     };
 }
 
-#endif //PACMAN_UI_SPRITEELEMENT_H
+#endif //RENDER_ENGINE_UI_SPRITEELEMENT_H

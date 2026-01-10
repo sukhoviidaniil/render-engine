@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Rectangle.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_RECTANGLE_H
-#define PACMAN_RECTANGLE_H
+#ifndef RENDER_ENGINE_RECTANGLE_H
+#define RENDER_ENGINE_RECTANGLE_H
 #include "view/presentation/layout_engine/UIElement.h"
 #include "view/presentation/render/RI_Rectangle.h"
 #include "infra/presentation/external/Color.h"
@@ -83,4 +83,4 @@ namespace view::ui {
 }
 
 
-#endif //PACMAN_RECTANGLE_H
+#endif //RENDER_ENGINE_RECTANGLE_H

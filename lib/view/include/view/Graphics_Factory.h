@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Graphics_Factory.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_GRAPHICS_FACTORY_H
-#define PACMAN_GRAPHICS_FACTORY_H
+#ifndef RENDER_ENGINE_GRAPHICS_FACTORY_H
+#define RENDER_ENGINE_GRAPHICS_FACTORY_H
 #include <memory>
 
 #include "View.h"
@@ -41,4 +41,4 @@ namespace view {
     };
 }
 
-#endif //PACMAN_GRAPHICS_FACTORY_H
+#endif //RENDER_ENGINE_GRAPHICS_FACTORY_H

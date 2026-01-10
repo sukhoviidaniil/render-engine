@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          File_Reader.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_FILE_READER_H
-#define PACMAN_FILE_READER_H
+#ifndef RENDER_ENGINE_FILE_READER_H
+#define RENDER_ENGINE_FILE_READER_H
 
 #include <memory>
 #include <unordered_map>
@@ -55,4 +55,4 @@ namespace infra::io {
     };
 }
 
-#endif //PACMAN_FILE_READER_H
+#endif //RENDER_ENGINE_FILE_READER_H

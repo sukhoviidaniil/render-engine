@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          LivesLabel.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_LIVESLABEL_H
-#define PACMAN_LIVESLABEL_H
+#ifndef RENDER_ENGINE_LIVESLABEL_H
+#define RENDER_ENGINE_LIVESLABEL_H
 
 #include "view/presentation/render/RI_Label.h"
 #include "view/presentation/layout_engine/Text.h"
@@ -46,4 +46,4 @@ namespace view::ui {
         }
     };
 }
-#endif //PACMAN_LIVESLABEL_H
+#endif //RENDER_ENGINE_LIVESLABEL_H

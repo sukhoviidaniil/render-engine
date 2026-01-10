@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Camera.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_AST_CAMERA_H
-#define PACMAN_AST_CAMERA_H
+#ifndef RENDER_ENGINE_AST_CAMERA_H
+#define RENDER_ENGINE_AST_CAMERA_H
 
 
 #include "infra/math/Vector2.h"
@@ -32,4 +32,4 @@ namespace infra::ui {
 }
 
 
-#endif //PACMAN_AST_CAMERA_H
+#endif //RENDER_ENGINE_AST_CAMERA_H

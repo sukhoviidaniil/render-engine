@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          ViewVisitor.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_VIEWVISITOR_H
-#define PACMAN_VIEWVISITOR_H
+#ifndef RENDER_ENGINE_VIEWVISITOR_H
+#define RENDER_ENGINE_VIEWVISITOR_H
 
 #include "infra/ast/Visitor.h"
 
@@ -59,4 +59,4 @@ namespace infra::ast {
     };
 }
 
-#endif //PACMAN_VIEWVISITOR_H
+#endif //RENDER_ENGINE_VIEWVISITOR_H

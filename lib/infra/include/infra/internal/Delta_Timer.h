@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Delta_Timer.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_DELTATIMER_H
-#define PACMAN_DELTATIMER_H
+#ifndef RENDER_ENGINE_DELTATIMER_H
+#define RENDER_ENGINE_DELTATIMER_H
 
 #include <chrono>
 
@@ -46,4 +46,4 @@ namespace infra {
     };
 }
 
-#endif //PACMAN_DELTATIMER_H
+#endif //RENDER_ENGINE_DELTATIMER_H

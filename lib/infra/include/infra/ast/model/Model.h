@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Model.h
  *
  * Author:        Sukhovii Daniil
@@ -12,16 +12,16 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_AST_MODEL_H
-#define PACMAN_AST_MODEL_H
+#ifndef RENDER_ENGINE_AST_MODEL_H
+#define RENDER_ENGINE_AST_MODEL_H
 
 #include "CoinSpawn.h"
 #include "GhostSpawn.h"
 #include "Grid.h"
-#include "PacmanSpawn.h"
+#include "render-engineSpawn.h"
 #include "PowerPelletSpawn.h"
 
 namespace infra::ast {
@@ -29,15 +29,15 @@ namespace infra::ast {
      * @brief Represents the complete game model AST.
      *
      * Inherits from Model_Node and aggregates all main components:
-     * grid layout, entity spawns for Pacman, ghosts, coins, and power pellets.
+     * grid layout, entity spawns for render-engine, ghosts, coins, and power pellets.
      */
     struct Model : Model_Node{
         Grid grid; ///< Game grid layout
-        PacmanSpawn pacman_spawn; ///< Game grid layout
+        render-engineSpawn pacman_spawn; ///< Game grid layout
         GhostSpawn ghost_spawn; ///< Ghost starting positions
         CoinSpawn coin_spawn; ///< Coin spawn configuration
         PowerPelletSpawn power_pellet_spawn; ///< Power pellet spawn configuration
     };
 }
 
-#endif //PACMAN_AST_MODEL_H
+#endif //RENDER_ENGINE_AST_MODEL_H

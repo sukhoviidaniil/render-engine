@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          RenderNode.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_RENDERNODE_H
-#define PACMAN_RENDERNODE_H
+#ifndef RENDER_ENGINE_RENDERNODE_H
+#define RENDER_ENGINE_RENDERNODE_H
 
 #include "infra/ast/view/ViewNode.h"
 #include "infra/ast/view/ViewVisitor.h"
@@ -43,4 +43,4 @@ namespace view::ui {
 }
 
 
-#endif //PACMAN_RENDERNODE_H
+#endif //RENDER_ENGINE_RENDERNODE_H

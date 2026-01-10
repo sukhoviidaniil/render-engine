@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          RI_ComplexSprite.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_AST_RI_COMPLEXSPRITE_H
-#define PACMAN_AST_RI_COMPLEXSPRITE_H
+#ifndef RENDER_ENGINE_AST_RI_COMPLEXSPRITE_H
+#define RENDER_ENGINE_AST_RI_COMPLEXSPRITE_H
 #include "view/presentation/render/RI_Sprite.h"
 #include "../../../../../infra/include/infra/internal/Status.h"
 #include "infra/math/Direction.h"
@@ -39,4 +39,4 @@ namespace view::ui {
     };
 }
 
-#endif //PACMAN_AST_RI_COMPLEXSPRITE_H
+#endif //RENDER_ENGINE_AST_RI_COMPLEXSPRITE_H

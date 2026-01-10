@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Text.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_TEXT_H
-#define PACMAN_TEXT_H
+#ifndef RENDER_ENGINE_TEXT_H
+#define RENDER_ENGINE_TEXT_H
 #include "UIElement.h"
 #include "infra/presentation/external/Color.h"
 
@@ -58,4 +58,4 @@ namespace view::ui {
     };
 }
 
-#endif //PACMAN_TEXT_H
+#endif //RENDER_ENGINE_TEXT_H

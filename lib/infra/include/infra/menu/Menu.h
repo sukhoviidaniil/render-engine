@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Menu.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_MENU_H
-#define PACMAN_MENU_H
+#ifndef RENDER_ENGINE_MENU_H
+#define RENDER_ENGINE_MENU_H
 #include <cstddef>
 #include <vector>
 
@@ -89,4 +89,4 @@ namespace infra::menu {
     };
 }
 
-#endif //PACMAN_MENU_H
+#endif //RENDER_ENGINE_MENU_H

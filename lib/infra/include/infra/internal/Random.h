@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Random.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_RANDOM_H
-#define PACMAN_RANDOM_H
+#ifndef RENDER_ENGINE_RANDOM_H
+#define RENDER_ENGINE_RANDOM_H
 
 
 #define RAND_INT(min, max) \
@@ -91,4 +91,4 @@ namespace infra {
     };
 }
 
-#endif //PACMAN_RANDOM_H
+#endif //RENDER_ENGINE_RANDOM_H

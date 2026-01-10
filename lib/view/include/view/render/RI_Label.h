@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          RI_Label.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_AST_RI_TEXT_H
-#define PACMAN_AST_RI_TEXT_H
+#ifndef RENDER_ENGINE_AST_RI_TEXT_H
+#define RENDER_ENGINE_AST_RI_TEXT_H
 #include "RenderItem.h"
 #include "infra/presentation/external/Color.h"
 
@@ -38,4 +38,4 @@ namespace view::ui {
         }
     };
 }
-#endif //PACMAN_AST_RI_TEXT_H
+#endif //RENDER_ENGINE_AST_RI_TEXT_H

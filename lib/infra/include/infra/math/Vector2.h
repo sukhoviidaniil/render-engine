@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Vector2.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_VECTOR2_H
-#define PACMAN_VECTOR2_H
+#ifndef RENDER_ENGINE_VECTOR2_H
+#define RENDER_ENGINE_VECTOR2_H
 
 #include "Point2.h"
 #include <functional>
@@ -137,5 +137,5 @@ namespace infra::math {
     };
 }
 
-#endif //PACMAN_VECTOR2_H
+#endif //RENDER_ENGINE_VECTOR2_H
 

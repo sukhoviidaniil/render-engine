@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          SpritsGroup.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_SPRITEGROUP_H
-#define PACMAN_SPRITEGROUP_H
+#ifndef RENDER_ENGINE_SPRITEGROUP_H
+#define RENDER_ENGINE_SPRITEGROUP_H
 
 #include <unordered_map>
 #include "infra/internal/Status.h"
@@ -46,4 +46,4 @@ namespace infra::ast {
     };
 }
 
-#endif //PACMAN_SPRITEGROUP_H
+#endif //RENDER_ENGINE_SPRITEGROUP_H

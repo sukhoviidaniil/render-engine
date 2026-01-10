@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Sprite_Direction.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_EXPRESSION_INFO_H
-#define PACMAN_EXPRESSION_INFO_H
+#ifndef RENDER_ENGINE_EXPRESSION_INFO_H
+#define RENDER_ENGINE_EXPRESSION_INFO_H
 
 #include "infra/ast/Node.h"
 #include "infra/math/Direction.h"
@@ -35,4 +35,4 @@ namespace infra::ast {
     };
 }
 
-#endif //PACMAN_EXPRESSION_INFO_H
+#endif //RENDER_ENGINE_EXPRESSION_INFO_H

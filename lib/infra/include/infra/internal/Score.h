@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Score.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_SCORE_H
-#define PACMAN_SCORE_H
+#ifndef RENDER_ENGINE_SCORE_H
+#define RENDER_ENGINE_SCORE_H
 
 #include "infra/ast/Score.h"
 
@@ -55,7 +55,7 @@ namespace infra {
         [[nodiscard]] unsigned int ghost_collection();
 
         /**
-         * @brief Decrement lives when Pacman dies.
+         * @brief Decrement lives when render-engine dies.
          */
         void pakman_died();
 
@@ -89,4 +89,4 @@ namespace infra {
     };
 }
 
-#endif //PACMAN_SCORE_H
+#endif //RENDER_ENGINE_SCORE_H

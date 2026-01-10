@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          from_JSON.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_FROM_JSON_H
-#define PACMAN_FROM_JSON_H
+#ifndef RENDER_ENGINE_FROM_JSON_H
+#define RENDER_ENGINE_FROM_JSON_H
 
 #include "json.hpp"
 #include "infra/diagnostics/Logger.h"
@@ -303,7 +303,7 @@ namespace infra::ast {
 
     inline Tile parse_tile(const std::string& s) {
         if (s == "W")  return Tile::Wall;
-        if (s == "M")  return Tile::PacmanSpawn;
+        if (s == "M")  return Tile::render-engineSpawn;
         if (s == "G")  return Tile::GhostSpawn;
         if (s == "P")  return Tile::PowerPelletSpawn;
         if (s == "C")  return Tile::CoinSpawn;
@@ -336,7 +336,7 @@ namespace infra::ast {
         }
     }
 
-    inline void from_json(const nlohmann::json& json, PacmanSpawn& s) {
+    inline void from_json(const nlohmann::json& json, render-engineSpawn& s) {
         s.sprite_size = io::get_checked<float>(json, "sprite_size", s.sprite_size);
         s.speed = io::get_checked<float>(json,"speed",  s.speed);
     }
@@ -379,7 +379,7 @@ namespace infra::ast {
 
     inline void from_json(const nlohmann::json& j, Model& s) {
         s.grid = io::get_checked<Grid>(j, "Grid", s.grid);
-        s.pacman_spawn = io::get_checked<PacmanSpawn>(j, "PacmanSpawn", s.pacman_spawn);
+        s.pacman_spawn = io::get_checked<render-engineSpawn>(j, "render-engineSpawn", s.pacman_spawn);
         s.ghost_spawn = io::get_checked<GhostSpawn>(j, "GhostSpawn", s.ghost_spawn);
         s.coin_spawn = io::get_checked<CoinSpawn>(j, "CoinSpawn", s.coin_spawn);
         s.power_pellet_spawn = io::get_checked<PowerPelletSpawn>(j, "PowerPelletSpawn", s.power_pellet_spawn);
@@ -387,4 +387,4 @@ namespace infra::ast {
 }
 
 
-#endif //PACMAN_FROM_JSON_H
+#endif //RENDER_ENGINE_FROM_JSON_H

@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          RenderFrame.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_AST_RENDERFRAME_H
-#define PACMAN_AST_RENDERFRAME_H
+#ifndef RENDER_ENGINE_AST_RENDERFRAME_H
+#define RENDER_ENGINE_AST_RENDERFRAME_H
 
 #include "view/presentation/render/RenderItem.h"
 
@@ -27,4 +27,4 @@ namespace view::ui {
     };
 }
 
-#endif //PACMAN_AST_RENDERFRAME_H
+#endif //RENDER_ENGINE_AST_RENDERFRAME_H

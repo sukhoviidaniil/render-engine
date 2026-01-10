@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          SFML_View.cpp
  *
  * Author:        Sukhovii Daniil
@@ -12,7 +12,7 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
@@ -24,7 +24,7 @@ namespace view {
     SFML_View::SFML_View(const infra::ast::View &info, const std::string &dir_path
         ) :
         View(info.type),
-        window_(sf::VideoMode(info.window_width, info.window_height), "Pacman")
+        window_(sf::VideoMode(info.window_width, info.window_height), "render-engine")
     {
         sf::View view(sf::FloatRect(0, 0, static_cast<float>(info.window_width), static_cast<float>(info.window_height)));
         window_.setView(view);

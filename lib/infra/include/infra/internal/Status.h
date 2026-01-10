@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Status.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_STATUS_H
-#define PACMAN_STATUS_H
+#ifndef RENDER_ENGINE_STATUS_H
+#define RENDER_ENGINE_STATUS_H
 
 namespace infra {
     enum class Status {
@@ -28,4 +28,4 @@ namespace infra {
     };
 }
 
-#endif //PACMAN_STATUS_H
+#endif //RENDER_ENGINE_STATUS_H

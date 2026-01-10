@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Label.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_LABEL_H
-#define PACMAN_LABEL_H
+#ifndef RENDER_ENGINE_LABEL_H
+#define RENDER_ENGINE_LABEL_H
 
 #include "Text.h"
 #include "view/presentation/render/RI_Label.h"
@@ -93,4 +93,4 @@ namespace view::ui {
     };
 }
 
-#endif //PACMAN_LABEL_H
+#endif //RENDER_ENGINE_LABEL_H

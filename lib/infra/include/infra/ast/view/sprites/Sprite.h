@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Sprite.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_SPRITE_H
-#define PACMAN_SPRITE_H
+#ifndef RENDER_ENGINE_SPRITE_H
+#define RENDER_ENGINE_SPRITE_H
 
 #include "infra/ast/view/internal/Sprite_Rec.h"
 #include "infra/ast/view/ViewNode.h"
@@ -45,4 +45,4 @@ namespace infra::ast {
     };
 }
 
-#endif //PACMAN_SPRITE_H
+#endif //RENDER_ENGINE_SPRITE_H

@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          V_HBox.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_V_HBOX_H
-#define PACMAN_V_HBOX_H
+#ifndef RENDER_ENGINE_V_HBOX_H
+#define RENDER_ENGINE_V_HBOX_H
 
 #include "view/presentation/layout_engine/LinearLayout.h"
 
@@ -46,4 +46,4 @@ namespace view::ui {
     };
 }
 
-#endif //PACMAN_V_HBOX_H
+#endif //RENDER_ENGINE_V_HBOX_H

@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Alignment.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_ALIGNMENT_H
-#define PACMAN_ALIGNMENT_H
+#ifndef RENDER_ENGINE_ALIGNMENT_H
+#define RENDER_ENGINE_ALIGNMENT_H
 
 namespace infra::ui {
 
@@ -34,4 +34,4 @@ namespace infra::ui {
     };
 }
 
-#endif //PACMAN_ALIGNMENT_H
+#endif //RENDER_ENGINE_ALIGNMENT_H

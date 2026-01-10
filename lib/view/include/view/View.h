@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          View.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_VIEW_H
-#define PACMAN_VIEW_H
+#ifndef RENDER_ENGINE_VIEW_H
+#define RENDER_ENGINE_VIEW_H
 
 #include <memory>
 #include <string>
@@ -42,4 +42,4 @@ namespace view {
     };
 }
 
-#endif //PACMAN_VIEW_H
+#endif //RENDER_ENGINE_VIEW_H

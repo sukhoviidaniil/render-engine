@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          ViewContext.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_VIEWCONTEXT_H
-#define PACMAN_VIEWCONTEXT_H
+#ifndef RENDER_ENGINE_VIEWCONTEXT_H
+#define RENDER_ENGINE_VIEWCONTEXT_H
 
 #include "infra/internal/Const_Score.h"
 #include "infra/menu/MenuView.h"
@@ -45,4 +45,4 @@ namespace view {
     };
 }
 
-#endif //PACMAN_VIEWCONTEXT_H
+#endif //RENDER_ENGINE_VIEWCONTEXT_H

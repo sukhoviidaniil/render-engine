@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Event_Collector.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_AST_EVENT_COLLECTOR_H
-#define PACMAN_AST_EVENT_COLLECTOR_H
+#ifndef RENDER_ENGINE_AST_EVENT_COLLECTOR_H
+#define RENDER_ENGINE_AST_EVENT_COLLECTOR_H
 #include "../Node.h"
 
 namespace infra::ast {
@@ -24,4 +24,4 @@ namespace infra::ast {
 
     };
 }
-#endif //PACMAN_AST_EVENT_COLLECTOR_H
+#endif //RENDER_ENGINE_AST_EVENT_COLLECTOR_H

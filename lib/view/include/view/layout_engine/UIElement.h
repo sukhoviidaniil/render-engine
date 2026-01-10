@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          UIElement.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_UIELEMENT_H
-#define PACMAN_UIELEMENT_H
+#ifndef RENDER_ENGINE_UIELEMENT_H
+#define RENDER_ENGINE_UIELEMENT_H
 
 #include <memory>
 
@@ -164,4 +164,4 @@ namespace view::ui {
     };
 }
 
-#endif //PACMAN_UIELEMENT_H
+#endif //RENDER_ENGINE_UIELEMENT_H

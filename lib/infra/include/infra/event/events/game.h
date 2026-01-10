@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          game.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_EVENTS_GAME_H
-#define PACMAN_EVENTS_GAME_H
+#ifndef RENDER_ENGINE_EVENTS_GAME_H
+#define RENDER_ENGINE_EVENTS_GAME_H
 #include "infra/event/Event.h"
 
 namespace infra::event::game {
@@ -70,4 +70,4 @@ namespace infra::event::game {
 
 }
 
-#endif //PACMAN_EVENTS_GAME_H
+#endif //RENDER_ENGINE_EVENTS_GAME_H

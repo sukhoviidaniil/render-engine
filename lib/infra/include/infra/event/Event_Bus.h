@@ -1,5 +1,5 @@
 /***************************************************************
- * Project:       Pacman
+ * Project:       render-engine
  * File:          Event_Bus.h
  *
  * Author:        Sukhovii Daniil
@@ -12,11 +12,11 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of Pacman.
+ *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef PACMAN_EVENT_BUS_H
-#define PACMAN_EVENT_BUS_H
+#ifndef RENDER_ENGINE_EVENT_BUS_H
+#define RENDER_ENGINE_EVENT_BUS_H
 
 #include <functional>
 #include <memory>
@@ -160,4 +160,4 @@ namespace infra::event {
 
 #include "Event_Bus.inl"
 
-#endif //PACMAN_EVENT_BUS_H
+#endif //RENDER_ENGINE_EVENT_BUS_H
