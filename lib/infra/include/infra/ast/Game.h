@@ -22,7 +22,7 @@
 #include "infra/ast/event/Event_Collector.h"
 #include "infra/ast/Node.h"
 #include "infra/ast/view/View.h"
-#include "infra/ast/Score.h"
+
 
 namespace infra::ast {
     /**
@@ -34,8 +34,6 @@ namespace infra::ast {
     struct Game : Game_Node{
         infra::ast::View view; ///< View configuration for the game
         infra::ast::Event_Collector event_collector; ///< Event collector for the game
-        std::vector<infra::ast::Model> models; ///< List of game models
-        ScoreBord score_bord; ///< Scoreboard data
     };
 }
 

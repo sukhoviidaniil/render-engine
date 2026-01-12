@@ -20,6 +20,7 @@
 #include "ViewNode.h"
 
 namespace infra::ast {
+
     /**
      * @brief Represents a font resource in the AST.
      *
@@ -31,4 +32,5 @@ namespace infra::ast {
         std::string file; ///< File path to the font resource
     };
 }
+
 #endif //RENDER_ENGINE_AST_FONT_H

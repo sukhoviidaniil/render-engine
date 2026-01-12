@@ -1,9 +1,9 @@
 /***************************************************************
  * Project:       render-engine
- * File:          AST_Node.h
+ * File:          RI_Sprite.h
  *
  * Author:        Sukhovii Daniil
- * Created:       2025-12-14
+ * Created:       2025-12-24
  * Modified:      []
  *
  * Description:   []
@@ -15,17 +15,20 @@
  *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef RENDER_ENGINE_AST_NODE_H
-#define RENDER_ENGINE_AST_NODE_H
+#ifndef RENDER_ENGINE_AST_RI_SPRITE_H
+#define RENDER_ENGINE_AST_RI_SPRITE_H
 
-namespace infra::ast {
 
-    /**
-     * @brief Base class for all AST nodes.
-     */
-    struct Node {
-        virtual ~Node() = default;
+
+#include "view/render/RenderNode.h"
+
+namespace view::rnd {
+    struct Sprite : RenderNode {
+        void accept(RenderVisitor &v) const override {
+            v.visit(*this);
+        }
     };
 }
 
-#endif //RENDER_ENGINE_AST_NODE_H
+
+#endif //RENDER_ENGINE_AST_RI_SPRITE_H

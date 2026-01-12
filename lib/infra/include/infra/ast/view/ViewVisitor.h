@@ -25,7 +25,6 @@ namespace infra::ast {
 
     // View
     struct Sprite;
-    struct ComplexSprite;
 
     // ----------------------------
     // Visitor interface for sprites

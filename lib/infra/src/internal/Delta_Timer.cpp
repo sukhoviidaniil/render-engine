@@ -19,6 +19,12 @@
 #include "infra/internal/Delta_Timer.h"
 
 namespace infra {
+
+    Delta_Timer & Delta_Timer::instance() {
+        static Delta_Timer inst;
+        return inst;
+    }
+
     Delta_Timer::Delta_Timer() {
         last = clock::now();
     }

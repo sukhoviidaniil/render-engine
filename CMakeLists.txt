@@ -23,7 +23,7 @@ endif()
 # -----------------------------------------
 
 # Specify the name of the project
-project(Pacman LANGUAGES CXX)
+project(Render_Engine LANGUAGES CXX)
 # We specify the name of the executable file
 set(APP_TARGET App)
 

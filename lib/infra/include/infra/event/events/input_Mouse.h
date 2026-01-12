@@ -30,7 +30,7 @@ namespace infra::event::input {
         XButton2
     };
 
-    struct MouseMoved {
+    struct Mouse_Moved {
         static constexpr infra::event::EventMask mask =
             infra::event::EventMask::Input;
 
@@ -38,7 +38,7 @@ namespace infra::event::input {
         int y;
     };
 
-    struct MouseButtonPressed {
+    struct Mouse_ButtonPressed {
         static constexpr infra::event::EventMask mask =
             infra::event::EventMask::Input;
 
@@ -47,7 +47,7 @@ namespace infra::event::input {
         int y;
     };
 
-    struct MouseButtonReleased {
+    struct Mouse_ButtonReleased {
         static constexpr infra::event::EventMask mask =
             infra::event::EventMask::Input;
 

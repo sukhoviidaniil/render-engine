@@ -17,10 +17,12 @@
 ***************************************************************/
 #ifndef RENDER_ENGINE_GRAPHICS_FACTORY_H
 #define RENDER_ENGINE_GRAPHICS_FACTORY_H
+
 #include <memory>
 
-#include "View.h"
-#include "infra/ast/Game.h"
+#include "view/View.h"
+
+#include "infra/ast/view/View.h"
 
 namespace view {
     class Graphics_Factory{

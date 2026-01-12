@@ -1,9 +1,9 @@
 /***************************************************************
- * Project:       render-engine
- * File:          View.cpp
+ * Project:       Pacman
+ * File:          Text.cpp
  *
  * Author:        Sukhovii Daniil
- * Created:       2025-12-06
+ * Created:       2026-01-12
  * Modified:      []
  *
  * Description:   []
@@ -12,18 +12,15 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of render-engine.
+ *   This file is part of Pacman.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
+#include "../../include/view/layout_engine/elemenst/Text.h"
 
-#include <utility>
+namespace view::ui {
 
-#include "view/View.h"
-
-namespace view {
-    View::View() = default;
-
-    View::~View() = default;
+    infra::math::Vector2 Text::measure(const infra::math::Vector2 &available)  {
+        return available;
+    }
 }
-

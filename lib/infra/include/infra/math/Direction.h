@@ -37,6 +37,7 @@ namespace infra::math {
         if (second == Direction::Any) return false;
         return first == second;
     }
+
     constexpr Direction opposite(const Direction d) {
         switch (d) {
             case Direction::Up: return Direction::Down;

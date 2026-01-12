@@ -149,7 +149,6 @@ namespace infra::event {
         /**
          * @brief Sorts handlers by priority.
          *
-         * @note TODO: clarify intended sorting order and guarantees.
          */
         static void sort(std::vector<Handler>& list);
 

@@ -18,27 +18,28 @@
 #ifndef RENDER_ENGINE_RENDERNODE_H
 #define RENDER_ENGINE_RENDERNODE_H
 
-#include "infra/ast/view/ViewNode.h"
 #include "infra/ast/view/ViewVisitor.h"
+#include "view/internal/Rect.h"
 
-namespace view::ui {
+namespace view::rnd {
 
-    struct RI_Label;
-    struct RI_Rectangle;
-    struct RI_Sprite;
-    struct RI_ComplexSprite;
+    struct Text;
+    struct Rectangle;
+    struct Sprite;
 
     struct RenderVisitor : infra::ast::Visitor {
-        virtual void visit(const RI_Label&) {}
-        virtual void visit(const RI_Rectangle&) {}
-        virtual void visit(const RI_Sprite&) {}
-        virtual void visit(const RI_ComplexSprite&) {}
+        virtual void visit(const Text&) {}
+        virtual void visit(const Rectangle&) {}
+        virtual void visit(const Sprite&) {}
     };
 
-    struct RenderNode : infra::ast::Node {
-        /// Element dimensions
-        infra::ui::Rect rect{};
+    struct RenderNode  {
+        virtual ~RenderNode() = default;
+
         virtual void accept(RenderVisitor &v) const = 0;
+
+        /// Element dimensions
+        Rect rect{};
     };
 }
 

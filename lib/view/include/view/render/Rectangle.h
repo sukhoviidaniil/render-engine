@@ -1,6 +1,6 @@
 /***************************************************************
  * Project:       render-engine
- * File:          RenderFrame.h
+ * File:          RI_Rectangle.h
  *
  * Author:        Sukhovii Daniil
  * Created:       2025-12-24
@@ -15,19 +15,23 @@
  *   This file is part of render-engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef RENDER_ENGINE_AST_RENDERFRAME_H
-#define RENDER_ENGINE_AST_RENDERFRAME_H
+#ifndef RENDER_ENGINE_AST_RI_RECTANGLE_H
+#define RENDER_ENGINE_AST_RI_RECTANGLE_H
 
-#include <memory>
-#include <vector>
 
 #include "view/render/RenderNode.h"
+#include "view/internal/Color.h"
 
 namespace view::rnd {
-    struct RenderFrame {
-        std::vector<std::unique_ptr<RenderNode>> constant_items;
-        std::vector<std::unique_ptr<RenderNode>> temp_items;
+    struct Rectangle : RenderNode {
+        void accept(RenderVisitor &v) const override {
+            v.visit(*this);
+        }
+
+        int border_width = 0;
+        Color border_color{};
+        Color color{};
     };
 }
 
-#endif //RENDER_ENGINE_AST_RENDERFRAME_H
+#endif //RENDER_ENGINE_AST_RI_RECTANGLE_H

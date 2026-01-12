@@ -17,10 +17,10 @@
 ***************************************************************/
 #ifndef RENDER_ENGINE_AST_EVENT_COLLECTOR_H
 #define RENDER_ENGINE_AST_EVENT_COLLECTOR_H
-#include "../Node.h"
+#include "infra/ast/Node.h"
 
 namespace infra::ast {
-    class Event_Collector : Game_Node {
+    class Event_Collector : Node {
 
     };
 }

@@ -17,25 +17,16 @@
 ***************************************************************/
 #ifndef RENDER_ENGINE_EV_WINDOW_HPP
 #define RENDER_ENGINE_EV_WINDOW_HPP
-#include <utility>
 
 #include "infra/event/Event.h"
-#include "infra/ast/Score.h"
 
 namespace infra::event::window {
-
-    struct Request_Save_Score {
-        static constexpr infra::event::EventMask mask =
-            infra::event::EventMask::Window;
-        infra::ast::ScoreInfo score;
-        explicit Request_Save_Score(ast::ScoreInfo s): score(std::move(s)){}
-    };
-
-    struct Closed{
+    struct Window_Closed{
         static constexpr infra::event::EventMask mask =
             infra::event::EventMask::Window;
     };
-    struct Resized {
+
+    struct Window_Resized {
         static constexpr infra::event::EventMask mask =
             infra::event::EventMask::Window;
 
@@ -43,12 +34,12 @@ namespace infra::event::window {
         std::uint32_t height;
     };
 
-    struct FocusGained {
+    struct Window_FocusGained {
         static constexpr infra::event::EventMask mask =
             infra::event::EventMask::Window;
     };
 
-    struct FocusLost {
+    struct Window_FocusLost {
         static constexpr infra::event::EventMask mask =
             infra::event::EventMask::Window;
     };

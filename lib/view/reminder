@@ -1,4 +1,4 @@
 Model = data = source of truth.
-event_bus = source of changes.
+Event Bus = source of changes.
 
 View must be linked to both.

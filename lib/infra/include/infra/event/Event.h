@@ -65,7 +65,7 @@ namespace infra::event {
      * @param flag  Flag to test.
      * @return true if the flag is set, false otherwise.
      */
-    inline bool has(EventMask value, EventMask flag) {
+    inline bool has(const EventMask value, const EventMask flag) {
         return (value & flag) != EventMask::None;
     }
 

@@ -19,10 +19,12 @@
 #define RENDER_ENGINE_AST_VIEW_H
 
 
+#include <vector>
+
 #include "infra/ast/view/Font.h"
 #include "infra/ast/view/Texture.h"
 #include "infra/ast/view/sprites/Sprite.h"
-#include "infra/ast/view/sprites/ComplexSprite.h"
+
 
 
 namespace infra::ast {
@@ -38,10 +40,10 @@ namespace infra::ast {
         unsigned int window_height = 0; ///< Height of the window
         int fps = 30; ///< Frames per second
         std::string view_directory; ///< Directory containing view assets
+
         std::vector<Texture> textures; ///< List of textures used
         std::vector<Font> fonts; ///< List of fonts used
         std::vector<Sprite> sprites; ///< List of simple sprites
-        std::vector<ComplexSprite> complex_sprites; ///< List of complex sprites
     };
 }
 
