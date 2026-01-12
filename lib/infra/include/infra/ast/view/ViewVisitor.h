@@ -46,15 +46,6 @@ namespace infra::ast {
          * @note Default implementation does nothing.
          */
         virtual void visit(const Sprite& s) {}
-
-        /**
-         * @brief Visit a complex sprite node.
-         *
-         * @param cs ComplexSprite node to visit.
-         *
-         * @note Default implementation does nothing.
-         */
-        virtual void visit(const ComplexSprite& cs) {}
     };
 }
 

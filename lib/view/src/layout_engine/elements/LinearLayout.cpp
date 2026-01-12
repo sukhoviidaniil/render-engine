@@ -16,7 +16,7 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "../../include/view/layout_engine/elemenst/LinearLayout.h"
+#include "../../../include/view/layout_engine/elements/LinearLayout.h"
 
 namespace view::ui {
     infra::math::Vector2 LinearLayout::measure(const infra::math::Vector2 &available) {

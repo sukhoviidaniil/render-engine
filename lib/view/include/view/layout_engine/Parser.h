@@ -24,12 +24,7 @@
 namespace view::ui {
     class Parser {
     public:
-        explicit Parser(std::vector<Token> tokens);
-
-        std::unique_ptr<Node> parse();
-
-    private:
-        std::vector<Token> tokens_;
+        static std::unique_ptr<Node> parse(std::vector<Token> tokens);
     };
 }
 

@@ -17,7 +17,34 @@
 ***************************************************************/
 
 
+#include <fstream>
+#include <string>
+#include <string_view>
+
+#include "view/layout_engine/Parser.h"
+#include "view/layout_engine/Tokenizer.h"
+
+std::string load_file(const std::string& path) {
+    std::ifstream file(path, std::ios::binary);
+    if (!file) {
+        throw std::runtime_error("Cannot open file");
+    }
+
+    file.seekg(0, std::ios::end);
+    std::string data(file.tellg(), '\0');
+    file.seekg(0);
+
+    file.read(data.data(), data.size());
+    return data;
+}
+
 int main() {
+    std::string buffer = load_file("../ui.xml");
+    const std::string_view view_string(buffer);
+
+    std::vector<view::ui::Token> tokens = view::ui::Tokenizer::tokenize(view_string);
+
+    auto root = view::ui::Parser::parse(tokens);
 
     return 0;
 }

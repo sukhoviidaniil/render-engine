@@ -60,7 +60,7 @@ target_link_libraries(${APP_TARGET}
         view_lib
 )
 
-
+#[[
 if(WIN32)
 
     set(SFML_ABSOLUTE_DIR "${SFML_ROOT}")
@@ -84,6 +84,7 @@ elseif(UNIX)
             INSTALL_RPATH "${SFML_ROOT}/lib"
     )
 endif()
+]]#
 target_compile_definitions(${APP_TARGET} PRIVATE ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets/")
 
 

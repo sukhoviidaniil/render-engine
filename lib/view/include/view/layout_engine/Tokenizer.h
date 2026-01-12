@@ -24,10 +24,7 @@
 namespace view::ui {
     class Tokenizer {
     public:
-        explicit Tokenizer(std::string_view src);
-        std::vector<Token> tokenize();
-    private:
-        std::string_view src_;
+        static std::vector<Token> tokenize(std::string_view src);
     };
 }
 

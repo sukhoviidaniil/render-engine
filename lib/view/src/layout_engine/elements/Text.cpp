@@ -16,7 +16,7 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "../../include/view/layout_engine/elemenst/Text.h"
+#include "../../../include/view/layout_engine/elements/Text.h"
 
 namespace view::ui {
 

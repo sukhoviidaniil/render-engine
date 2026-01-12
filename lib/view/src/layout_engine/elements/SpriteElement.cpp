@@ -16,7 +16,7 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "../../include/view/layout_engine/elemenst/SpriteElement.h"
+#include "../../../include/view/layout_engine/elements/SpriteElement.h"
 #include "view/render/Sprite.h"
 
 namespace view::ui {

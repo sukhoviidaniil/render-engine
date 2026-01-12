@@ -16,10 +16,10 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "../../include/view/layout_engine/elemenst/UIElement.h"
+#include "../../../include/view/layout_engine/elements/UIElement.h"
 
 namespace view::ui {
-    void UIElement::add(std::shared_ptr<UIElement> child)  {
+    void UIElement::add(std::unique_ptr<UIElement> child)  {
         children.push_back(std::move(child));
     }
 

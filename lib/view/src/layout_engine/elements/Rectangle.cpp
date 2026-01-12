@@ -16,7 +16,7 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "../../include/view/layout_engine/elemenst/Rectangle.h"
+#include "../../../include/view/layout_engine/elements/Rectangle.h"
 
 #include "view/render/Rectangle.h"
 

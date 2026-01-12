@@ -7,6 +7,5 @@ target_include_directories(view_lib PUBLIC
 )
 target_link_libraries(view_lib PUBLIC
         infra_lib
-        model_lib
 )
 
