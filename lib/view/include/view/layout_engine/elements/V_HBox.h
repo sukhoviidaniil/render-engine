@@ -35,6 +35,7 @@ namespace view::ui {
         }
     };
 
+
     /**
      * @brief Horizontal box layout.
      *

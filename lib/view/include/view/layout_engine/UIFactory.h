@@ -19,44 +19,28 @@
 #define RENDER_ENGINE_UIFACTORY_H
 
 #include "Node.h"
-#include "elemenst/UIElement.h"
+#include "view/layout_engine/elements/UIElement.h"
 
 namespace view::ui {
-    using UIFactoryFn = std::function<std::unique_ptr<UIElement>(const Node&)>;
 
     class UIFactory {
     public:
-        static UIFactory& instance() {
-            static UIFactory f;
-            return f;
-        }
+        static UIFactory& instance();
 
-        void register_tag(std::string tag, UIFactoryFn fn) {
-            map_[std::move(tag)] = std::move(fn);
-        }
+        void register_tag(std::string tag, std::function<std::unique_ptr<UIElement>(const Node&)> fn);
 
-        std::unique_ptr<UIElement> build(const Node& n) {
-            auto it = map_.find(n.tag);
-
-            if (it == map_.end())
-                throw std::runtime_error("Unknown tag: " + n.tag);
-
-            auto el = it->second(n);
-
-            for (auto& c : n.children)
-                el->add(build(*c));
-
-            return el;
-        }
+        std::unique_ptr<UIElement> build(const Node& n);
 
     private:
         std::unordered_map<
             std::string,
-            UIFactoryFn
+            std::function<std::unique_ptr<UIElement>(const Node&)>
         > map_;
 
         UIFactory();
     };
 }
+
+#include "view/layout_engine/make_element.inl"
 
 #endif //RENDER_ENGINE_UIFACTORY_H

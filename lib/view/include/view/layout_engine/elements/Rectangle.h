@@ -26,6 +26,7 @@ namespace view::ui {
 
     class Rectangle : public UIElement {
     public:
+        explicit Rectangle();
         explicit Rectangle(
             Color fill,
             Color border = {},

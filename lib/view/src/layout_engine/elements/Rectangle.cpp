@@ -21,6 +21,8 @@
 #include "view/render/Rectangle.h"
 
 namespace view::ui {
+    Rectangle::Rectangle() = default;
+
     Rectangle::Rectangle(const Color fill, const Color border, const int border_w)
         : fill_color(fill)
         , border_color(border)
