@@ -16,7 +16,7 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "../../../include/view/layout_engine/elements/UIElement.h"
+#include "view/layout_engine/elements/UIElement.h"
 
 namespace view::ui {
     void UIElement::add(std::unique_ptr<UIElement> child)  {
@@ -41,7 +41,7 @@ namespace view::ui {
         return total_size;
     }
 
-    void UIElement::layout(const Rect r)  {
+    void UIElement::layout(const intrnl::Rect r)  {
         result.rect = r;
 
         float y_offset = r.y + padding.y;
@@ -49,7 +49,7 @@ namespace view::ui {
         for (auto& child : children) {
             infra::math::Vector2 child_size = child->resolve_size({r.width - padding.x*2, r.height - padding.y*2});
 
-            Rect child_rect {
+            intrnl::Rect child_rect {
                 r.x + padding.x + child->margin.x,
                 y_offset + child->margin.y,
                 child_size.x,
@@ -71,9 +71,9 @@ namespace view::ui {
     infra::math::Vector2 UIElement::resolve_size(const infra::math::Vector2 &available) const  {
         infra::math::Vector2 out;
 
-        auto resolve = [&](const Size s, const float avail) {
-            if (s.type == Size::Type::Pixel)   return s.value;
-            if (s.type == Size::Type::Percent) return avail * s.value;
+        auto resolve = [&](const intrnl::Size s, const float avail) {
+            if (s.type == intrnl::Size::Type::Pixel)   return s.value;
+            if (s.type == intrnl::Size::Type::Percent) return avail * s.value;
             return avail; // Auto
         };
 

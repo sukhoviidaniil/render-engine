@@ -19,7 +19,7 @@
 #define RENDER_ENGINE_AST_RI_SPRITE_H
 
 
-
+#include "view/registry/AssetHandle.h"
 #include "view/render/RenderNode.h"
 
 namespace view::rnd {
@@ -27,6 +27,9 @@ namespace view::rnd {
         void accept(RenderVisitor &v) const override {
             v.visit(*this);
         }
+
+        assets::AssetHandle<void> asset; // SpriteSingle / Atlas / Grid
+        uint32_t sprite_id = 0;
     };
 }
 

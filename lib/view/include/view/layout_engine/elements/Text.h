@@ -46,7 +46,7 @@ namespace view::ui {
         infra::math::Vector2 measure(const infra::math::Vector2& available) override;
 
 
-        Color color = Color(255,255,255);
+        intrnl::Color color = intrnl::Color(255,255,255);
 
         std::string font = "Arial";
 

@@ -22,6 +22,8 @@
 
 #include "view/render/RenderNode.h"
 #include "view/internal/Color.h"
+#include "view/registry/AssetHandle.h"
+#include "view/registry/assets/Font.h"
 
 namespace view::rnd {
     struct Text : RenderNode {
@@ -33,8 +35,11 @@ namespace view::rnd {
          * @brief Any text
          */
         std::string text;
-        Color color;
+        intrnl::Color color;
         int size = 0;
+
+        assets::AssetHandle<assets::Font> font;
     };
 }
+
 #endif //RENDER_ENGINE_AST_RI_TEXT_H

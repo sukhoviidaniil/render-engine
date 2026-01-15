@@ -1,9 +1,9 @@
 /***************************************************************
- * Project:       render-engine
- * File:          View.cpp
+ * Project:       Render_Engine
+ * File:          AssetReader.h
  *
  * Author:        Sukhovii Daniil
- * Created:       2025-12-06
+ * Created:       2026-01-15
  * Modified:      []
  *
  * Description:   []
@@ -12,16 +12,10 @@
  *   Email:       sukhovii.daniil@gmail.com
  *
  * Disclaimer:
- *   This file is part of render-engine.
+ *   This file is part of Render_Engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
+#ifndef RENDER_ENGINE_ASSETREADER_H
+#define RENDER_ENGINE_ASSETREADER_H
 
-
-#include "view/View.h"
-
-namespace view {
-    View::View() = default;
-
-    View::~View() = default;
-}
-
+#endif //RENDER_ENGINE_ASSETREADER_H

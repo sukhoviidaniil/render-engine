@@ -18,7 +18,7 @@
 #ifndef RENDER_ENGINE_ALIGNMENT_H
 #define RENDER_ENGINE_ALIGNMENT_H
 
-namespace view {
+namespace view::intrnl {
 
     /**
      * @brief Alignment policy used by the layout engine.

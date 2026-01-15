@@ -22,6 +22,13 @@
 
 namespace view::sfml {
     struct SFMLFont {
+        SFMLFont() = default;
+        SFMLFont(SFMLFont&&) noexcept = default;
+        SFMLFont& operator=(SFMLFont&&) noexcept = default;
+
+        SFMLFont(const SFMLFont&) = delete;
+        SFMLFont& operator=(const SFMLFont&) = delete;
+
         sf::Font font;
     };
 }

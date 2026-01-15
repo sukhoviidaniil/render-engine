@@ -32,7 +32,7 @@ namespace view::assets {
 
         T* get() const;
         explicit operator bool() const;
-        [[nodiscard]] GUID guid() const;
+        [[nodiscard]] intrnl::GUID guid() const;
 
     private:
         std::weak_ptr<AssetRecord> record_;

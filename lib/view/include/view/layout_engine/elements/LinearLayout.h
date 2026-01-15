@@ -36,7 +36,7 @@ namespace view::ui {
         ~LinearLayout() override = default;
 
         /// @brief Alignment of children along the cross axis.
-        Align align = Align::Start;
+        intrnl::Align align = intrnl::Align::Start;
         /// @brief Spacing between consecutive children.
         float spacing = 0.f;
 
@@ -70,7 +70,7 @@ namespace view::ui {
          *
          * @param r Final rectangle assigned by the parent layout.
          */
-        void layout(Rect r) override;
+        void layout(intrnl::Rect r) override;
     };
 }
 #endif //RENDER_ENGINE_LINEARLAYOUT_H

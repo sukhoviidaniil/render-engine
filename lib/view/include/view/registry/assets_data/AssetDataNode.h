@@ -19,24 +19,23 @@
 #define RENDER_ENGINE_METAASSETDATA_H
 #include <string>
 
-#include "view/internal/AssetType.h"
+#include "AssetMetaData.h"
+
 #include "view/registry/assets_data/AssetDataVisitor.h"
 
 
 namespace view::assets {
-    struct AssetDataNode {
+    struct  AssetDataNode {
+
+
         virtual ~AssetDataNode() = default;
 
         virtual void accept(AssetDataVisitor &v) const {
         }
 
-        virtual AssetType type() const {
-            return AssetType::Undefined;
-        }
 
-        int guid = -1;
-        std::string asset_name = "NONE";
-        std::string path = "NONE";
+        std::string conf_path_;
+        AssetMetaData meta_;
     };
 }
 

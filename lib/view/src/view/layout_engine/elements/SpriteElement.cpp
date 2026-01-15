@@ -16,7 +16,7 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "../../../include/view/layout_engine/elements/SpriteElement.h"
+#include "view/layout_engine/elements/SpriteElement.h"
 #include "view/render/Sprite.h"
 
 namespace view::ui {
@@ -51,10 +51,10 @@ namespace view::ui {
         frame.constant_items.push_back(std::move(item));
     }
 
-    float SpriteElement::resolve(const Size &s, float avail)  {
+    float SpriteElement::resolve(const intrnl::Size &s, float avail)  {
         switch (s.type) {
-            case Size::Type::Pixel:   return s.value;
-            case Size::Type::Percent: return avail * s.value;
+            case intrnl::Size::Type::Pixel:   return s.value;
+            case intrnl::Size::Type::Percent: return avail * s.value;
             default:                  return avail;
         }
     }

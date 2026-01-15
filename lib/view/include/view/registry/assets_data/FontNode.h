@@ -24,10 +24,9 @@ namespace view::assets {
         ~FontNode() override = default;
         void accept(AssetDataVisitor &v) const override {
         }
-        AssetType type() const override {
-            return AssetType::Font;
+        intrnl::AssetType type() const override {
+            return intrnl::AssetType::Font;
         }
-
     };
 }
 

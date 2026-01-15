@@ -1,11 +1,10 @@
 {
   "asset_name": "SomeSprites",
   "guid": -1,
-  "type": "spriteAtlas",
+
   "source": "textures/characters.png",
+  "type": "spriteAtlas",
 
-
-  "mode": "multiple",
   "sprites": [
     {
       "record_id": -1,

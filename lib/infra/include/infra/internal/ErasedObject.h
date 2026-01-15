@@ -28,6 +28,11 @@ namespace infra {
 
         ErasedObject();
 
+        /**
+         *
+         * @tparam T Movement and the move constructor should be allowed.
+         * @param value
+         */
         template<typename T>
         explicit ErasedObject(T value);
 

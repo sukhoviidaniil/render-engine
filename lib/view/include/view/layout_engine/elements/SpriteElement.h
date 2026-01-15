@@ -32,7 +32,7 @@ namespace view::ui {
         void append_render_items(rnd::RenderFrame& frame, const ViewContext& /*ctx*/) const override;
 
     private:
-        static float resolve(const Size& s, float avail);
+        static float resolve(const intrnl::Size& s, float avail);
 
         std::string sprite_;
     };

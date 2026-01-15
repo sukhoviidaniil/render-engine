@@ -17,8 +17,9 @@
 ***************************************************************/
 #ifndef RENDER_ENGINE_ASSETREGISTRY_H
 #define RENDER_ENGINE_ASSETREGISTRY_H
-#include <optional>
+
 #include <unordered_map>
+#include <vector>
 
 #include "AssetHandle.h"
 #include "AssetRecord.h"
@@ -35,40 +36,34 @@ namespace view::assets {
         AssetRegistry& operator=(AssetRegistry&&) = delete;
 
         void register_loader(
-            AssetType type,
+            intrnl::AssetType type,
             std::unique_ptr<IAssetLoader> loader
             );
 
-        void request(GUID id);
+        void add_AssetRecord(AssetMetaData meta, std::string conf_path);
 
-        std::optional<GUID> get(const std::string &display_name) const;
+        void request(intrnl::GUID id);
 
         template<typename T>
-        AssetHandle<T> get(GUID id) const;
+        AssetHandle<T> get(intrnl::GUID id) const;
 
     private:
         AssetRegistry();
 
         std::unordered_map<
-            std::string,
-            GUID
-        >
-        by_display_name_;
-
-        std::unordered_map<
-            GUID,
+            intrnl::GUID,
             std::shared_ptr<AssetRecord>,
-            GUIDHash
+            intrnl::GUIDHash
         >
         by_guid_;
 
         std::unordered_map<
-            AssetType,
+            intrnl::AssetType,
             std::unique_ptr<IAssetLoader>
         > loaders_;
     };
 }
 
-#include "view/assets/AssetRegistry.inl"
+#include "view/registry/AssetRegistry.inl"
 
 #endif //RENDER_ENGINE_ASSETREGISTRY_H

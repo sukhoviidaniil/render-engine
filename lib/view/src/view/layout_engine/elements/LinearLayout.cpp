@@ -16,7 +16,7 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "../../../include/view/layout_engine/elements/LinearLayout.h"
+#include "view/layout_engine/elements/LinearLayout.h"
 
 namespace view::ui {
     infra::math::Vector2 LinearLayout::measure(const infra::math::Vector2 &available) {
@@ -55,7 +55,7 @@ namespace view::ui {
         return total;
     }
 
-    void LinearLayout::layout(Rect r) {
+    void LinearLayout::layout(intrnl::Rect r) {
         result.rect = r;
 
             const bool is_h = horizontal();
@@ -103,7 +103,7 @@ namespace view::ui {
                 main_size = std::max(0.f, main_size);
 
                 float cross_size =
-                    (align == Align::Stretch)
+                    (align == intrnl::Align::Stretch)
                         ? cross
                         : (is_h ? s.y : s.x);
 
@@ -111,15 +111,15 @@ namespace view::ui {
 
                 float cross_pos = is_h ? origin.y : origin.x;
 
-                if (align != Align::Stretch) {
+                if (align != intrnl::Align::Stretch) {
                     const float extra = cross - cross_size;
-                    if (align == Align::Center) cross_pos += extra * 0.5f;
-                    else if (align == Align::End) cross_pos += extra;
+                    if (align == intrnl::Align::Center) cross_pos += extra * 0.5f;
+                    else if (align == intrnl::Align::End) cross_pos += extra;
                 }
 
-                Rect cr = is_h
-                    ? Rect{cursor, cross_pos, main_size, cross_size}
-                : Rect{cross_pos, cursor, cross_size, main_size};
+                intrnl::Rect cr = is_h
+                    ? intrnl::Rect{cursor, cross_pos, main_size, cross_size}
+                : intrnl::Rect{cross_pos, cursor, cross_size, main_size};
 
                 c->layout(cr);
                 cursor += main_size + spacing;

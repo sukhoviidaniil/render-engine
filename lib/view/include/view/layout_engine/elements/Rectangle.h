@@ -28,8 +28,8 @@ namespace view::ui {
     public:
         explicit Rectangle();
         explicit Rectangle(
-            Color fill,
-            Color border = {},
+            intrnl::Color fill,
+            intrnl::Color border = {},
             int border_w = 0
         );
 
@@ -37,12 +37,12 @@ namespace view::ui {
 
         void append_render_items(rnd::RenderFrame& frame, const ViewContext& ctx) const override;
 
-        Color fill_color;
-        Color border_color;
+        intrnl::Color fill_color;
+        intrnl::Color border_color;
         int border_width = 0;
 
     private:
-        static float resolve(const Size& s, float avail);
+        static float resolve(const intrnl::Size& s, float avail);
     };
 
 }

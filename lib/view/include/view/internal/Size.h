@@ -18,7 +18,7 @@
 #ifndef RENDER_ENGINE_SIZE_H
 #define RENDER_ENGINE_SIZE_H
 
-namespace view  {
+namespace view::intrnl{
     /**
      * @brief Size specification used by the layout engine.
      *

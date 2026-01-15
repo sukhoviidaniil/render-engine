@@ -39,7 +39,7 @@ namespace view::rnd {
         virtual void accept(RenderVisitor &v) const = 0;
 
         /// Element dimensions
-        Rect rect{};
+        intrnl::Rect rect{};
     };
 }
 

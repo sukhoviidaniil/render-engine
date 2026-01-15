@@ -18,7 +18,7 @@
 #ifndef RENDER_ENGINE_ASSETSTATE_H
 #define RENDER_ENGINE_ASSETSTATE_H
 
-namespace view {
+namespace view::intrnl {
     enum class AssetState {
         NotRequested,
         Loading,

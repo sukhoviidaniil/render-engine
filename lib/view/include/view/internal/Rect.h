@@ -18,7 +18,7 @@
 #ifndef RENDER_ENGINE_RECT_H
 #define RENDER_ENGINE_RECT_H
 
-namespace view {
+namespace view::intrnl{
     /**
      * @brief Axis-aligned rectangle in layout coordinates.
      *

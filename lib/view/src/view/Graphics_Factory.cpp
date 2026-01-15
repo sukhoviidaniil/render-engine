@@ -16,7 +16,7 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "../../include/view/Graphics_Factory.h"
+#include "view/Graphics_Factory.h"
 
 namespace view {
     std::shared_ptr<View> Graphics_Factory::make_View(const infra::ast::View &info, const std::string &path) {

@@ -29,8 +29,8 @@ namespace view::rnd {
         }
 
         int border_width = 0;
-        Color border_color{};
-        Color color{};
+        intrnl::Color border_color{};
+        intrnl::Color color{};
     };
 }
 

@@ -19,7 +19,7 @@
 #define RENDER_ENGINE_COLOR_H
 
 #include <cstdint>
-namespace view  {
+namespace view::intrnl {
 
     struct Color {
         std::uint8_t r = 255, g = 255, b = 255;

@@ -29,7 +29,7 @@ namespace view::ui {
      */
     struct LayoutResult {
         LayoutResult() = default;
-        Rect rect; ///< Final computed rectangle
+        intrnl::Rect rect; ///< Final computed rectangle
     };
 }
 

@@ -1,9 +1,9 @@
 /***************************************************************
  * Project:       Render_Engine
- * File:          GUID.h
+ * File:          RecordID.h
  *
  * Author:        Sukhovii Daniil
- * Created:       2026-01-13
+ * Created:       2026-01-15
  * Modified:      []
  *
  * Description:   []
@@ -15,29 +15,29 @@
  *   This file is part of Render_Engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef RENDER_ENGINE_GUID_H
-#define RENDER_ENGINE_GUID_H
-
+#ifndef RENDER_ENGINE_RECORDID_H
+#define RENDER_ENGINE_RECORDID_H
 #include <cstdint>
+#include <string>
 
-namespace view::intrnl{
-    struct GUID {
+namespace view::intrnl {
+    struct RecordID {
         std::uint32_t id = 0;
 
-        GUID() = default;
-        explicit GUID(const std::uint32_t i) : id(i){}
+        RecordID() = default;
+        explicit RecordID(const std::uint32_t i) : id(i){}
 
         // equality
-        friend constexpr bool operator==(const GUID& a, const GUID& b) noexcept {
+        friend constexpr bool operator==(const RecordID& a, const RecordID& b) noexcept {
             return a.id == b.id;
         }
 
         // ordering
-        friend constexpr bool operator<(const GUID& a, const GUID& b) noexcept {
+        friend constexpr bool operator<(const RecordID& a, const RecordID& b) noexcept {
             return a.id < b.id;
         }
 
-        friend constexpr bool operator>(const GUID& a, const GUID& b) noexcept {
+        friend constexpr bool operator>(const RecordID& a, const RecordID& b) noexcept {
             return a.id > b.id;
         }
 
@@ -46,11 +46,11 @@ namespace view::intrnl{
         }
     };
 
-    struct GUIDHash {
-        size_t operator()(const GUID& g) const noexcept {
+    struct RecordIDHash {
+        size_t operator()(const RecordID& g) const noexcept {
             return std::hash<std::uint32_t>{}(g.id);
         }
     };
 }
 
-#endif //RENDER_ENGINE_GUID_H
+#endif //RENDER_ENGINE_RECORDID_H

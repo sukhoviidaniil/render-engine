@@ -57,11 +57,4 @@ namespace view::ui {
         return e;
     }
 
-    /*
-    inline std::unique_ptr<UIElement> make_SpriteElement(const Node& n) {
-        auto e = std::make_unique<SpriteElement>();
-        return e;
-    }
-    */
-
 }

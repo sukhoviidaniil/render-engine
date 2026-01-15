@@ -70,13 +70,13 @@ namespace view::ui {
          *
          * @param r Final rectangle assigned by the layout engine.
          */
-        virtual void layout(Rect r);
+        virtual void layout(intrnl::Rect r);
 
         virtual void append_render_items(rnd::RenderFrame& frame, const ViewContext& ctx) const;
 
         // ===== Configuration =====
-        Size width  = Size::auto_(); ///< Width specification
-        Size height = Size::auto_(); ///< Height specification
+        intrnl::Size width  = intrnl::Size::auto_(); ///< Width specification
+        intrnl::Size height = intrnl::Size::auto_(); ///< Height specification
 
         infra::math::Vector2 min_size {0, 0};         ///< Minimum allowed size
         infra::math::Vector2 max_size {1e9f, 1e9f};   ///< Maximum allowed size

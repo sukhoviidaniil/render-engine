@@ -25,16 +25,19 @@ namespace view::assets {
     class Font {
     public:
         Font() = default;
-
-        explicit Font(sfml::SFMLFont backend)
-            :data_(std::move(backend)) {
-        }
+        Font(Font&&) noexcept = default;
+        Font& operator=(Font&&) noexcept = default;
 
         Font(const Font&) = delete;
         Font& operator=(const Font&) = delete;
 
-        Font(Font&&) noexcept = default;
-        Font& operator=(Font&&) noexcept = default;
+        bool valid() const {
+            return data_.valid();
+        }
+
+        explicit Font(sfml::SFMLFont backend)
+            :data_(std::move(backend)) {
+        }
 
         const sfml::SFMLFont& sfml() const {
             return data_.get<sfml::SFMLFont>();
@@ -42,10 +45,6 @@ namespace view::assets {
 
         sfml::SFMLFont& sfml() {
             return data_.get<sfml::SFMLFont>();
-        }
-
-        bool valid() const {
-            return data_.valid();
         }
 
     private:

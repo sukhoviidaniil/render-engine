@@ -31,16 +31,16 @@ namespace view::assets {
     template<class T>
     bool AssetHandle<T>::ready() const {
         const auto r = record_.lock();
-        return r && r->state == AssetState::Ready && r->asset;
+        return r && r->get_state() == intrnl::AssetState::Ready && r->get_data();
     }
 
     template<class T>
     T * AssetHandle<T>::get() const {
         auto r = record_.lock();
-        if (!r || r->state != AssetState::Ready || !r->asset) {
+        if (!r || r->get_state() != intrnl::AssetState::Ready || !r->get_data()) {
             return nullptr;
         }
-        return static_cast<T*>(r->asset.get());
+        return static_cast<T*>(r->get_data());
     }
 
     template<class T>
@@ -49,8 +49,8 @@ namespace view::assets {
     }
 
     template<class T>
-    GUID AssetHandle<T>::guid() const {
+    intrnl::GUID AssetHandle<T>::guid() const {
         const auto r = record_.lock();
-        return r ? r->guid : GUID{};
+        return r ? r->meta.guid : intrnl::GUID{};
     }
 }

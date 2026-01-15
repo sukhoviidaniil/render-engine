@@ -16,14 +16,14 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "../../../include/view/layout_engine/elements/Rectangle.h"
+#include "view/layout_engine/elements/Rectangle.h"
 
 #include "view/render/Rectangle.h"
 
 namespace view::ui {
     Rectangle::Rectangle() = default;
 
-    Rectangle::Rectangle(const Color fill, const Color border, const int border_w)
+    Rectangle::Rectangle(const intrnl::Color fill, const intrnl::Color border, const int border_w)
         : fill_color(fill)
         , border_color(border)
         , border_width(border_w) {
@@ -35,10 +35,10 @@ namespace view::ui {
             std::max(0.f, available.y)
         };
 
-        if (width.type != Size::Type::Auto)
+        if (width.type != intrnl::Size::Type::Auto)
             size.x = resolve(width, available.x);
 
-        if (height.type != Size::Type::Auto)
+        if (height.type != intrnl::Size::Type::Auto)
             size.y = resolve(height, available.y);
 
         const float bw = static_cast<float>(border_width) * 2.f;
@@ -63,9 +63,9 @@ namespace view::ui {
         frame.constant_items.push_back(std::move(item));
     }
 
-    float Rectangle::resolve(const Size &s, const float avail)  {
-        if (s.type == Size::Type::Pixel)   return s.value;
-        if (s.type == Size::Type::Percent) return avail * s.value;
+    float Rectangle::resolve(const intrnl::Size &s, const float avail)  {
+        if (s.type == intrnl::Size::Type::Pixel)   return s.value;
+        if (s.type == intrnl::Size::Type::Percent) return avail * s.value;
         return avail;
     }
 }
