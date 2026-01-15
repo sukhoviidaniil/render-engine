@@ -29,7 +29,6 @@ namespace view::rnd {
             v.visit(*this);
         }
 
-
         /**
          * @brief Any text
          */

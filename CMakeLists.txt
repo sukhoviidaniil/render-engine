@@ -31,7 +31,18 @@ set(APP_TARGET App)
 # Specifying global variables
 # -----------------------------------------
 
+# Specify the path to SFML
+set(SFML_RELATIVE_DIR "external/SFML-2.6.1")
+if(WIN32)
+    set(SFML_RELATIVE_DIR "${SFML_RELATIVE_DIR}/windows")
+elseif(UNIX)
+    set(SFML_RELATIVE_DIR "${SFML_RELATIVE_DIR}/linux")
+endif()
+set(SFML_ROOT "${CMAKE_SOURCE_DIR}/${SFML_RELATIVE_DIR}")
+set(CMAKE_PREFIX_PATH "${SFML_ROOT}/lib/cmake/SFML")
+find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
 
+set(JSON_DIR "${CMAKE_SOURCE_DIR}/external/json")
 
 # -----------------------------------------
 # Collect all the logical units of the project
@@ -60,7 +71,7 @@ target_link_libraries(${APP_TARGET}
         view_lib
 )
 
-#[[
+
 if(WIN32)
 
     set(SFML_ABSOLUTE_DIR "${SFML_ROOT}")
@@ -84,7 +95,7 @@ elseif(UNIX)
             INSTALL_RPATH "${SFML_ROOT}/lib"
     )
 endif()
-]]#
+
 target_compile_definitions(${APP_TARGET} PRIVATE ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets/")
 
 

@@ -6,6 +6,9 @@ target_include_directories(view_lib PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 target_link_libraries(view_lib PUBLIC
+        sfml-graphics
+        sfml-window
+        sfml-system
         infra_lib
 )
 

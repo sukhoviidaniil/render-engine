@@ -19,28 +19,24 @@
 #define RENDER_ENGINE_VIEW_H
 
 #include <memory>
-#include <string>
 
 #include "infra/event/Observer.h"
-#include "infra/ast/view/ViewVisitor.h"
 #include "infra/math/Vector2.h"
 
 #include "view/render/RenderFrame.h"
 
 namespace view {
-    class View : public infra::event::Observer, public infra::ast::SpriteVisitor,  public rnd::RenderVisitor{
+    class View : public infra::event::Observer, public rnd::RenderVisitor {
     public:
-        explicit View();
         ~View() override;
-
-        [[nodiscard]] virtual infra::math::Vector2 screen_size() const = 0;
-
-        virtual void elapsed(float delta) = 0;
-        virtual void render(const rnd::RenderFrame& graph) = 0;
+        explicit View();
 
         virtual void track_local(const std::shared_ptr<infra::event::Event_Bus>& bus) = 0;
         virtual void track_global(const std::shared_ptr<infra::event::Event_Bus>& bus) = 0;
 
+        [[nodiscard]] virtual infra::math::Vector2 screen_size() const = 0;
+
+        virtual void render(const rnd::RenderFrame& graph) = 0;
     };
 }
 

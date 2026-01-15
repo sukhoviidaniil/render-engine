@@ -1,0 +1,25 @@
+{
+  "asset_name": "SomeSprites",
+  "guid": -1,
+  "type": "spriteAtlas",
+  "source": "textures/characters.png",
+
+
+  "mode": "multiple",
+  "sprites": [
+    {
+      "record_id": -1,
+      "record_name": "idle",
+
+      "rect": { "x": 0, "y": 0, "w": 64, "h": 64 },
+      "pivot": { "x": 0.5, "y": 0.0 }
+    },
+    {
+      "record_id": -1,
+      "record_name": "run",
+
+      "rect": { "x": 64, "y": 0, "w": 64, "h": 64 },
+      "pivot": { "x": 0.5, "y": 0.0 }
+    }
+  ]
+}
