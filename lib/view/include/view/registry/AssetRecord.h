@@ -20,14 +20,30 @@
 
 #include <memory>
 #include <string>
+#include <utility>
 
 #include "assets_data/AssetMetaData.h"
 #include "view/internal/AssetState.h"
 
 namespace view::assets {
+    struct AssetDesc {
+        AssetDesc(AssetMetaData m, std::string c) : meta(std::move(m)), conf_path(std::move(c)) {
+
+        }
+
+        AssetMetaData meta;
+        std::string conf_path;
+    };
+
     struct AssetRecord {
-        AssetRecord(AssetMetaData meta_, std::string conf_path_)
-        : meta(std::move(meta_)), conf_path(std::move(conf_path_)) {
+
+        explicit AssetRecord(AssetDesc d)
+        : desc(std::move(d)) {
+
+        }
+
+        AssetRecord(AssetMetaData meta, std::string conf_path)
+            : AssetRecord(AssetDesc{std::move(meta), std::move(conf_path)}) {
 
         }
 
@@ -37,6 +53,16 @@ namespace view::assets {
         AssetRecord(const AssetRecord&) = delete;
         AssetRecord& operator=(const AssetRecord&) = delete;
 
+        AssetDesc get_desc() const{
+            return desc;
+        }
+
+        const AssetMetaData& get_meta() const{
+            return desc.meta;
+        }
+        const std::string& get_conf_path() const{
+            return desc.conf_path;
+        }
 
         intrnl::AssetState get_state() const {
             std::lock_guard lock(mtx_);
@@ -57,10 +83,9 @@ namespace view::assets {
             data_ = std::move(d);
         }
 
-        AssetMetaData meta;
-        std::string conf_path;
-
     private:
+        AssetDesc desc;
+
         mutable std::mutex mtx_;
 
         intrnl::AssetState state_ = intrnl::AssetState::NotRequested;

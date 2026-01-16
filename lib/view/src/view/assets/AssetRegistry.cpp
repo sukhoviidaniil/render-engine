@@ -29,8 +29,14 @@ namespace view::assets {
         return instance;
     }
 
-
     AssetRegistry::AssetRegistry() = default;
+
+    bool AssetRegistry::uniq_GUID(const intrnl::GUID &guid) const {
+        if (by_guid_.contains(guid)) {
+            return false;
+        }
+        return true;
+    }
 
     void AssetRegistry::register_loader(const intrnl::AssetType type, std::unique_ptr<IAssetLoader> loader) {
         loaders_[type] = std::move(loader);
@@ -38,12 +44,21 @@ namespace view::assets {
 
     void AssetRegistry::add_AssetRecord(AssetMetaData meta, std::string conf_path) {
         const intrnl::GUID id = meta.guid;
-        const auto rec = by_guid_.find(id);
-        if (rec != by_guid_.end()) {
+        if (!uniq_GUID(id)) {
             LOG("Double adding  GUID: " + id.string());
             return;
         }
-        const auto record_ptr = std::make_shared<AssetRecord>(meta, conf_path);
+        const auto record_ptr = std::make_shared<AssetRecord>(std::move(meta), std::move(conf_path));
+        by_guid_[id] = record_ptr;
+    }
+
+    void AssetRegistry::add_AssetRecord(const AssetRecord &other) {
+        const intrnl::GUID id = other.get_meta().guid;
+        if (!uniq_GUID(id)) {
+            LOG("Double adding  GUID: " + id.string());
+            return;
+        }
+        const auto record_ptr = std::make_shared<AssetRecord>(other.get_desc());
         by_guid_[id] = record_ptr;
     }
 
@@ -57,7 +72,7 @@ namespace view::assets {
             const intrnl::AssetState state = record->get_state();
             // If we haven't tried to download it yet, let's try it.
             if (state == intrnl::AssetState::NotRequested) {
-                const intrnl::AssetType type = record->meta.type;
+                const intrnl::AssetType type = record->get_meta().type;
 
                 // find loader
                 auto ld = loaders_.find(type);

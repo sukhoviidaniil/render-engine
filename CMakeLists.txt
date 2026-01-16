@@ -49,7 +49,7 @@ set(JSON_DIR "${CMAKE_SOURCE_DIR}/external/json")
 # -----------------------------------------
 
 # Collecting additional files that do not fall into general categories
-file(GLOB_RECURSE RELEASE_SOURCE_FILES "src/*.cpp")
+file(GLOB_RECURSE RELEASE_SOURCE_FILES "src/main.cpp")
 
 # Collecting Function Resources
 

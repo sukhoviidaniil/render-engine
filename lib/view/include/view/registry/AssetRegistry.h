@@ -19,7 +19,6 @@
 #define RENDER_ENGINE_ASSETREGISTRY_H
 
 #include <unordered_map>
-#include <vector>
 
 #include "AssetHandle.h"
 #include "AssetRecord.h"
@@ -41,6 +40,7 @@ namespace view::assets {
             );
 
         void add_AssetRecord(AssetMetaData meta, std::string conf_path);
+        void add_AssetRecord(const AssetRecord& other);
 
         void request(intrnl::GUID id);
 
@@ -49,6 +49,8 @@ namespace view::assets {
 
     private:
         AssetRegistry();
+
+        bool uniq_GUID(const intrnl::GUID& guid) const;
 
         std::unordered_map<
             intrnl::GUID,
