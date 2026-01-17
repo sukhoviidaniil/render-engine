@@ -17,12 +17,13 @@
 ***************************************************************/
 #ifndef RENDER_ENGINE_SFML_EVENT_COLLECTOR_H
 #define RENDER_ENGINE_SFML_EVENT_COLLECTOR_H
+
 #include "infra/event/Event_Collector.h"
 #include "SFML/Window/Event.hpp"
 #include "my_sfml/ISFML_Event_Source.h"
 
 namespace rb::sfml {
-    class SFML_Event_Collector : public Event_Collector {
+    class SFML_Event_Collector : public infra::event::Event_Collector {
     public:
         explicit SFML_Event_Collector(rb::sfml::ISFML_Event_Source& source);
 

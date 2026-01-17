@@ -18,29 +18,54 @@
 
 #include "Graphics_Factory.h"
 
+#include "infra/diagnostics/Logger.h"
+#include "my_sfml/SFML_Event_Collector.h"
+#include "my_sfml/SFML_Renderer.h"
+
 namespace core {
-    std::shared_ptr<rb::Renderer> Graphics_Factory::make_View(const rb::ast::RB_Config &info, const std::string &path) {
-        std::unordered_map<rb::ast::RB_Type, std::shared_ptr<rb::Renderer>(*)(const rb::ast::RB_Config&, const std::string&)> map;
+    Graphics_Factory & Graphics_Factory::instance() {
+        static Graphics_Factory inst;
+        return inst;
+    }
+
+    std::shared_ptr<rb::Renderer> Graphics_Factory::make_Renderer(const rb::ast::RB_Config &info) {
+        std::unordered_map<rb::ast::RB_Type, std::shared_ptr<rb::Renderer>(Graphics_Factory::*)(const rb::ast::RB_Config&)> map;
         Register(map);
-        rb::ast::RB_Type type = info.type;
+        const rb::ast::RB_Type type = info.type;
         auto it = map.find(type);
         if (it != map.end()) {
-            return it->second(info, path);
+            return (this->*(it->second))(info);
         }
         throw std::runtime_error("Unknown rb type: " + to_string(type));
     }
 
+    std::unique_ptr<infra::event::Event_Collector> Graphics_Factory::make_Event_Collector(
+        const infra::ast::Event_Collector &info) {
+        if (event_collector_ != nullptr) {
+            return std::move(event_collector_);
+        }
+        /* If there is no event_collector_ at this point, then you need to have a system that will create it.
+         * Since the implementation assumes that SFML will be used, this means that the collector was already created when the Renderer was created.
+         * And since we cannot assume the data required to create another collector, all we can do is throw an error - it is not possible to create a collector.
+         */
+        std::string err = "Event collector not initialized";
+        LOG(err);
+        throw std::runtime_error("Event collector not initialized");
+    }
+
+    Graphics_Factory::Graphics_Factory() = default;
+
     void Graphics_Factory::Register(
-        std::unordered_map<rb::ast::RB_Type, std::shared_ptr<rb::Renderer>(*)(const rb::ast::RB_Config&, const std::string&)> &outMap
+        std::unordered_map<rb::ast::RB_Type, std::shared_ptr<rb::Renderer>(Graphics_Factory::*)(const rb::ast::RB_Config&)> &outMap
         ) {
-        outMap[rb::ast::RB_Type::SFML] = &Graphics_Factory::SFML_Renderer;
+        outMap[rb::ast::RB_Type::SFML] = &Graphics_Factory::make_SFML_Renderer;
 
     }
 
-    std::shared_ptr<rb::Renderer> Graphics_Factory::SFML_Renderer(const rb::ast::RB_Config& info, const std::string& path) {
-        auto view = std::make_shared<SFML_Renderer>(info, path);
-        event_collector_ = std::make_unique<SFML_Event_Collector>(*view);
-        return view;
+    std::shared_ptr<rb::Renderer> Graphics_Factory::make_SFML_Renderer(const rb::ast::RB_Config& info) {
+        auto rb = std::make_shared<rb::sfml::SFML_Renderer>(info);
+        event_collector_ = std::make_unique<rb::sfml::SFML_Event_Collector>(*rb);
+        return rb;
     }
 }
 

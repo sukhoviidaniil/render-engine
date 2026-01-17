@@ -21,6 +21,7 @@
 #include <memory>
 
 #include "infra/ast/Event_Collector.h"
+#include "infra/event/Event_Collector.h"
 #include "rb/ast/RB_Config.h"
 #include "rb/Renderer.h"
 
@@ -28,20 +29,25 @@ namespace core {
     class Graphics_Factory{
         public:
 
-        static std::shared_ptr<rb::Renderer> make_Renderer(const rb::ast::RB_Config &info, const std::string &path);
+        static Graphics_Factory& instance();
+
+        std::shared_ptr<rb::Renderer> make_Renderer(const rb::ast::RB_Config &info);
+
+        std::unique_ptr<infra::event::Event_Collector> make_Event_Collector(const infra::ast::Event_Collector &info);
 
     private:
+        Graphics_Factory();
 
         static void Register(
             std::unordered_map<
                 rb::ast::RB_Type,
-                std::shared_ptr<rb::Renderer> (*)(const rb::ast::RB_Config&, const std::string&)
+                std::shared_ptr<rb::Renderer> (Graphics_Factory::*)(const rb::ast::RB_Config&)
             > &outMap
         );
 
-        std::unique_ptr<infra::ast::Event_Collector> event_collector_;
+        std::unique_ptr<infra::event::Event_Collector> event_collector_;
 
-        static std::shared_ptr<rb::Renderer> SFML_Renderer(const rb::ast::RB_Config& info, const std::string& path);
+        std::shared_ptr<rb::Renderer> make_SFML_Renderer(const rb::ast::RB_Config& info);
     };
 }
 

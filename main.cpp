@@ -41,21 +41,11 @@ int main() {
     rb::rgst::AssetImporter::instance();
     const auto eventbus_ = std::make_shared<infra::event::Event_Bus>(); // GLOBAL
 
-    //Load and save the Registry of assets
+    // Load and save the Registry of assets
     rb::rgst::AssetImporter::instance().load_from_file(data_path + "/bin/registry.rgst.json");
     rb::rgst::AssetImporter::instance().load_in_registry();
 
 
-
-
-    // Read and tokenize UI data
-    std::vector<rb::ui::Token> tokens = rb::ui::Tokenizer::tokenize(ui_file);
-
-    // Go through the tokens and create an AST UI nodes
-    auto node_root = rb::ui::Parser::parse(tokens);
-
-    // Create real UI elements from AST nodes
-    std::unique_ptr<rb::ui::UIElement> root = rb::ui::UIFactory::instance().build(*node_root);
 
     return 0;
 }
