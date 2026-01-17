@@ -26,10 +26,10 @@
 #include "rb/render/RenderFrame.h"
 
 namespace rb {
-    class View : public infra::event::Observer, public rnd::RenderVisitor {
+    class Renderer : public infra::event::Observer, public rnd::RenderVisitor {
     public:
-        ~View() override;
-        explicit View();
+        ~Renderer() override;
+        explicit Renderer();
 
         virtual void track_local(const std::shared_ptr<infra::event::Event_Bus>& bus) = 0;
         virtual void track_global(const std::shared_ptr<infra::event::Event_Bus>& bus) = 0;

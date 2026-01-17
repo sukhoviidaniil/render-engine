@@ -17,34 +17,35 @@
 ***************************************************************/
 
 
-#include <fstream>
+#include <filesystem>
+#include <iostream>
 #include <string>
-#include <string_view>
 
+#include "infra/ast/Node.h"
+#include "rb/reference_serialization.h"
 #include "rb/layout_engine/Parser.h"
 #include "rb/layout_engine/Tokenizer.h"
+#include "rb/layout_engine/UIFactory.h"
+#include "rb/registry/AssetImporter.h"
 
-std::string load_file(const std::string& path) {
-    std::ifstream file(path, std::ios::binary);
-    if (!file) {
-        throw std::runtime_error("Cannot open file");
-    }
-
-    file.seekg(0, std::ios::end);
-    std::string data(file.tellg(), '\0');
-    file.seekg(0);
-
-    file.read(data.data(), data.size());
-    return data;
-}
 
 int main() {
-    std::string buffer = load_file("../ui.xml");
-    const std::string_view view_string(buffer);
 
-    std::vector<rb::ui::Token> tokens = rb::ui::Tokenizer::tokenize(view_string);
+    const std::string data_path = "../data/";
+    rb::rgst::AssetImporter::instance().load_from_file(data_path + "/bin/registry.rgst.json");
 
-    auto root = rb::ui::Parser::parse(tokens);
+    const std::string serialized_scenes_dir = data_path + "bin/scenes/";
+    const std::string ui_file = serialized_scenes_dir + "ui1.ui.xml";
+
+    // Read and tokenize data
+    std::vector<rb::ui::Token> tokens = rb::ui::Tokenizer::tokenize(ui_file);
+
+    // Go through the tokens and create an AST UI nodes
+    auto node_root = rb::ui::Parser::parse(tokens);
+
+    // Create real UI elements from AST nodes
+    std::unique_ptr<rb::ui::UIElement> root = rb::ui::UIFactory::instance().build(*node_root);
+
 
     return 0;
 }

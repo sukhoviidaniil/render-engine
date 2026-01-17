@@ -24,7 +24,12 @@
 namespace rb::ui {
     class Tokenizer {
     public:
-        static std::vector<Token> tokenize(std::string_view src);
+        static bool is_ui_xml_file(const std::string& path);
+        static std::vector<Token> tokenize(const std::string& path);
+        static void save_tokens(const std::string& path, const std::vector<Token>& tokens);
+
+    private:
+        static void ensure_ui_xml_file(const std::string &path, bool must_exist = true);
     };
 }
 

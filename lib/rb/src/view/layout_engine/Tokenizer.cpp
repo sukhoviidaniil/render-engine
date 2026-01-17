@@ -18,8 +18,13 @@
 
 #include "rb/layout_engine/Tokenizer.h"
 
-namespace rb::ui {
+#include <filesystem>
+#include <fstream>
+#include <stdexcept>
 
+#include "infra/diagnostics/Logger.h"
+
+namespace rb::ui {
 
     static void skip_ws(const std::string_view src, size_t& i) {
         while (i < src.size() && std::isspace(static_cast<unsigned char>(src[i]))) {
@@ -27,7 +32,40 @@ namespace rb::ui {
         }
     }
 
-    std::vector<Token> Tokenizer::tokenize(const std::string_view src) {
+    bool Tokenizer::is_ui_xml_file(const std::string &path) {
+        try {
+            ensure_ui_xml_file(path, true);
+        } catch (const std::exception &e) {
+            return false;
+        }
+        return true;
+    }
+
+    std::vector<Token> Tokenizer::tokenize(const std::string &path) {
+
+        try {
+            ensure_ui_xml_file(path, true);
+        } catch (const std::exception &e) {
+            std::string err = "Tokenizer::tokenize failed for file '" + path + "': " + e.what();
+            LOG(err);
+            throw std::runtime_error(err);
+        }
+
+        // load_file
+        std::ifstream file(path, std::ios::binary);
+        if (!file) {
+            throw std::runtime_error("Cannot open file");
+        }
+
+        file.seekg(0, std::ios::end);
+        std::string src(file.tellg(), '\0');
+        file.seekg(0);
+
+        file.read(src.data(), src.size());
+        //
+
+
+
         std::vector<Token> tokens;
         size_t i = 0;
 
@@ -143,4 +181,66 @@ namespace rb::ui {
         return tokens;
     }
 
+    void Tokenizer::save_tokens(const std::string &path, const std::vector<Token> &tokens) {
+
+        try {
+            ensure_ui_xml_file(path, false);
+        } catch (const std::exception &e) {
+            std::string err = "Tokenizer::save_tokens failed for file '" + path + "': " + e.what();
+            LOG(err);
+            throw std::runtime_error(err);
+        }
+
+        std::ofstream file(path, std::ios::binary);
+        if (!file) {
+            throw std::runtime_error("Cannot open file for writing");
+        }
+
+        for (const auto &token : tokens) {
+            switch (token.type) {
+                case TokenType::Text:
+                    file << token.name; // для текста поле name содержит сам текст
+                    break;
+
+                case TokenType::OpenTag:
+                    file << "<" << token.name;
+                    for (const auto &[attrName, attrValue] : token.attributes) {
+                        file << " " << attrName << "=\"" << attrValue << "\"";
+                    }
+                    file << ">";
+                    break;
+
+                case TokenType::CloseTag:
+                    file << "</" << token.name << ">";
+                    break;
+
+                case TokenType::SelfCloseTag:
+                    file << "<" << token.name;
+                    for (const auto &[attrName, attrValue] : token.attributes) {
+                        file << " " << attrName << "=\"" << attrValue << "\"";
+                    }
+                    file << "/>";
+                    break;
+            }
+        }
+
+        file.close();
+    }
+
+    void Tokenizer::ensure_ui_xml_file(const std::string &path, bool must_exist) {
+        std::filesystem::path p(path);
+
+        if (must_exist) {
+            if (!std::filesystem::exists(p) || !std::filesystem::is_regular_file(p)) {
+                throw std::runtime_error("File does not exist or is not a regular file: " + path);
+            }
+        }
+
+        std::string ext = p.extension().string(); // latest extension
+        std::string stem_ext = p.stem().extension().string(); // extension before the last one
+
+        if (ext != ".xml" || stem_ext != ".ui") {
+            throw std::runtime_error("File must have '.ui.xml' extension: " + path);
+        }
+    }
 }

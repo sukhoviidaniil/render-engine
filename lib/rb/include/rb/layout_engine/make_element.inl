@@ -90,7 +90,20 @@ namespace rb::ui {
     }
 
     inline std::unique_ptr<UIElement> make_Rectangle(const Node& n) {
+        static std::string from = "Rectangle node";
         auto e = std::make_unique<Rectangle>();
+        // ReSharper disable once CppJoinDeclarationAndAssignment
+        std::string attrbt;
+
+        attrbt = "fill_color";
+        if (n.attributes.contains(attrbt)) {
+            try {
+                e->fill_color = intrnl::Color(n.attributes.at(attrbt));
+            } catch (const std::exception& ex) {
+                invalid_attribute(from, attrbt, n.attributes.at(attrbt), ex.what());
+            }
+        }
+
         return e;
     }
 

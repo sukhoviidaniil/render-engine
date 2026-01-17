@@ -29,9 +29,9 @@ namespace rb::rnd {
     struct RenderVisitor {
         virtual ~RenderVisitor() = default;
 
-        virtual void visit(const Text&) {}
-        virtual void visit(const Rectangle&) {}
-        virtual void visit(const Sprite&) {}
+        virtual void visit(const Text&) = 0;
+        virtual void visit(const Rectangle&) = 0;
+        virtual void visit(const Sprite&) = 0;
     };
 
     struct RenderNode  {

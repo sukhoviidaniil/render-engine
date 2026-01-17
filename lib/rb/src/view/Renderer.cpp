@@ -17,11 +17,11 @@
 ***************************************************************/
 
 
-#include "rb/View.h"
+#include "rb/Renderer.h"
 
 namespace rb {
-    View::View() = default;
+    Renderer::Renderer() = default;
 
-    View::~View() = default;
+    Renderer::~Renderer() = default;
 }
 
