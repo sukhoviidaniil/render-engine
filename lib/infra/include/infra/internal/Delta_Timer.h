@@ -20,7 +20,7 @@
 
 #include <chrono>
 
-namespace infra {
+namespace infra::intr {
 
     /**
      * @brief Utility class to measure elapsed time between updates.

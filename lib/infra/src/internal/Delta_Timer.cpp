@@ -18,7 +18,7 @@
 
 #include "infra/internal/Delta_Timer.h"
 
-namespace infra {
+namespace infra::intr {
 
     Delta_Timer & Delta_Timer::instance() {
         static Delta_Timer inst;

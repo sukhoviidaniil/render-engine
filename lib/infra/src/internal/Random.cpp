@@ -18,7 +18,7 @@
 
 #include "infra/internal/Random.h"
 
-namespace infra {
+namespace infra::intr {
     Random & Random::instance()  {
         static Random inst;
         return inst;

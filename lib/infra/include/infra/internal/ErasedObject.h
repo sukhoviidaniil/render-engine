@@ -20,7 +20,7 @@
 
 #include "TypeId.h"
 
-namespace infra {
+namespace infra::intr {
     class ErasedObject {
     public:
         ErasedObject(const ErasedObject&) = delete;

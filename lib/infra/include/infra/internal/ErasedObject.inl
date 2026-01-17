@@ -22,7 +22,7 @@
 
 #include "ErasedObject.h"
 
-namespace infra {
+namespace infra::intr {
 
     template<typename T>
     ErasedObject::ErasedObject(T value)

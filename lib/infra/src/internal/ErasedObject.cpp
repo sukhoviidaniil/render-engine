@@ -18,7 +18,7 @@
 
 #include "infra/internal/ErasedObject.h"
 
-namespace infra {
+namespace infra::intr {
 
     ErasedObject::ErasedObject()
         : storage_(nullptr)

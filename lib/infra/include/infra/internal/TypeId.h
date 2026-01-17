@@ -19,7 +19,7 @@
 #define RENDER_ENGINE_TYPEID_H
 #include <cstddef>
 
-namespace infra {
+namespace infra::intr {
     using TypeId = std::size_t;
 
     template<typename T>

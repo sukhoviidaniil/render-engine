@@ -1,9 +1,9 @@
 /***************************************************************
  * Project:       Render_Engine
- * File:          Concept.h
+ * File:          Tokenizer.h
  *
  * Author:        Sukhovii Daniil
- * Created:       2026-01-15
+ * Created:       2026-01-12
  * Modified:      []
  *
  * Description:   []
@@ -15,20 +15,17 @@
  *   This file is part of Render_Engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef RENDER_ENGINE_CONCEPT_H
-#define RENDER_ENGINE_CONCEPT_H
-#include <algorithm>
+#ifndef RENDER_ENGINE_TOKENIZER_H
+#define RENDER_ENGINE_TOKENIZER_H
+#include <vector>
 
-namespace infra::intr {
-    struct Concept {
-        virtual ~Concept() = default;
-    };
+#include "Token.h"
 
-    template<typename T>
-    struct Model final : Concept {
-        explicit Model(T v) : impl(std::move(v)) {}
-        T impl;
+namespace rb::ui {
+    class Tokenizer {
+    public:
+        static std::vector<Token> tokenize(std::string_rb src);
     };
 }
 
-#endif //RENDER_ENGINE_CONCEPT_H
+#endif //RENDER_ENGINE_TOKENIZER_H

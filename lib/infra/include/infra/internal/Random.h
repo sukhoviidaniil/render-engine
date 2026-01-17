@@ -33,7 +33,7 @@ infra::Random::instance().engine()
 
 #include <random>
 #include <cstdint>
-namespace infra {
+namespace infra::intr{
 
     /**
      * @brief Singleton random number generator utility.

@@ -54,7 +54,7 @@ file(GLOB_RECURSE RELEASE_SOURCE_FILES "src/main.cpp")
 # Collecting Function Resources
 
 add_subdirectory(lib/infra)
-add_subdirectory(lib/view)
+add_subdirectory(lib/rb)
 
 
 # -----------------------------------------
