@@ -42,7 +42,10 @@ namespace rb::rgst {
         if (!r || r->get_state() != asset::AssetState::Ready || !r->get_data()) {
             return nullptr;
         }
-        return static_cast<T*>(r->get_data());
+        // r->get_data() returns std::shared_ptr<void>
+        auto typed = std::static_pointer_cast<T>(r->get_data());
+        // raw pointer
+        return typed.get();
     }
 
     template<class T>

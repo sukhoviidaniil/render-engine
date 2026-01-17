@@ -18,11 +18,11 @@
 
 
 #include <filesystem>
-#include <iostream>
+
 #include <string>
 
-#include "infra/ast/Node.h"
-#include "rb/reference_serialization.h"
+
+#include "infra/event/Event_Bus.h"
 #include "rb/layout_engine/Parser.h"
 #include "rb/layout_engine/Tokenizer.h"
 #include "rb/layout_engine/UIFactory.h"
@@ -30,14 +30,25 @@
 
 
 int main() {
-
+    // File/folder constants
     const std::string data_path = "../data/";
-    rb::rgst::AssetImporter::instance().load_from_file(data_path + "/bin/registry.rgst.json");
-
     const std::string serialized_scenes_dir = data_path + "bin/scenes/";
     const std::string ui_file = serialized_scenes_dir + "ui1.ui.xml";
 
-    // Read and tokenize data
+    // Instantiation of basic things
+    infra::intr::Random::instance();
+    infra::diag::Logger::instance();
+    rb::rgst::AssetImporter::instance();
+    const auto eventbus_ = std::make_shared<infra::event::Event_Bus>(); // GLOBAL
+
+    //Load and save the Registry of assets
+    rb::rgst::AssetImporter::instance().load_from_file(data_path + "/bin/registry.rgst.json");
+    rb::rgst::AssetImporter::instance().load_in_registry();
+
+
+
+
+    // Read and tokenize UI data
     std::vector<rb::ui::Token> tokens = rb::ui::Tokenizer::tokenize(ui_file);
 
     // Go through the tokens and create an AST UI nodes
@@ -45,7 +56,6 @@ int main() {
 
     // Create real UI elements from AST nodes
     std::unique_ptr<rb::ui::UIElement> root = rb::ui::UIFactory::instance().build(*node_root);
-
 
     return 0;
 }

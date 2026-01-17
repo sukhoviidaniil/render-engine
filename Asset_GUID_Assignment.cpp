@@ -1,6 +1,6 @@
 /***************************************************************
  * Project:       Render_Engine
- * File:          Asset_Reference_Serialization.cpp
+ * File:          Asset_GUID_Assignment.cpp
  *
  * Author:        Sukhovii Daniil
  * Created:       2026-01-15
@@ -16,17 +16,15 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "rb/reference_serialization.h"
+#include "infra/diagnostics/Logger.h"
 #include "rb/registry/AssetImporter.h"
 
 int main() {
-    const std::string data_path = "../data/";
-    rb::rgst::AssetImporter::instance().load_from_file(data_path + "/bin/registry.rgst.json");
+    infra::intr::Random::instance();
+    infra::diag::Logger::instance();
 
-    const std::string scenes_dir = data_path + "scenes/";
-    const std::string serialized_scenes_dir = data_path + "bin/scenes/";
-
-    rb::reference_serialization(scenes_dir, serialized_scenes_dir);
-
+    std::string path = "../data/";
+    rb::rgst::AssetImporter::instance().load_from_path(path + "graphics/");
+    rb::rgst::AssetImporter::instance().save_in_file(path + "/bin/registry.rgst.json");
     return 0;
 }

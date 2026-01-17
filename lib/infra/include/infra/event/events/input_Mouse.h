@@ -56,7 +56,7 @@ namespace infra::event::input {
         int y;
     };
 
-    struct MouseWheelScrolled {
+    struct Mouse_WheelScrolled {
         static constexpr infra::event::EventMask mask =
             infra::event::EventMask::Input;
 

@@ -19,7 +19,7 @@
 #define RENDER_ENGINE_ASSETS_FONT_H
 
 #include "infra/internal/ErasedObject.h"
-#include "sfml/SFMLFont.h"
+#include "my_sfml/SFMLFont.h"
 
 namespace rb::asset {
     class Font {

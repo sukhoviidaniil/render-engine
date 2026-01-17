@@ -20,25 +20,28 @@
 
 #include <memory>
 
-#include "ast/RB_Config.h"
+#include "infra/ast/Event_Collector.h"
+#include "rb/ast/RB_Config.h"
 #include "rb/Renderer.h"
 
-namespace rb {
+namespace core {
     class Graphics_Factory{
         public:
 
-        static std::shared_ptr<Renderer> make_View(const ast::RB_Config &info, const std::string &path);
+        static std::shared_ptr<rb::Renderer> make_Renderer(const rb::ast::RB_Config &info, const std::string &path);
 
     private:
 
         static void Register(
             std::unordered_map<
-                ast::RB_Type,
-                std::shared_ptr<Renderer> (*)(const ast::RB_Config&, const std::string&)
+                rb::ast::RB_Type,
+                std::shared_ptr<rb::Renderer> (*)(const rb::ast::RB_Config&, const std::string&)
             > &outMap
         );
 
-        static std::shared_ptr<Renderer> SFML_View(const  ast::RB_Config& info, const std::string& path);
+        std::unique_ptr<infra::ast::Event_Collector> event_collector_;
+
+        static std::shared_ptr<rb::Renderer> SFML_Renderer(const rb::ast::RB_Config& info, const std::string& path);
     };
 }
 

@@ -49,7 +49,7 @@ set(JSON_DIR "${CMAKE_SOURCE_DIR}/external/json")
 # -----------------------------------------
 
 # Collecting additional files that do not fall into general categories
-file(GLOB_RECURSE RELEASE_SOURCE_FILES "src/main.cpp")
+file(GLOB_RECURSE RELEASE_SOURCE_FILES "src/*.cpp")
 
 # Collecting Function Resources
 
@@ -62,6 +62,7 @@ add_subdirectory(lib/rb)
 # -----------------------------------------
 
 add_executable(${APP_TARGET}
+        "main.cpp"
         ${RELEASE_SOURCE_FILES}
 )
 

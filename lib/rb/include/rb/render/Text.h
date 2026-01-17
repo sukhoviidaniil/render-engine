@@ -23,7 +23,7 @@
 #include "rb/render/RenderNode.h"
 #include "rb/internal/Color.h"
 #include "rb/registry/AssetHandle.h"
-#include "rb/registry/assets/Font.h"
+#include "rb/asset/Font.h"
 
 namespace rb::rnd {
     struct Text : RenderNode {
@@ -31,7 +31,7 @@ namespace rb::rnd {
             v.visit(*this);
         }
 
-        assets::AssetHandle<assets::Font> font;
+        rgst::AssetHandle<asset::Font> font;
         intrnl::Color color;
         int size = 0;
         /**

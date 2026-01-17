@@ -17,15 +17,17 @@
 ***************************************************************/
 #ifndef RENDER_ENGINE_SFML_SFML_RENDERER_H
 #define RENDER_ENGINE_SFML_SFML_RENDERER_H
-#include "rb/Renderer.h"
-#include "SFML/Graphics/RenderWindow.hpp"
 
+#include "rb/Renderer.h"
+#include "rb/ast/RB_Config.h"
+#include "SFML/Graphics/RenderWindow.hpp"
+#include "my_sfml/ISFML_Event_Source.h"
 
 namespace rb::sfml {
-    class SFML_Renderer final: public Renderer {
+    class SFML_Renderer final: public Renderer, public ISFML_Event_Source {
     public:
         ~SFML_Renderer() override;
-        explicit SFML_Renderer();
+        explicit SFML_Renderer(const ast::RB_Config &info);
 
         void track_local(const std::shared_ptr<infra::event::Event_Bus>& bus) override;
         void track_global(const std::shared_ptr<infra::event::Event_Bus>& bus) override;
@@ -34,10 +36,12 @@ namespace rb::sfml {
 
         void render(const rnd::RenderFrame& graph) override;
 
+        bool poll_event(sf::Event& e) override;
+
     private:
-        void visit(const rnd::Text&) override;
-        void visit(const rnd::Rectangle&) override;
-        void visit(const rnd::Sprite&) override;
+        void visit(const rnd::Text& r) override;
+        void visit(const rnd::Rectangle& r) override;
+        void visit(const rnd::Sprite& r) override;
 
         sf::RenderWindow window_;
     };
