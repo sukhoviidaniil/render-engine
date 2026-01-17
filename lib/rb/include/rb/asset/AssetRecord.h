@@ -22,9 +22,8 @@
 #include <string>
 #include <utility>
 
-#include "AssetDesc.h"
-#include "rb/internal/AssetState.h"
-
+#include "rb/asset/AssetDesc.h"
+#include "rb/asset/AssetState.h"
 
 namespace rb::asset {
 
@@ -58,12 +57,12 @@ namespace rb::asset {
             return desc.conf_path;
         }
 
-        intrnl::AssetState get_state() const {
+        asset::AssetState get_state() const {
             std::lock_guard lock(mtx_);
             return state_;
         }
 
-        void set_state(intrnl::AssetState s) {
+        void set_state(asset::AssetState s) {
             std::lock_guard lock(mtx_);
             state_ = s;
         }
@@ -81,7 +80,7 @@ namespace rb::asset {
         AssetDesc desc;
         mutable std::mutex mtx_;
 
-        intrnl::AssetState state_ = intrnl::AssetState::NotRequested;
+        asset::AssetState state_ = asset::AssetState::NotRequested;
         std::shared_ptr<void> data_;
     };
 }

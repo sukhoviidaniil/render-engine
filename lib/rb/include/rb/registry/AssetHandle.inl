@@ -19,7 +19,7 @@
 #pragma once
 #include <utility>
 
-#include "AssetHandle.h"
+#include "rb/registry/AssetHandle.h"
 
 namespace rb::rgst {
     template<class T>
@@ -33,13 +33,13 @@ namespace rb::rgst {
     template<class T>
     bool AssetHandle<T>::ready() const {
         const auto r = record_.lock();
-        return r && r->get_state() == intrnl::AssetState::Ready && r->get_data();
+        return r && r->get_state() == asset::AssetState::Ready && r->get_data();
     }
 
     template<class T>
     T * AssetHandle<T>::get() const {
         auto r = record_.lock();
-        if (!r || r->get_state() != intrnl::AssetState::Ready || !r->get_data()) {
+        if (!r || r->get_state() != asset::AssetState::Ready || !r->get_data()) {
             return nullptr;
         }
         return static_cast<T*>(r->get_data());

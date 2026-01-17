@@ -38,7 +38,7 @@ namespace rb::rgst {
         return true;
     }
 
-    void AssetRegistry::register_loader(const intrnl::AssetType type, std::unique_ptr<asset::IAssetLoader> loader) {
+    void AssetRegistry::register_loader(const asset::AssetType type, std::unique_ptr<asset::IAssetLoader> loader) {
         loaders_[type] = std::move(loader);
     }
 
@@ -69,15 +69,15 @@ namespace rb::rgst {
         if (rec != by_guid_.end()) {
             // record exist
             const std::shared_ptr<asset::AssetRecord> record = rec->second;
-            const intrnl::AssetState state = record->get_state();
+            const asset::AssetState state = record->get_state();
             // If we haven't tried to download it yet, let's try it.
-            if (state == intrnl::AssetState::NotRequested) {
-                const intrnl::AssetType type = record->get_meta().type;
+            if (state == asset::AssetState::NotRequested) {
+                const asset::AssetType type = record->get_meta().type;
 
                 // find loader
                 auto ld = loaders_.find(type);
                 if (ld != loaders_.end()) {
-                    record->set_state(intrnl::AssetState::Loading);
+                    record->set_state(asset::AssetState::Loading);
                     // Use a raw pointer so as not to move unique_ptr
 
                     asset::IAssetLoader* loader = ld->second.get();
@@ -91,7 +91,7 @@ namespace rb::rgst {
 
                     t.detach();
                 }else {
-                    record->set_state(intrnl::AssetState::Failed);
+                    record->set_state(asset::AssetState::Failed);
                     const std::string err = "There is no loader for: " + to_string(type);
                     LOG(err);
                 }

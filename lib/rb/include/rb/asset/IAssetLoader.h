@@ -20,7 +20,7 @@
 
 #include "infra/diagnostics/Logger.h"
 #include "infra/diagnostics/LogScope.h"
-#include "AssetRecord.h"
+#include "rb/asset/AssetRecord.h"
 
 namespace rb::asset {
     class IAssetLoader {
@@ -38,13 +38,13 @@ namespace rb::asset {
             LOG("Start loading asset: " + asset_name);
             try {
                 load_asset(record);
-                record.set_state(intrnl::AssetState::Ready);
+                record.set_state(AssetState::Ready);
                 LOG("Successfully loaded asset: " + asset_name);
             } catch (const std::exception& e) {
-                record.set_state(intrnl::AssetState::Failed);
+                record.set_state(AssetState::Failed);
                 LOG("Failed to load asset: " + asset_name + " | Exception: " + e.what());
             } catch (...) {
-                record.set_state(intrnl::AssetState::Failed);
+                record.set_state(AssetState::Failed);
                 LOG("Failed to load asset: " + asset_name + " | Unknown error");
             }
         }

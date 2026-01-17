@@ -20,13 +20,13 @@
 #include <string>
 #include <unordered_map>
 
-#include "rb/internal/AssetType.h"
+#include "rb/asset//AssetType.h"
 #include "rb/internal/GUID.h"
 
 namespace rb::asset::data {
     struct AssetMetaData {
         intrnl::GUID guid;
-        intrnl::AssetType type = intrnl::AssetType::Undefined;
+        AssetType type = AssetType::Undefined;
         std::string asset_name = "NONE";
 
         std::unordered_map<

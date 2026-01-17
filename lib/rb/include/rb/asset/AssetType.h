@@ -20,7 +20,7 @@
 
 #include <string>
 
-namespace rb::intrnl {
+namespace rb::asset {
     enum struct AssetType {
         Undefined,
         Font,

@@ -35,7 +35,7 @@ namespace rb::rgst {
         AssetRegistry& operator=(AssetRegistry&&) = delete;
 
         void register_loader(
-            intrnl::AssetType type,
+            asset::AssetType type,
             std::unique_ptr<asset::IAssetLoader> loader
             );
 
@@ -60,7 +60,7 @@ namespace rb::rgst {
         by_guid_;
 
         std::unordered_map<
-            intrnl::AssetType,
+            asset::AssetType,
             std::unique_ptr<asset::IAssetLoader>
         > loaders_;
     };
