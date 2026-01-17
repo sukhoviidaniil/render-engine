@@ -1,0 +1,8 @@
+<VBox spacing="5" padding="10">
+    <HBox spacing="8">
+        <Element height="30" width="100"/>
+        <Element flex="1"/>
+        <Text guid="1910091263"/>
+    </HBox>
+    <Element height="50"/>
+</VBox>

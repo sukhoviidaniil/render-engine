@@ -1,0 +1,20 @@
+[
+    {
+        "conf_path": "font\\times.asset.json",
+        "meta": {
+            "asset_name": "Times",
+            "guid": "1910091263",
+            "record_id_to_name": [],
+            "type": "Font"
+        }
+    },
+    {
+        "conf_path": "font\\ARIAL.asset.json",
+        "meta": {
+            "asset_name": "Arial",
+            "guid": "0",
+            "record_id_to_name": [],
+            "type": "Font"
+        }
+    }
+]
