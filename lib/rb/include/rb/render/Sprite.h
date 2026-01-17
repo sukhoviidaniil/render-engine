@@ -28,7 +28,7 @@ namespace rb::rnd {
             v.visit(*this);
         }
 
-        assets::AssetHandle<void> asset; // SpriteSingle / Atlas / Grid
+        rgst::AssetHandle<void> asset; // SpriteSingle / Atlas / Grid
         uint32_t sprite_id = 0;
     };
 }

@@ -20,11 +20,10 @@
 #include <shared_mutex>
 #include <vector>
 
-#include "AssetRecord.h"
+#include "rb/asset/AssetRecord.h"
 #include "rb/internal/GUID.h"
 
-namespace rb::assets {
-
+namespace rb::rgst {
     class AssetImporter {
     public:
 
@@ -34,27 +33,30 @@ namespace rb::assets {
 
         void load_registry(const std::string& filepath);
 
-        void add(AssetDesc desc);
+    protected:
 
-        AssetDesc get(intrnl::GUID id) const;
-        AssetDesc get(const std::string &id) const;
+        void add(asset::AssetDesc desc);
 
-        std::vector<AssetDesc> get() const;
+        asset::AssetDesc get(intrnl::GUID id) const;
+
+        asset::AssetDesc get(const std::string &id) const;
+
+        std::vector<asset::AssetDesc> get() const;
+
     private:
         AssetImporter();
         mutable std::shared_mutex mtx_;
 
-
         std::unordered_map<
             intrnl::GUID,
-            AssetDesc,
+            asset::AssetDesc,
             intrnl::GUIDHash
         >
         by_guid_;
 
         std::unordered_map<
             std::string,
-            AssetDesc
+            asset::AssetDesc
         >
         by_asset_name_;
     };

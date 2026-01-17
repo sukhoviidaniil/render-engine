@@ -1,9 +1,9 @@
 /***************************************************************
  * Project:       Render_Engine
- * File:          AssetLoader.h
+ * File:          AssetDataLoader.h
  *
  * Author:        Sukhovii Daniil
- * Created:       2026-01-16
+ * Created:       2026-01-17
  * Modified:      []
  *
  * Description:   []
@@ -15,27 +15,27 @@
  *   This file is part of Render_Engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef RENDER_ENGINE_ASSETLOADER_H
-#define RENDER_ENGINE_ASSETLOADER_H
+#ifndef RENDER_ENGINE_ASSETDATALOADER_H
+#define RENDER_ENGINE_ASSETDATALOADER_H
 #include <filesystem>
 #include <optional>
 #include <vector>
 
-#include "AssetRecord.h"
+#include "rb/asset/AssetRecord.h"
 
-namespace rb::assets {
-    class AssetLoader {
+namespace rb::asset::data {
+    class AssetDataLoader {
     public:
-        virtual ~AssetLoader() = default;
+        virtual ~AssetDataLoader() = default;
 
-        static AssetLoader& instance();
+        static AssetDataLoader& instance();
 
         virtual std::optional<AssetDesc> load_from_file(const std::filesystem::path& path);
         virtual std::vector<AssetDesc> load_from_config(const std::filesystem::path& path);
 
     private:
-        AssetLoader();
+        AssetDataLoader();
     };
 }
 
-#endif //RENDER_ENGINE_ASSETLOADER_H
+#endif //RENDER_ENGINE_ASSETDATALOADER_H

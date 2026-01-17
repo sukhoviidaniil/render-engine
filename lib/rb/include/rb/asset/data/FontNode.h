@@ -19,11 +19,9 @@
 #define RENDER_ENGINE_FONTNODE_H
 #include "AssetDataNode.h"
 
-namespace rb::assets {
+namespace rb::asset::data {
     struct FontNode : AssetDataNode {
-        ~FontNode() override = default;
-        void accept(AssetDataVisitor &v) const override {
-        }
+
     };
 }
 

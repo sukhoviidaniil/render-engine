@@ -18,9 +18,9 @@
 
 #include "rb/registry/AssetImporter.h"
 
-#include "rb/registry/AssetLoader.h"
+#include "rb/asset/data/AssetDataLoader.h"
 
-namespace rb::assets {
+namespace rb::rgst {
 
 
     AssetImporter& AssetImporter::instance() {
@@ -38,7 +38,7 @@ namespace rb::assets {
             return;
         }
 
-        AssetLoader loader = AssetLoader::instance();
+        asset::data::AssetDataLoader loader = asset::data::AssetDataLoader::instance();
 
         for (const auto& entry : std::filesystem::recursive_directory_iterator(root)) {
             if (!entry.is_regular_file()) {
@@ -62,7 +62,7 @@ namespace rb::assets {
             return;
         }
 
-        AssetLoader loader = AssetLoader::instance();
+        asset::data::AssetDataLoader loader = asset::data::AssetDataLoader::instance();
 
         auto descs = loader.load_from_config(path);
         for (auto& d : descs) {
@@ -70,7 +70,7 @@ namespace rb::assets {
         }
     }
 
-    void AssetImporter::add(AssetDesc desc) {
+    void AssetImporter::add(asset::AssetDesc desc) {
         intrnl::GUID guid = desc.meta.guid;
 
         by_guid_.emplace(guid, desc);
@@ -78,7 +78,7 @@ namespace rb::assets {
         by_asset_name_.emplace(desc.meta.asset_name, std::move(desc));
     }
 
-    AssetDesc AssetImporter::get(const intrnl::GUID id) const {
+    asset::AssetDesc AssetImporter::get(const intrnl::GUID id) const {
         auto it = by_guid_.find(id);
         if (it == by_guid_.end())
             throw std::runtime_error("Asset not found by GUID");
@@ -86,7 +86,7 @@ namespace rb::assets {
         return it->second;
     }
 
-    AssetDesc AssetImporter::get(const std::string &id) const {
+    asset::AssetDesc AssetImporter::get(const std::string &id) const {
         auto it = by_asset_name_.find(id);
         if (it == by_asset_name_.end())
             throw std::runtime_error("Asset not found by name");
@@ -95,8 +95,8 @@ namespace rb::assets {
     }
 
 
-    std::vector<AssetDesc> AssetImporter::get() const {
-        std::vector<AssetDesc> out;
+    std::vector<asset::AssetDesc> AssetImporter::get() const {
+        std::vector<asset::AssetDesc> out;
         out.reserve(by_guid_.size());
 
         for (const auto& [_, desc] : by_guid_) {
@@ -106,3 +106,4 @@ namespace rb::assets {
     }
 
 }
+

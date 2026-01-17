@@ -1,6 +1,6 @@
 /***************************************************************
  * Project:       Render_Engine
- * File:          AssetDataVisitor.h
+ * File:          MetaAssetData.h
  *
  * Author:        Sukhovii Daniil
  * Created:       2026-01-14
@@ -15,15 +15,18 @@
  *   This file is part of Render_Engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef RENDER_ENGINE_ASSETDATAVISITOR_H
-#define RENDER_ENGINE_ASSETDATAVISITOR_H
+#ifndef RENDER_ENGINE_METAASSETDATA_H
+#define RENDER_ENGINE_METAASSETDATA_H
+#include <string>
 
-namespace rb::assets {
-    class AssetDataVisitor {
+#include "rb/asset/data/AssetMetaData.h"
 
-        // virtual void visit(const Sprite& s) {}
 
+namespace rb::asset::data {
+    struct  AssetDataNode {
+        std::string source_;
+        AssetMetaData meta_;
     };
 }
 
-#endif //RENDER_ENGINE_ASSETDATAVISITOR_H
+#endif //RENDER_ENGINE_METAASSETDATA_H

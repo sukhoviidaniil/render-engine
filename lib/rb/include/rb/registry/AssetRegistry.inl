@@ -18,12 +18,12 @@
 
 #pragma once
 
-namespace rb::assets {
+namespace rb::rgst {
     template<typename T>
     AssetHandle<T> AssetRegistry::get(intrnl::GUID id) const {
         auto rec = by_guid_.find(id);
         if (rec != by_guid_.end()) {
-            std::weak_ptr<AssetRecord> asset = rec->second;
+            std::weak_ptr<asset::AssetRecord> asset = rec->second;
             AssetHandle<T> handle = AssetHandle<T>(asset);
             return handle;
         }

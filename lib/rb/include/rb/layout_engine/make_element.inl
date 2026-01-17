@@ -111,8 +111,8 @@ namespace rb::ui {
             invalid_attribute(from, attrbt, n.attributes.at(attrbt), e.what());
         }
 
-        assets::AssetRegistry::instance().request(guid);
-        assets::AssetHandle<assets::Font> font = assets::AssetRegistry::instance().get<assets::Font>(guid);
+        rgst::AssetRegistry::instance().request(guid);
+        rgst::AssetHandle<asset::Font> font = rgst::AssetRegistry::instance().get<asset::Font>(guid);
         auto e = std::make_unique<Text>(std::move(font));
 
         attrbt = "color";
@@ -135,15 +135,4 @@ namespace rb::ui {
 
         return e;
     }
-
-    /*
-    inline std::unique_ptr<UIElement> make_Sprite(const Node& n) {
-        auto e = std::make_unique<Sprite>();
-        return e;
-    }
-    */
-
-
-
-
 }

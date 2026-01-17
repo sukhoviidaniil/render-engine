@@ -21,7 +21,7 @@
 #include "infra/internal/ErasedObject.h"
 #include "sfml/SFMLFont.h"
 
-namespace rb::assets {
+namespace rb::asset {
     class Font {
     public:
         Font() = default;

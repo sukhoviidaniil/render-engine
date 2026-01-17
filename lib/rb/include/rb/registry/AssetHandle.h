@@ -19,14 +19,14 @@
 #define RENDER_ENGINE_ASSETHANDLE_H
 #include <memory>
 
-#include "rb/registry/AssetRecord.h"
+#include "rb/asset/AssetRecord.h"
 
-namespace rb::assets {
+namespace rb::rgst {
     template<class T>
     class AssetHandle {
     public:
         AssetHandle();
-        explicit AssetHandle(std::weak_ptr<AssetRecord> record);
+        explicit AssetHandle(std::weak_ptr<asset::AssetRecord> record);
 
         [[nodiscard]] bool ready() const;
 
@@ -35,7 +35,7 @@ namespace rb::assets {
         [[nodiscard]] intrnl::GUID guid() const;
 
     private:
-        std::weak_ptr<AssetRecord> record_;
+        std::weak_ptr<asset::AssetRecord> record_;
     };
 }
 

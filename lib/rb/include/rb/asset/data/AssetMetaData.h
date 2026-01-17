@@ -23,7 +23,7 @@
 #include "rb/internal/AssetType.h"
 #include "rb/internal/GUID.h"
 
-namespace rb::assets {
+namespace rb::asset::data {
     struct AssetMetaData {
         intrnl::GUID guid;
         intrnl::AssetType type = intrnl::AssetType::Undefined;

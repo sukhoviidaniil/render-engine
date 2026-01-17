@@ -20,9 +20,9 @@
 
 #include "infra/diagnostics/Logger.h"
 #include "infra/diagnostics/LogScope.h"
-#include "rb/registry/AssetRecord.h"
+#include "AssetRecord.h"
 
-namespace rb::assets {
+namespace rb::asset {
     class IAssetLoader {
     public:
         virtual ~IAssetLoader() = default;

@@ -22,18 +22,12 @@
 #include <string>
 #include <utility>
 
-#include "rb/assets/data/AssetMetaData.h"
+#include "AssetDesc.h"
 #include "rb/internal/AssetState.h"
 
-namespace rb::assets {
-    struct AssetDesc {
-        AssetDesc(AssetMetaData m, std::string c) : meta(std::move(m)), conf_path(std::move(c)) {
 
-        }
+namespace rb::asset {
 
-        AssetMetaData meta;
-        std::string conf_path;
-    };
 
     struct AssetRecord {
 
@@ -42,7 +36,7 @@ namespace rb::assets {
 
         }
 
-        AssetRecord(AssetMetaData meta, std::string conf_path)
+        AssetRecord(data::AssetMetaData meta, std::string conf_path)
             : AssetRecord(AssetDesc{std::move(meta), std::move(conf_path)}) {
 
         }
@@ -57,7 +51,7 @@ namespace rb::assets {
             return desc;
         }
 
-        const AssetMetaData& get_meta() const{
+        const data::AssetMetaData& get_meta() const{
             return desc.meta;
         }
         const std::string& get_conf_path() const{
@@ -85,7 +79,6 @@ namespace rb::assets {
 
     private:
         AssetDesc desc;
-
         mutable std::mutex mtx_;
 
         intrnl::AssetState state_ = intrnl::AssetState::NotRequested;

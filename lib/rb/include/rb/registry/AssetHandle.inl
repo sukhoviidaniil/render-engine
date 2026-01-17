@@ -17,14 +17,16 @@
 ***************************************************************/
 
 #pragma once
+#include <utility>
+
 #include "AssetHandle.h"
 
-namespace rb::assets {
+namespace rb::rgst {
     template<class T>
     AssetHandle<T>::AssetHandle() = default;
 
     template<class T>
-    AssetHandle<T>::AssetHandle(std::weak_ptr<AssetRecord> record) : record_(record) {
+    AssetHandle<T>::AssetHandle(std::weak_ptr<asset::AssetRecord> record) : record_(std::move(record)) {
 
     }
 

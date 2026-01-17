@@ -20,7 +20,7 @@
 #include "UIElement.h"
 #include "rb/internal/Color.h"
 #include "rb/registry/AssetHandle.h"
-#include "rb/registry/assets/Font.h"
+#include "rb/asset/Font.h"
 
 
 namespace rb::ui {
@@ -32,7 +32,7 @@ namespace rb::ui {
     public:
         /// @brief Virtual destructor.
         ~Text() override = default;
-        explicit Text(assets::AssetHandle<assets::Font> f)
+        explicit Text(rgst::AssetHandle<asset::Font> f)
         : font(std::move(f)){
 
         }
@@ -53,7 +53,7 @@ namespace rb::ui {
 
         intrnl::Color color = intrnl::Color(255,255,255);
 
-        assets::AssetHandle<assets::Font> font;
+        rgst::AssetHandle<asset::Font> font;
 
         int fontSize = 14;
 

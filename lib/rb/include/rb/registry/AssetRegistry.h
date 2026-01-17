@@ -20,11 +20,11 @@
 
 #include <unordered_map>
 
-#include "rb/assets/IAssetLoader.h"
+#include "rb/asset/IAssetLoader.h"
 #include "rb/registry/AssetHandle.h"
-#include "rb/registry/AssetRecord.h"
+#include "rb/asset/AssetRecord.h"
 
-namespace rb::assets {
+namespace rb::rgst {
     class AssetRegistry{
     public:
         static AssetRegistry& instance();
@@ -36,11 +36,11 @@ namespace rb::assets {
 
         void register_loader(
             intrnl::AssetType type,
-            std::unique_ptr<IAssetLoader> loader
+            std::unique_ptr<asset::IAssetLoader> loader
             );
 
-        void add_AssetRecord(AssetMetaData meta, std::string conf_path);
-        void add_AssetRecord(const AssetRecord& other);
+        void add_AssetRecord(asset::AssetDesc desc);
+        void add_AssetRecord(const asset::AssetRecord& other);
 
         void request(intrnl::GUID id);
 
@@ -54,14 +54,14 @@ namespace rb::assets {
 
         std::unordered_map<
             intrnl::GUID,
-            std::shared_ptr<AssetRecord>,
+            std::shared_ptr<asset::AssetRecord>,
             intrnl::GUIDHash
         >
         by_guid_;
 
         std::unordered_map<
             intrnl::AssetType,
-            std::unique_ptr<IAssetLoader>
+            std::unique_ptr<asset::IAssetLoader>
         > loaders_;
     };
 }
