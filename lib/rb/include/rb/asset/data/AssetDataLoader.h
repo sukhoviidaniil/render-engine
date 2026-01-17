@@ -17,21 +17,25 @@
 ***************************************************************/
 #ifndef RENDER_ENGINE_ASSETDATALOADER_H
 #define RENDER_ENGINE_ASSETDATALOADER_H
-#include <filesystem>
-#include <optional>
-#include <vector>
 
-#include "rb/asset/AssetRecord.h"
+#include <filesystem>
+
+#include "rb/asset/AssetDesc.h"
+#include "rb/asset/data/AssetDataNode.h"
+#include "rb/asset/data/FontNode.h"
+
 
 namespace rb::asset::data {
     class AssetDataLoader {
     public:
-        virtual ~AssetDataLoader() = default;
 
         static AssetDataLoader& instance();
 
-        virtual std::optional<AssetDesc> load_from_file(const std::filesystem::path& path);
-        virtual std::vector<AssetDesc> load_from_config(const std::filesystem::path& path);
+        static std::unique_ptr<AssetDataNode> load_from_file(const std::filesystem::path& path);
+        static void save_Meta(const std::filesystem::path& path, data::AssetMetaData& meta);
+
+        static std::unique_ptr<FontNode> load_Font_from_file(const std::filesystem::path& path);
+        static void save_Meta_Font(const std::filesystem::path& path, data::AssetMetaData& meta);
 
     private:
         AssetDataLoader();

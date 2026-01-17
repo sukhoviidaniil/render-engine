@@ -18,7 +18,7 @@
 #ifndef RENDER_ENGINE_ASSETIMPORTER_H
 #define RENDER_ENGINE_ASSETIMPORTER_H
 #include <shared_mutex>
-#include <vector>
+
 
 #include "rb/asset/AssetRecord.h"
 #include "rb/internal/GUID.h"
@@ -29,23 +29,20 @@ namespace rb::rgst {
 
         static AssetImporter& instance();
 
-        void load(const std::string& dirpath);
+        void load_from_path(const std::string& dirpath);
+        void save_in_file(const std::string& filepath);
+        void load_from_file(const std::string& filepath);
 
-        void load_registry(const std::string& filepath);
-
-    protected:
-
-        void add(asset::AssetDesc desc);
-
-        asset::AssetDesc get(intrnl::GUID id) const;
+        void load_in_registry();
 
         asset::AssetDesc get(const std::string &id) const;
 
-        std::vector<asset::AssetDesc> get() const;
-
     private:
         AssetImporter();
+        void add(asset::AssetDesc& desc);
         mutable std::shared_mutex mtx_;
+
+        std::unordered_set<intrnl::GUID, intrnl::GUIDHash> guids_;
 
         std::unordered_map<
             intrnl::GUID,

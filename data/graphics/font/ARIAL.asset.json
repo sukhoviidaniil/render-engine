@@ -1,6 +1,6 @@
 {
-  "asset_name": "Arial",
-  "guid": -1,
-  "source": "font/ARIAL.TTF",
-  "type": "Font"
+    "asset_name": "Arial",
+    "guid": "0",
+    "source": "font/ARIAL.TTF",
+    "type": "Font"
 }

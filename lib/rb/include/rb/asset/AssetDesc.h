@@ -25,12 +25,13 @@
 
 namespace rb::asset {
     struct AssetDesc {
-        AssetDesc(data::AssetMetaData m, std::string c) : meta(std::move(m)), conf_path(std::move(c)) {
+        AssetDesc() = default;
+        AssetDesc(std::string c, data::AssetMetaData m) : conf_path(std::move(c)), meta(std::move(m)) {
 
         }
 
-        data::AssetMetaData meta;
         std::string conf_path;
+        data::AssetMetaData meta;
     };
 }
 

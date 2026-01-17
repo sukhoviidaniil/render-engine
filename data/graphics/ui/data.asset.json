@@ -1,24 +1,6 @@
 {
   "asset_name": "SomeSprites",
-  "guid": -1,
-
+  "guid": "0",
   "source": "ui/Broforce_boss_sprites_2_(cropped).png",
-  "type": "spriteAtlas",
-
-  "sprites": [
-    {
-      "record_id": -1,
-      "record_name": "idle",
-
-      "rect": { "x": 0, "y": 0, "w": 64, "h": 64 },
-      "pivot": { "x": 0.0, "y": 0.0 }
-    },
-    {
-      "record_id": -1,
-      "record_name": "run",
-
-      "rect": { "x": 450, "y": 315, "w": 64, "h": 64 },
-      "pivot": { "x": 0.0, "y": 0.0 }
-    }
-  ]
+  "type": "SpriteAtlas"
 }

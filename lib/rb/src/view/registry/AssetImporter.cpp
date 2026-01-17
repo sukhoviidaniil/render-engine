@@ -19,9 +19,9 @@
 #include "rb/registry/AssetImporter.h"
 
 #include "rb/asset/data/AssetDataLoader.h"
+#include "rb/internal/from_JSON.h"
 
 namespace rb::rgst {
-
 
     AssetImporter& AssetImporter::instance() {
         static AssetImporter inst;
@@ -30,7 +30,7 @@ namespace rb::rgst {
 
     AssetImporter::AssetImporter() = default;
 
-    void AssetImporter::load(const std::string& dirpath) {
+    void AssetImporter::load_from_path(const std::string& dirpath) {
         std::lock_guard lock(mtx_);
 
         std::filesystem::path root(dirpath);
@@ -38,71 +38,115 @@ namespace rb::rgst {
             return;
         }
 
-        asset::data::AssetDataLoader loader = asset::data::AssetDataLoader::instance();
-
         for (const auto& entry : std::filesystem::recursive_directory_iterator(root)) {
             if (!entry.is_regular_file()) {
                 continue;
             }
+            if (entry.path().extension() != ".json" || !entry.path().filename().string().ends_with(".asset.json")) {
+                continue; // read only *.asset.json
+            }
 
-            auto desc_opt = loader.load_from_file(entry.path());
-            if (desc_opt.has_value()) {
+
+            auto data_node = rb::asset::data::AssetDataLoader::load_from_file(entry.path());
+            if (data_node == nullptr) {
                 continue;
             }
 
-            add(std::move(desc_opt.value()));
+            auto rel_path = entry.path().lexically_relative(root);
+
+            asset::AssetDesc desc(
+                rel_path.string(),
+                data_node->meta
+                );
+
+            add(desc);
+
+            rb::asset::data::AssetDataLoader::save_Meta(entry.path(), desc.meta);
+
         }
     }
 
-    void AssetImporter::load_registry(const std::string& filepath) {
+    void AssetImporter::save_in_file(const std::string &filepath) {
+        nlohmann::json j = nlohmann::json::array();
+
+        for (const auto& [guid, desc] : by_guid_) {
+            j.push_back(desc); // relies on to_json(AssetDesc)
+        }
+
+        std::ofstream out(filepath, std::ios::binary);
+        if (!out) {
+            throw std::runtime_error("Failed to open file: " + filepath);
+        }
+
+        out << j.dump(4);
+    }
+
+    void AssetImporter::load_from_file(const std::string& filepath) {
         std::lock_guard lock(mtx_);
 
         std::filesystem::path path(filepath);
         if (!std::filesystem::exists(path)) {
+            return; // file not found — do not load anything
+        }
+
+        std::ifstream in(path, std::ios::binary);
+        if (!in) {
+            throw std::runtime_error("Failed to open file: " + filepath);
+        }
+
+        nlohmann::json j;
+        in >> j;
+
+        if (!j.is_array()) {
+            throw std::runtime_error("Invalid asset file format: expected JSON array");
+        }
+
+        by_guid_.clear();
+        by_asset_name_.clear();
+        guids_.clear();
+
+        for (const auto& jd : j) {
+            auto desc = infra::io::get_checked<asset::AssetDesc>(jd);
+            add(desc);
+        }
+    }
+
+    void AssetImporter::add(asset::AssetDesc& desc) {
+        intrnl::GUID& g = desc.meta.guid;
+        std::string asset_name = desc.meta.asset_name;
+        auto it= by_asset_name_.find(asset_name);
+        if (it != by_asset_name_.end()) {
+            intrnl::GUID& existing = it->second.meta.guid;
+            if (g != existing) {
+                LOG(
+                    "Asset_name - " + asset_name +
+                    " | GUID - " + g.string() +
+                    " collides with GUID - " + existing.string()
+                    );
+            }
             return;
         }
 
-        asset::data::AssetDataLoader loader = asset::data::AssetDataLoader::instance();
-
-        auto descs = loader.load_from_config(path);
-        for (auto& d : descs) {
-            add(std::move(d));
+        if (guids_.contains(g)) {
+            g = intrnl::generate_guid(guids_);
         }
+
+        guids_.insert(g);
+        by_guid_.emplace(g, desc);
+        by_asset_name_.emplace(asset_name, desc);
     }
 
-    void AssetImporter::add(asset::AssetDesc desc) {
-        intrnl::GUID guid = desc.meta.guid;
 
-        by_guid_.emplace(guid, desc);
+    void AssetImporter::load_in_registry() {
 
-        by_asset_name_.emplace(desc.meta.asset_name, std::move(desc));
-    }
-
-    asset::AssetDesc AssetImporter::get(const intrnl::GUID id) const {
-        auto it = by_guid_.find(id);
-        if (it == by_guid_.end())
-            throw std::runtime_error("Asset not found by GUID");
-
-        return it->second;
     }
 
     asset::AssetDesc AssetImporter::get(const std::string &id) const {
         auto it = by_asset_name_.find(id);
-        if (it == by_asset_name_.end())
+        if (it == by_asset_name_.end()) {
             throw std::runtime_error("Asset not found by name");
-
-        return it->second;
-    }
-
-
-    std::vector<asset::AssetDesc> AssetImporter::get() const {
-        std::vector<asset::AssetDesc> out;
-        out.reserve(by_guid_.size());
-
-        for (const auto& [_, desc] : by_guid_) {
-            out.push_back(desc);
         }
-        return out;
+        return it->second;
     }
 
 }

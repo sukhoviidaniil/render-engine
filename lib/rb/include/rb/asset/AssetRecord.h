@@ -36,7 +36,7 @@ namespace rb::asset {
         }
 
         AssetRecord(data::AssetMetaData meta, std::string conf_path)
-            : AssetRecord(AssetDesc{std::move(meta), std::move(conf_path)}) {
+            : AssetRecord(AssetDesc{std::move(conf_path), std::move(meta)}) {
 
         }
 

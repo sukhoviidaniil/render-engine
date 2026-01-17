@@ -17,7 +17,8 @@
 ***************************************************************/
 #ifndef RENDER_ENGINE_FONTNODE_H
 #define RENDER_ENGINE_FONTNODE_H
-#include "AssetDataNode.h"
+
+#include "rb/asset/data/AssetDataNode.h"
 
 namespace rb::asset::data {
     struct FontNode : AssetDataNode {

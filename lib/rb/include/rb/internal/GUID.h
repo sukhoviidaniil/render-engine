@@ -19,7 +19,10 @@
 #define RENDER_ENGINE_GUID_H
 
 #include <charconv>
-#include <cstdint>
+#include <string>
+#include <unordered_set>
+
+#include "infra/internal/Random.h"
 
 namespace rb::intrnl{
     struct GUID {
@@ -66,6 +69,22 @@ namespace rb::intrnl{
             return std::hash<std::uint32_t>{}(g.id);
         }
     };
+
+    inline GUID generate_guid(const std::unordered_set<GUID, GUIDHash>& existing) {
+        GUID g;
+        do {
+            g = GUID{
+                static_cast<std::uint32_t>(
+                    infra::intr::Random::instance().next_int(
+                        1,
+                        static_cast<int>(std::numeric_limits<std::uint32_t>::max())
+                    )
+                )
+            };
+        } while (existing.contains(g));
+
+        return g;
+    }
 }
 
 #endif //RENDER_ENGINE_GUID_H

@@ -24,8 +24,8 @@
 
 namespace rb::asset::data {
     struct  AssetDataNode {
-        std::string source_;
-        AssetMetaData meta_;
+        std::string source;
+        AssetMetaData meta;
     };
 }
 

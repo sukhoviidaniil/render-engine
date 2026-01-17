@@ -16,8 +16,11 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
+#include "rb/registry/AssetImporter.h"
+
 int main() {
-
-
+    std::string path = "../data/";
+    rb::rgst::AssetImporter::instance().load_from_path(path + "graphics/");
+    rb::rgst::AssetImporter::instance().save_in_file(path + "/bin/registry.rgst.json");
     return 0;
 }
