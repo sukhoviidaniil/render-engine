@@ -27,17 +27,17 @@ namespace rb::asset {
     public:
         virtual ~IAssetLoader() = default;
 
-        void load(AssetRecord& record)  {
-            try_load(record);
+        void load(AssetRecord& record, const std::string& asset_dir)  {
+            try_load(record, asset_dir);
         }
 
     private:
-        void try_load(AssetRecord& record) {
+        void try_load(AssetRecord& record, const std::string& asset_dir) {
             LOG_SCOPE();
             const std::string& asset_name = record.get_meta().asset_name;
             LOG("Start loading asset: " + asset_name);
             try {
-                load_asset(record);
+                load_asset(record, asset_dir);
                 record.set_state(AssetState::Ready);
                 LOG("Successfully loaded asset: " + asset_name);
             } catch (const std::exception& e) {
@@ -49,7 +49,7 @@ namespace rb::asset {
             }
         }
 
-        virtual void load_asset(AssetRecord& record) = 0;
+        virtual void load_asset(AssetRecord& record, const std::string& asset_dir) = 0;
     };
 }
 

@@ -28,7 +28,7 @@
 namespace rb::sfml {
     SFML_Renderer::~SFML_Renderer() = default;
 
-    SFML_Renderer::SFML_Renderer(const ast::RB_Config &info) {
+    SFML_Renderer::SFML_Renderer(const ast::RB_Config &info) : window_(sf::VideoMode(info.window_width, info.window_height), info.window_name) {
         sf::View view(sf::FloatRect(0, 0, static_cast<float>(info.window_width), static_cast<float>(info.window_height)));
         window_.setView(view);
         window_.setFramerateLimit(static_cast<unsigned int>(info.fps));
@@ -67,7 +67,7 @@ namespace rb::sfml {
     }
 
     void SFML_Renderer::render(const rnd::RenderFrame &graph) {
-        window_.clear(sf::Color::Black);
+        window_.clear();
         for (auto& item : graph.constant_items) {
             item->accept(*this);
         }
@@ -88,9 +88,8 @@ namespace rb::sfml {
         }
         asset::Font* f = ast_h.get();
 
-        sf::Font font = f->sfml().font;
         sf::Text text;
-        text.setFont(font);
+        text.setFont(f->sfml().font);
         text.setString(r.text);
         text.setFillColor(sf::Color(
             r.color.r,

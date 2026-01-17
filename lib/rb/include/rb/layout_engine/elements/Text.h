@@ -37,7 +37,6 @@ namespace rb::ui {
 
         }
 
-
         /**
          * @brief Measures the desired size of the text.
          *
@@ -48,6 +47,8 @@ namespace rb::ui {
          * @return Desired size of the text.
          */
         infra::math::Vector2 measure(const infra::math::Vector2& available) override;
+        void append_render_items(rnd::RenderFrame& frame, const Context& ctx) const override;
+
 
         std::string text;
 
@@ -59,7 +60,6 @@ namespace rb::ui {
 
         bool stretch_font = false;
     };
-
 }
 
 #endif //RENDER_ENGINE_TEXT_H

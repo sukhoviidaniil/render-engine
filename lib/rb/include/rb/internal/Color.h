@@ -62,7 +62,7 @@ namespace rb::intrnl {
             b = static_cast<std::uint8_t>(values[2]);
             a = (count == 4)
                   ? static_cast<std::uint8_t>(values[3])
-                  : static_cast<std::uint8_t>(0);
+                  : static_cast<std::uint8_t>(255);
         }
     };
 }

@@ -21,12 +21,10 @@
 
 #include <string>
 
-
 #include "infra/event/Event_Bus.h"
-#include "rb/layout_engine/Parser.h"
-#include "rb/layout_engine/Tokenizer.h"
 #include "rb/layout_engine/UIFactory.h"
 #include "rb/registry/AssetImporter.h"
+#include "src/App.h"
 
 
 int main() {
@@ -39,13 +37,24 @@ int main() {
     infra::intr::Random::instance();
     infra::diag::Logger::instance();
     rb::rgst::AssetImporter::instance();
-    const auto eventbus_ = std::make_shared<infra::event::Event_Bus>(); // GLOBAL
+    const auto eventbus = std::make_shared<infra::event::Event_Bus>(); // GLOBAL
 
     // Load and save the Registry of assets
     rb::rgst::AssetImporter::instance().load_from_file(data_path + "/bin/registry.rgst.json");
     rb::rgst::AssetImporter::instance().load_in_registry();
+    rb::rgst::AssetRegistry::instance().set_asset_dir(data_path + "graphics/");
 
+    rb::ast::RB_Config rb_config {
+        .type = rb::ast::RB_Type::SFML,
+        .window_name = "Some name",
+        .window_width = 800,
+        .window_height = 600,
+        .fps = 30
+    };
+    infra::ast::Event_Collector e;
 
+    auto a = core::App(eventbus, rb_config, e, ui_file);
+    a.run();
 
     return 0;
 }

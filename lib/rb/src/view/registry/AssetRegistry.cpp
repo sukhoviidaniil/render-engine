@@ -38,6 +38,10 @@ namespace rb::rgst {
         return true;
     }
 
+    void AssetRegistry::set_asset_dir(const std::string &dir) {
+        asset_dir = dir;
+    }
+
     void AssetRegistry::register_loader(const asset::AssetType type, std::unique_ptr<asset::IAssetLoader> loader) {
         loaders_[type] = std::move(loader);
     }
@@ -82,10 +86,11 @@ namespace rb::rgst {
 
                     asset::IAssetLoader* loader = ld->second.get();
                     std::weak_ptr<asset::AssetRecord> weak_record = record;
+                    const std::string dir = asset_dir;
 
-                    std::thread t([loader, weak_record] {
+                    std::thread t([loader, weak_record, dir] {
                         if (auto rec = weak_record.lock()) {
-                            loader->load(*rec);
+                            loader->load(*rec, dir);
                         }
                     });
 

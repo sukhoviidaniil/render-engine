@@ -58,7 +58,6 @@ namespace core {
 
         // Create real UI elements from AST nodes
         root_ = rb::ui::UIFactory::instance().build(*node_root);
-
     }
 
     void App::run() {

@@ -103,6 +103,22 @@ namespace rb::ui {
                 invalid_attribute(from, attrbt, n.attributes.at(attrbt), ex.what());
             }
         }
+        attrbt = "width";
+        if (n.attributes.contains(attrbt)) {
+            try {
+                e->width = intrnl::Size(n.attributes.at(attrbt));
+            } catch (const std::exception& ex) {
+                invalid_attribute(from, attrbt, n.attributes.at(attrbt), ex.what());
+            }
+        }
+        attrbt = "height";
+        if (n.attributes.contains(attrbt)) {
+            try {
+                e->height = intrnl::Size(n.attributes.at(attrbt));
+            } catch (const std::exception& ex) {
+                invalid_attribute(from, attrbt, n.attributes.at(attrbt), ex.what());
+            }
+        }
 
         return e;
     }
@@ -141,6 +157,15 @@ namespace rb::ui {
         if (n.attributes.contains(attrbt)) {
             try {
                 e->fontSize = std::stoi(n.attributes.at("fontSize"));
+            } catch (const std::exception& ex) {
+                invalid_attribute(from, attrbt, n.attributes.at(attrbt), ex.what());
+            }
+        }
+
+        attrbt = "inner_text";
+        if (n.attributes.contains(attrbt)) {
+            try {
+                e->text = n.attributes.at(attrbt);
             } catch (const std::exception& ex) {
                 invalid_attribute(from, attrbt, n.attributes.at(attrbt), ex.what());
             }

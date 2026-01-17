@@ -22,6 +22,7 @@
 namespace rb::ast {
     struct RB_Config {
         RB_Type type;
+        std::string window_name;
         unsigned int window_width = 0; ///< Width of the window
         unsigned int window_height = 0; ///< Height of the window
         int fps = 30; ///< Frames per second

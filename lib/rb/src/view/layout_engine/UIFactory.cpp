@@ -53,7 +53,7 @@ namespace rb::ui {
         register_tag("Element", make_Element);
         register_tag("VBox", make_VBox);
         register_tag("HBox", make_HBox);
-        register_tag("Text", make_HBox);
-        register_tag("Sprite", make_HBox);
+        register_tag("Text", make_Text);
+        register_tag("Rectangle", make_Rectangle);
     }
 }

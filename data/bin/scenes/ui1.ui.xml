@@ -1,8 +1,14 @@
-<VBox spacing="5" padding="10">
-    <HBox spacing="8">
-        <Element height="30" width="100"/>
-        <Element flex="1"/>
-        <Text guid="1910091263"/>
+<VBox spacing="0" padding="0">
+    <HBox spacing="0">
+        <Rectangle height="PX|200" width="PX|200" fill_color="0|0|255"/>
+        <Text guid="1910091263" color = "255|255|255" fontSize = "30">
+            Let's assume...
+        </Text>
     </HBox>
-    <Element height="50"/>
+    <HBox spacing="0">
+        <Text guid="0" color = "255|255|255" fontSize = "30">
+            ...it works.
+        </Text>
+        <Rectangle height="PX|200" width="PX|200" fill_color="255|0|0"/>
+    </HBox>
 </VBox>

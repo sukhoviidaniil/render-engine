@@ -173,6 +173,27 @@ namespace rb::ui {
             } else {
                 if (i < src.size() && src[i] == '>') ++i;
                 token.type = TokenType::OpenTag;
+                // If it is <Text>, parse the content into the “text” attribute
+                if (token.name == "Text") {
+                    size_t textStart = i;
+                    while (i < src.size() && src[i] != '<') {
+                        ++i;
+                    }
+                    std::string text_content = src.substr(textStart, i - textStart);
+
+                    // Normalization: removing indents and hyphenations
+                    size_t first = text_content.find_first_not_of(" \t\n\r");
+                    size_t last  = text_content.find_last_not_of(" \t\n\r");
+                    if (first != std::string::npos && last != std::string::npos) {
+                        text_content = text_content.substr(first, last - first + 1);
+                    } else {
+                        text_content.clear();
+                    }
+
+                    token.attributes.emplace("inner_text", std::move(text_content));
+
+                    // now i points to the closing tag '<'
+                }
             }
 
             tokens.push_back(std::move(token));

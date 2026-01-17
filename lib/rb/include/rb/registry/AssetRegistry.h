@@ -34,6 +34,8 @@ namespace rb::rgst {
         AssetRegistry(AssetRegistry&&) = delete;
         AssetRegistry& operator=(AssetRegistry&&) = delete;
 
+        void set_asset_dir(const std::string& dir);
+
         void register_loader(
             asset::AssetType type,
             std::unique_ptr<asset::IAssetLoader> loader
@@ -51,6 +53,9 @@ namespace rb::rgst {
         AssetRegistry();
 
         bool uniq_GUID(const intrnl::GUID& guid) const;
+
+
+        std::string asset_dir;
 
         std::unordered_map<
             intrnl::GUID,

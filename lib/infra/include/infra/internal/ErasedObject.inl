@@ -29,7 +29,6 @@ namespace infra::intr {
     : storage_(new T(std::move(value)))
     , destroy_(&destroy_impl<T>)
     , type_(type_id<T>()) {
-
     }
 
     inline void assert_true(bool condition, const char* message) {

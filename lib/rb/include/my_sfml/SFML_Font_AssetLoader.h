@@ -23,7 +23,7 @@
 namespace rb::sfml {
     class SFML_Font_AssetLoader : public asset::IAssetLoader{
 
-        void load_asset(asset::AssetRecord& record) override;
+        void load_asset(asset::AssetRecord& record, const std::string& asset_dir) override;
     };
 }
 

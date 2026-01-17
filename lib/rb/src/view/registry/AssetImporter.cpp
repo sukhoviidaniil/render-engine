@@ -20,6 +20,7 @@
 
 #include "rb/asset/data/AssetDataLoader.h"
 #include "rb/internal/from_JSON.h"
+#include "rb/registry/AssetRegistry.h"
 
 namespace rb::rgst {
 
@@ -138,7 +139,9 @@ namespace rb::rgst {
 
 
     void AssetImporter::load_in_registry() {
-
+        for (const auto& [guid, desc] : by_guid_) {
+            rb::rgst::AssetRegistry::instance().add_AssetRecord(desc);
+        }
     }
 
     asset::AssetDesc AssetImporter::get(const std::string &id) const {

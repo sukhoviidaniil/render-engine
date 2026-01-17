@@ -20,7 +20,10 @@
 
 #include "infra/diagnostics/Logger.h"
 #include "my_sfml/SFML_Event_Collector.h"
+#include "my_sfml/SFML_Font_AssetLoader.h"
 #include "my_sfml/SFML_Renderer.h"
+#include "rb/registry/AssetHandle.h"
+#include "rb/registry/AssetRegistry.h"
 
 namespace core {
     Graphics_Factory & Graphics_Factory::instance() {
@@ -64,7 +67,14 @@ namespace core {
 
     std::shared_ptr<rb::Renderer> Graphics_Factory::make_SFML_Renderer(const rb::ast::RB_Config& info) {
         auto rb = std::make_shared<rb::sfml::SFML_Renderer>(info);
+        // Since events in SFML come from the window, we create an event collector here.
         event_collector_ = std::make_unique<rb::sfml::SFML_Event_Collector>(*rb);
+
+        // Filling the Registry with the correct asset loaders
+        rb::rgst::AssetRegistry::instance().register_loader(
+            rb::asset::AssetType::Font,
+            std::make_unique<rb::sfml::SFML_Font_AssetLoader>()
+            );
         return rb;
     }
 }
