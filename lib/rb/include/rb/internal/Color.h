@@ -31,14 +31,14 @@ namespace rb::intrnl {
 
         }
 
-        explicit Color(std::string_rb s) {
+        explicit Color(std::string_view s) {
             std::uint32_t values[4] = {};
             std::size_t count = 0;
 
             std::size_t pos = 0;
             while (pos < s.size() && count < 4) {
                 std::size_t next = s.find('|', pos);
-                if (next == std::string_rb::npos)
+                if (next == std::string_view::npos)
                     next = s.size();
 
                 std::uint32_t v{};

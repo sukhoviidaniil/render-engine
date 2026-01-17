@@ -18,7 +18,7 @@
 #ifndef RENDER_ENGINE_TEXT_H
 #define RENDER_ENGINE_TEXT_H
 #include "UIElement.h"
-#include "rb/intr/Color.h"
+#include "rb/internal/Color.h"
 #include "rb/registry/AssetHandle.h"
 #include "rb/registry/assets/Font.h"
 

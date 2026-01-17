@@ -22,6 +22,7 @@
 
 #include "rb/internal/AssetType.h"
 #include "rb/internal/GUID.h"
+
 namespace rb::assets {
     struct AssetMetaData {
         intrnl::GUID guid;

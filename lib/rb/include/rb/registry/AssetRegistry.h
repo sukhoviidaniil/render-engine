@@ -20,9 +20,9 @@
 
 #include <unordered_map>
 
-#include "AssetHandle.h"
-#include "AssetRecord.h"
-#include "IAssetLoader.h"
+#include "rb/assets/IAssetLoader.h"
+#include "rb/registry/AssetHandle.h"
+#include "rb/registry/AssetRecord.h"
 
 namespace rb::assets {
     class AssetRegistry{

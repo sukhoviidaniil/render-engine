@@ -20,26 +20,25 @@
 
 #include <memory>
 
+#include "ast/RB_Config.h"
 #include "rb/View.h"
-
-#include "infra/ast/rb/View.h"
 
 namespace rb {
     class Graphics_Factory{
         public:
 
-        static std::shared_ptr<View> make_View(const infra::ast::View &info, const std::string &path);
+        static std::shared_ptr<View> make_View(const ast::RB_Config &info, const std::string &path);
 
     private:
 
         static void Register(
             std::unordered_map<
-                std::string,
-                std::shared_ptr<View> (*)(const infra::ast::View&, const std::string&)
+                ast::RB_Type,
+                std::shared_ptr<View> (*)(const ast::RB_Config&, const std::string&)
             > &outMap
         );
 
-        static std::shared_ptr<View> SFML_View(const infra::ast::View& info, const std::string& path);
+        static std::shared_ptr<View> SFML_View(const  ast::RB_Config& info, const std::string& path);
     };
 }
 

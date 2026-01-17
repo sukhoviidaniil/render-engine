@@ -26,6 +26,8 @@
 namespace rb::assets {
     class AssetLoader {
     public:
+        virtual ~AssetLoader() = default;
+
         static AssetLoader& instance();
 
         virtual std::optional<AssetDesc> load_from_file(const std::filesystem::path& path);

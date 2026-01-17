@@ -19,10 +19,8 @@
 #define RENDER_ENGINE_METAASSETDATA_H
 #include <string>
 
-#include "AssetMetaData.h"
-
-#include "rb/registry/assets_data/AssetDataVisitor.h"
-
+#include "rb/assets/data/AssetMetaData.h"
+#include "rb/assets/data/AssetDataVisitor.h"
 
 namespace rb::assets {
     struct  AssetDataNode {

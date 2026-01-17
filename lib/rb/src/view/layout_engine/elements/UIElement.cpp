@@ -62,7 +62,7 @@ namespace rb::ui {
         }
     }
 
-    void UIElement::append_render_items(rnd::RenderFrame &frame, const ViewContext &ctx) const  {
+    void UIElement::append_render_items(rnd::RenderFrame &frame, const Context &ctx) const  {
         for (const auto& c : children) {
             c->append_render_items(frame, ctx);
         }

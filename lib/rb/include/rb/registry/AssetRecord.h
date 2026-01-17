@@ -22,7 +22,7 @@
 #include <string>
 #include <utility>
 
-#include "assets_data/AssetMetaData.h"
+#include "rb/assets/data/AssetMetaData.h"
 #include "rb/internal/AssetState.h"
 
 namespace rb::assets {

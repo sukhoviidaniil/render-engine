@@ -35,7 +35,7 @@ namespace rb::ui {
 
         infra::math::Vector2 measure(const infra::math::Vector2& available) override;
 
-        void append_render_items(rnd::RenderFrame& frame, const ViewContext& ctx) const override;
+        void append_render_items(rnd::RenderFrame& frame, const Context& ctx) const override;
 
         intrnl::Color fill_color;
         intrnl::Color border_color;

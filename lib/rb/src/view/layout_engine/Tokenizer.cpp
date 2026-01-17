@@ -21,13 +21,13 @@
 namespace rb::ui {
 
 
-    static void skip_ws(const std::string_rb src, size_t& i) {
+    static void skip_ws(const std::string_view src, size_t& i) {
         while (i < src.size() && std::isspace(static_cast<unsigned char>(src[i]))) {
             ++i;
         }
     }
 
-    std::vector<Token> Tokenizer::tokenize(const std::string_rb src) {
+    std::vector<Token> Tokenizer::tokenize(const std::string_view src) {
         std::vector<Token> tokens;
         size_t i = 0;
 

@@ -18,7 +18,6 @@
 #ifndef RENDER_ENGINE_RENDERNODE_H
 #define RENDER_ENGINE_RENDERNODE_H
 
-#include "infra/ast/rb/ViewVisitor.h"
 #include "rb/internal/Rect.h"
 
 namespace rb::rnd {
@@ -27,7 +26,9 @@ namespace rb::rnd {
     struct Rectangle;
     struct Sprite;
 
-    struct RenderVisitor : infra::ast::Visitor {
+    struct RenderVisitor {
+        virtual ~RenderVisitor() = default;
+
         virtual void visit(const Text&) {}
         virtual void visit(const Rectangle&) {}
         virtual void visit(const Sprite&) {}

@@ -19,26 +19,26 @@
 #include "rb/Graphics_Factory.h"
 
 namespace rb {
-    std::shared_ptr<View> Graphics_Factory::make_View(const infra::ast::View &info, const std::string &path) {
-        std::unordered_map<std::string, std::shared_ptr<View>(*)(const infra::ast::View&, const std::string&)> map;
+    std::shared_ptr<View> Graphics_Factory::make_View(const ast::RB_Config &info, const std::string &path) {
+        std::unordered_map<ast::RB_Type, std::shared_ptr<View>(*)(const ast::RB_Config&, const std::string&)> map;
         Register(map);
-        std::string type = info.type;
+        ast::RB_Type type = info.type;
         auto it = map.find(type);
         if (it != map.end()) {
             return it->second(info, path);
         }
-        throw std::runtime_error("Unknown rb type: " + type);
+        throw std::runtime_error("Unknown rb type: " + to_string(type));
     }
 
     void Graphics_Factory::Register(
-        std::unordered_map<std::string, std::shared_ptr<View>(*)(const infra::ast::View&, const std::string&)> &outMap
+        std::unordered_map<ast::RB_Type, std::shared_ptr<View>(*)(const ast::RB_Config&, const std::string&)> &outMap
         ) {
-        outMap["SFML"] = &Graphics_Factory::SFML_View;
+        outMap[ast::RB_Type::SFML] = &Graphics_Factory::SFML_View;
 
     }
 
-    std::shared_ptr<View> Graphics_Factory::SFML_View(const infra::ast::View& info, const std::string& path) {
-
+    std::shared_ptr<View> Graphics_Factory::SFML_View(const ast::RB_Config& info, const std::string& path) {
+        // TODO
     }
 }
 

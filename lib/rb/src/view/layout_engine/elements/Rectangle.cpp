@@ -51,7 +51,7 @@ namespace rb::ui {
         return size;
     }
 
-    void Rectangle::append_render_items(rnd::RenderFrame &frame, const ViewContext &ctx) const {
+    void Rectangle::append_render_items(rnd::RenderFrame &frame, const Context &ctx) const {
         if (!visible) return;
 
         auto item = std::make_unique<rnd::Rectangle>();

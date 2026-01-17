@@ -21,8 +21,8 @@
 #include <string>
 #include <string_view>
 
-#include "view/layout_engine/Parser.h"
-#include "view/layout_engine/Tokenizer.h"
+#include "rb/layout_engine/Parser.h"
+#include "rb/layout_engine/Tokenizer.h"
 
 std::string load_file(const std::string& path) {
     std::ifstream file(path, std::ios::binary);
@@ -42,9 +42,9 @@ int main() {
     std::string buffer = load_file("../ui.xml");
     const std::string_view view_string(buffer);
 
-    std::vector<view::ui::Token> tokens = view::ui::Tokenizer::tokenize(view_string);
+    std::vector<rb::ui::Token> tokens = rb::ui::Tokenizer::tokenize(view_string);
 
-    auto root = view::ui::Parser::parse(tokens);
+    auto root = rb::ui::Parser::parse(tokens);
 
     return 0;
 }

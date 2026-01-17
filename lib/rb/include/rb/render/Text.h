@@ -31,14 +31,13 @@ namespace rb::rnd {
             v.visit(*this);
         }
 
+        assets::AssetHandle<assets::Font> font;
+        intrnl::Color color;
+        int size = 0;
         /**
          * @brief Any text
          */
         std::string text;
-        intrnl::Color color;
-        int size = 0;
-
-        assets::AssetHandle<assets::Font> font;
     };
 }
 

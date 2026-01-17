@@ -1,9 +1,9 @@
 /***************************************************************
  * Project:       Render_Engine
- * File:          Tokenizer.h
+ * File:          RB_Config.h
  *
  * Author:        Sukhovii Daniil
- * Created:       2026-01-12
+ * Created:       2026-01-17
  * Modified:      []
  *
  * Description:   []
@@ -15,17 +15,17 @@
  *   This file is part of Render_Engine.
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#ifndef RENDER_ENGINE_TOKENIZER_H
-#define RENDER_ENGINE_TOKENIZER_H
-#include <vector>
+#ifndef RENDER_ENGINE_RB_CONFIG_H
+#define RENDER_ENGINE_RB_CONFIG_H
+#include "RB_Type.h"
 
-#include "Token.h"
-
-namespace rb::ui {
-    class Tokenizer {
-    public:
-        static std::vector<Token> tokenize(std::string_view src);
+namespace rb::ast {
+    struct RB_Config {
+        RB_Type type;
+        unsigned int window_width = 0; ///< Width of the window
+        unsigned int window_height = 0; ///< Height of the window
+        int fps = 30; ///< Frames per second
     };
 }
 
-#endif //RENDER_ENGINE_TOKENIZER_H
+#endif //RENDER_ENGINE_RB_CONFIG_H

@@ -20,10 +20,10 @@
 
 
 namespace rb {
-    struct ViewContext {
+    struct Context {
         const bool redrawing;
 
-        explicit ViewContext(
+        explicit Context(
             const bool redraw
          )
          :  redrawing(redraw)

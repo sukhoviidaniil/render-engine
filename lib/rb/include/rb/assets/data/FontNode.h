@@ -24,9 +24,6 @@ namespace rb::assets {
         ~FontNode() override = default;
         void accept(AssetDataVisitor &v) const override {
         }
-        intrnl::AssetType type() const override {
-            return intrnl::AssetType::Font;
-        }
     };
 }
 

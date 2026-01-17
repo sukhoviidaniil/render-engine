@@ -68,7 +68,7 @@ add_executable(${APP_TARGET}
 target_link_libraries(${APP_TARGET}
         PRIVATE
         infra_lib
-        view_lib
+        rb_lib
 )
 
 

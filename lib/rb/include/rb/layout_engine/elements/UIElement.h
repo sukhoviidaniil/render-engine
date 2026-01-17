@@ -23,7 +23,7 @@
 #include "infra/math/Vector2.h"
 #include "rb/internal/Size.h"
 
-#include "rb/ViewContext.h"
+#include "rb/Context.h"
 #include "LayoutResult.h"
 #include "rb/render/RenderFrame.h"
 
@@ -72,7 +72,7 @@ namespace rb::ui {
          */
         virtual void layout(intrnl::Rect r);
 
-        virtual void append_render_items(rnd::RenderFrame& frame, const ViewContext& ctx) const;
+        virtual void append_render_items(rnd::RenderFrame& frame, const Context& ctx) const;
 
         // ===== Configuration =====
         intrnl::Size width  = intrnl::Size::auto_(); ///< Width specification

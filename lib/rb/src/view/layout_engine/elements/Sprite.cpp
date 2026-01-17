@@ -42,7 +42,7 @@ namespace rb::ui {
         return size;
     }
 
-    void Sprite::append_render_items(rnd::RenderFrame &frame, const ViewContext &rb_context) const  {
+    void Sprite::append_render_items(rnd::RenderFrame &frame, const Context &rb_context) const  {
         if (!visible) return;
 
         auto item = std::make_unique<rnd::Sprite>();

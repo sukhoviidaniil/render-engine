@@ -19,7 +19,7 @@
 #define RENDER_ENGINE_ASSETHANDLE_H
 #include <memory>
 
-#include "AssetRecord.h"
+#include "rb/registry/AssetRecord.h"
 
 namespace rb::assets {
     template<class T>
