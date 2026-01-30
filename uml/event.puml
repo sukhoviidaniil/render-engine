@@ -1,0 +1,39 @@
+@startuml
+
+
+package infra <<Infrastructure>>{
+    package event{
+        enum EventMask
+        class Event
+        abstract class EventConcept
+        class EventInstance<T>
+        class Event_Bus
+        package _Event_Bus{
+            class Subscription
+        }
+        class Event_Store
+        class Event_Collector
+
+        class Observer
+    }
+}
+
+
+infra.event.EventMask --* infra.event.Event
+infra.event.Event --* infra.event.EventInstance
+infra.event.EventInstance --|> infra.event.EventConcept
+
+infra.event.EventConcept --> infra.event.Event_Bus: emit
+infra.event.EventConcept --> infra.event.Event_Store: store
+
+infra.event.Event_Store --* infra.event.Event_Collector
+
+
+infra.event.Event_Store --> infra.event.EventConcept : return
+infra.event.Event_Collector --> infra.event.EventConcept : return
+
+
+infra.event.Observer --o infra.event._Event_Bus.Subscription
+infra.event.Event_Bus --> infra.event._Event_Bus.Subscription : distributes
+
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+
+!define RB_ASSETS
+
+circle serialized_configuration
+circle configuration
+
+package rb <<Render Backend>> {
+    package assets <<Assets>>{
+        dataclass Font
+        dataclass Sprite
+        class AssetHandle<T>
+
+        struct AssetMetaData
+        struct AssetDesc
+        struct AssetRecord
+
+        abstract class IAssetLoader
+        class AssetImporter
+        class AssetRegistry
+    }
+}
+
+rb.intr.GUID --* rb.assets.AssetMetaData
+rb.assets.AssetMetaData --* rb.assets.AssetDesc
+rb.assets.AssetDesc --* rb.assets.AssetRecord
+rb.assets.AssetRecord --* rb.assets.AssetRegistry
+
+rb.assets.Sprite --o rb.assets.AssetHandle
+rb.assets.Font --o rb.assets.AssetHandle
+
+rb.assets.AssetRegistry --> rb.assets.AssetHandle: make
+rb.assets.AssetRegistry --> rb.assets.IAssetLoader: use
+
+rb.assets.AssetImporter --> rb.assets.AssetDesc #line:red;text:red : make
+configuration --> rb.assets.AssetImporter #line:red;text:red : consumed by
+rb.assets.AssetImporter --> serialized_configuration #line:red;text:red : make
+
+@enduml

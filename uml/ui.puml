@@ -1,0 +1,49 @@
+@startuml
+
+!define RB_UI
+
+!ifndef RB_ASSETS
+    !include_once assets.puml
+!endif
+
+package rb <<Render Backend>> {
+
+    package ui <<User interface>>{
+        package elements{
+            abstract class UIElement
+            abstract class LinearLayout
+            class VBox
+            class HBox
+            class Text
+            class Ractangle
+            class Sprite
+        }
+        dataclass Node
+        enum Token
+        class Parser
+        class Tokenizer
+        class UIFactory
+    }
+}
+
+
+serialized_configuration --> rb.ui.Tokenizer #line:green;text:green : consumed by
+rb.ui.Tokenizer --> rb.ui.Token #line:green;text:green : make
+rb.ui.Token --> rb.ui.Parser #line:green;text:green : consumed by
+rb.ui.Parser --> rb.ui.Node #line:green;text:green : make
+rb.ui.Node --> rb.ui.UIFactory #line:green;text:green : consumed by
+rb.ui.UIFactory --> rb.ui.elements.UIElement #line:green;text:green : make
+rb.ui.UIFactory --> rb.assets.AssetRegistry #line:green;text:green : requests asset
+
+rb.ui.elements.UIElement <|-- rb.ui.elements.LinearLayout
+rb.ui.elements.UIElement <|-- rb.ui.elements.Text
+rb.ui.elements.UIElement <|-- rb.ui.elements.Ractangle
+rb.ui.elements.UIElement <|-- rb.ui.elements.Sprite
+
+rb.ui.elements.LinearLayout <|.. rb.ui.elements.VBox
+rb.ui.elements.LinearLayout <|.. rb.ui.elements.HBox
+
+rb.assets.AssetHandle --* rb.ui.elements.Text
+rb.assets.AssetHandle --* rb.ui.elements.Sprite
+
+@enduml
