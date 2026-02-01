@@ -1,11 +1,12 @@
 @startuml
-
+!ifndef RB_UI
 !define RB_UI
 
-!ifndef RB_ASSETS
-    !include_once assets.puml
-!endif
 
+!include register.puml
+
+
+skinparam groupInheritance 2
 package rb <<Render Backend>> {
 
     package ui <<User interface>>{
@@ -18,11 +19,11 @@ package rb <<Render Backend>> {
             class Ractangle
             class Sprite
         }
-        dataclass Node
-        enum Token
-        class Parser
-        class Tokenizer
         class UIFactory
+        dataclass Node
+        class Parser
+        enum Token
+        class Tokenizer
     }
 }
 
@@ -33,7 +34,7 @@ rb.ui.Token --> rb.ui.Parser #line:green;text:green : consumed by
 rb.ui.Parser --> rb.ui.Node #line:green;text:green : make
 rb.ui.Node --> rb.ui.UIFactory #line:green;text:green : consumed by
 rb.ui.UIFactory --> rb.ui.elements.UIElement #line:green;text:green : make
-rb.ui.UIFactory --> rb.assets.AssetRegistry #line:green;text:green : requests asset
+rb.ui.UIFactory --> rb.rgst.AssetRegistry #line:green;text:green : requests asset
 
 rb.ui.elements.UIElement <|-- rb.ui.elements.LinearLayout
 rb.ui.elements.UIElement <|-- rb.ui.elements.Text
@@ -46,4 +47,32 @@ rb.ui.elements.LinearLayout <|.. rb.ui.elements.HBox
 rb.assets.AssetHandle --* rb.ui.elements.Text
 rb.assets.AssetHandle --* rb.ui.elements.Sprite
 
+!ifdef SHOW_COMMENTS
+
+package rb {
+    package ui {
+        package elements{
+            note left of UIElement
+                It is a node of the interface elements tree.
+            end note
+            note left of LinearLayout
+                All branches will be in one row
+            end note
+        }
+
+        note left of Tokenizer
+            It parses the file and breaks it down into tokens
+        end note
+        note left of Parser
+            Passes tokens and collects tree nodes from them
+        end note
+        note left of UIFactory
+            Breaks down node by node, filling in the user interface tree
+        end note
+    }
+}
+
+!endif
+
+!endif
 @enduml

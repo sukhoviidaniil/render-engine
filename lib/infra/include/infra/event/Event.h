@@ -75,7 +75,8 @@ namespace infra::event {
      * Provides a common abstraction for storing and handling
      * events of different concrete types.
      */
-    struct EventConcept {
+    class EventConcept {
+    public:
         virtual ~EventConcept() = default;
         /**
          * @brief Returns the event category mask.
@@ -109,7 +110,8 @@ namespace infra::event {
      * the EventConcept interface.
      */
     template<typename Event>
-    struct EventInstance final : EventConcept {
+    class EventInstance final : EventConcept {
+    public:
         Event value;  ///< Stored event value
 
         /**

@@ -1,17 +1,13 @@
 @startuml
+!ifndef RB_RENDER
+!define RB_RENDER
 
 
-!ifndef RB_UI
-    !include_once ui.puml
-!endif
+!include ui.puml
+!include assets.puml
 
-
-!ifndef RB_ASSETS
-    !include_once assets.puml
-!endif
 
 circle data
-
 package rb <<Render Backend>> {
     dataclass Context
     interface Renderer
@@ -40,8 +36,26 @@ rb.rnd.RenderFrame *-- rb.rnd.RenderNode
 rb.assets.AssetHandle --* rb.rnd.Text
 rb.assets.AssetHandle --* rb.rnd.Sprite
 
-rb.assets.Sprite --o rb.assets.AssetHandle
-rb.assets.Font --o rb.assets.AssetHandle
+
+!ifdef SHOW_COMMENTS
+package rb  {
+
+    note left of Context
+        Collection of static data for user interface elements
+    end note
+    note left of Renderer
+        Interprets each node that comes to it and draws it.
+    end note
+
+    package rnd{
+        note left of RenderFrame
+            Assembly nodes for interpretation by the renderer.
+            May have several render levels.
+        end note
+    }
+}
+!endif
 
 
+!endif
 @enduml
