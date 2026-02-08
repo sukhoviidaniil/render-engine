@@ -18,12 +18,12 @@
 #ifndef RENDER_ENGINE_SFML_SFML_RENDERER_H
 #define RENDER_ENGINE_SFML_SFML_RENDERER_H
 
-#include "rb/Renderer.h"
-#include "rb/ast/RB_Config.h"
+#include "../../../../include/render/Renderer.h"
+#include "sif/ast/RB_Config.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "my_sfml/ISFML_Event_Source.h"
 
-namespace rb::sfml {
+namespace sif::sfml {
     class SFML_Renderer final: public Renderer, public ISFML_Event_Source {
     public:
         ~SFML_Renderer() override;

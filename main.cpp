@@ -24,7 +24,7 @@
 #include "infra/event/Event_Bus.h"
 #include "rb/layout_engine/UIFactory.h"
 #include "rb/registry/AssetImporter.h"
-#include "src/App.h"
+#include "include/App.h"
 
 
 int main() {

@@ -19,7 +19,7 @@
 #define RENDER_ENGINE_ISFML_EVENT_SOURCE_H
 #include "SFML/Window/Event.hpp"
 
-namespace rb::sfml {
+namespace sif::sfml {
 
     /**
      * @brief Provides SFML window event support within the View.

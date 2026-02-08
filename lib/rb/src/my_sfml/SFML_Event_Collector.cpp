@@ -25,8 +25,8 @@
 #include "infra/event/events/input_Mouse.h"
 
 
-namespace rb::sfml {
-    SFML_Event_Collector::SFML_Event_Collector(rb::sfml::ISFML_Event_Source &source) : source_(source) {}
+namespace sif::sfml {
+    SFML_Event_Collector::SFML_Event_Collector(sif::sfml::ISFML_Event_Source &source) : source_(source) {}
 
     void SFML_Event_Collector::collect()  {
         sf::Event event{};

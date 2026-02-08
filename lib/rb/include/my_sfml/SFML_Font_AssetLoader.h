@@ -18,9 +18,9 @@
 #ifndef RENDER_ENGINE_SFML_SFML_FONT_ASSETLOADER_H
 #define RENDER_ENGINE_SFML_SFML_FONT_ASSETLOADER_H
 
-#include "rb/asset/IAssetLoader.h"
+#include "sif/asset/IAssetLoader.h"
 
-namespace rb::sfml {
+namespace sif::sfml {
     class SFML_Font_AssetLoader : public asset::IAssetLoader{
 
         void load_asset(asset::AssetRecord& record, const std::string& asset_dir) override;

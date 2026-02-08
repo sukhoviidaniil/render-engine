@@ -22,17 +22,17 @@
 #include "SFML/Window/Event.hpp"
 #include "my_sfml/ISFML_Event_Source.h"
 
-namespace rb::sfml {
+namespace sif::sfml {
     class SFML_Event_Collector : public infra::event::Event_Collector {
     public:
-        explicit SFML_Event_Collector(rb::sfml::ISFML_Event_Source& source);
+        explicit SFML_Event_Collector(sif::sfml::ISFML_Event_Source& source);
 
         void collect() override;
 
     private:
         void dispatch(const sf::Event& e);
 
-        rb::sfml::ISFML_Event_Source& source_;
+        sif::sfml::ISFML_Event_Source& source_;
     };
 }
 

@@ -53,8 +53,18 @@ file(GLOB_RECURSE RELEASE_SOURCE_FILES "src/*.cpp")
 
 # Collecting Function Resources
 
-add_subdirectory(lib/infra)
-add_subdirectory(lib/rb)
+
+# Building the graphics library
+file(GLOB_RECURSE SIF_SRC "src/*.cpp")
+add_library(sif_lib STATIC ${SIF_SRC})
+# Connecting headers
+target_include_directories(sif_lib PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${JSON_DIR}
+)
+target_link_libraries(sif_lib PUBLIC
+
+)
 
 
 # -----------------------------------------
@@ -68,8 +78,7 @@ add_executable(${APP_TARGET}
 
 target_link_libraries(${APP_TARGET}
         PRIVATE
-        infra_lib
-        rb_lib
+        sif_lib
 )
 
 

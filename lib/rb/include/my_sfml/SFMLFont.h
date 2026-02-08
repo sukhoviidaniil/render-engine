@@ -20,7 +20,7 @@
 
 #include "SFML/Graphics.hpp"
 
-namespace rb::sfml {
+namespace sif::sfml {
     struct SFMLFont {
         SFMLFont() = default;
         SFMLFont(SFMLFont&&) noexcept = default;

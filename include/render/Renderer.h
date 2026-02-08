@@ -1,0 +1,44 @@
+/***************************************************************
+ * Project:       render-engine
+ * File:          View.h
+ *
+ * Author:        Sukhovii Daniil
+ * Created:       2025-12-06
+ * Modified:      []
+ *
+ * Description:   []
+ *
+ * Contact:
+ *   Email:       sukhovii.daniil@gmail.com
+ *
+ * Disclaimer:
+ *   This file is part of render-engine.
+ *   Unauthorized use, reproduction, or distribution is prohibited.
+***************************************************************/
+#ifndef RENDER_ENGINE_VIEW_H
+#define RENDER_ENGINE_VIEW_H
+
+#include <memory>
+
+#include "elements/RenderNode.h"
+#include "infra/event/Observer.h"
+#include "infra/math/Vector2.h"
+
+#include "render/RenderFrame.h"
+
+namespace sif::rnd {
+    class Renderer : RenderVisitor, infra::event::Observer{
+    public:
+        ~Renderer() override;
+        explicit Renderer();
+
+        virtual void track_local(const std::shared_ptr<infra::event::Event_Bus>& bus) = 0;
+        virtual void track_global(const std::shared_ptr<infra::event::Event_Bus>& bus) = 0;
+
+        [[nodiscard]] virtual infra::math::Vector2 screen_size() const = 0;
+
+        virtual void render(const RenderFrame& graph) = 0;
+    };
+}
+
+#endif //RENDER_ENGINE_VIEW_H

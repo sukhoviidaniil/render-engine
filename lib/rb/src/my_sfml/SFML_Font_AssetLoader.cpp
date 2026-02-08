@@ -19,12 +19,12 @@
 #include "my_sfml/SFML_Font_AssetLoader.h"
 
 #include "my_sfml/SFMLFont.h"
-#include "rb/asset/Font.h"
-#include "rb/asset/data/AssetDataLoader.h"
+#include "sif/asset/Font.h"
+#include "sif/asset/data/AssetDataLoader.h"
 #include "SFML/Graphics/Font.hpp"
 
 
-namespace rb::sfml {
+namespace sif::sfml {
     void SFML_Font_AssetLoader::load_asset(asset::AssetRecord &record, const std::string& asset_dir) {
         std::unique_ptr<asset::data::FontNode> data = asset::data::AssetDataLoader::instance().load_Font_from_file(asset_dir + record.get_conf_path());
         sf::Font font;

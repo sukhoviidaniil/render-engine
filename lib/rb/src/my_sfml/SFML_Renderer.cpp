@@ -19,13 +19,13 @@
 #include "my_sfml/SFML_Renderer.h"
 
 #include "infra/event/events/window.hpp"
-#include "rb/render/Rectangle.h"
-#include "rb/render/Text.h"
+#include "sif/render/Rectangle.h"
+#include "sif/render/Text.h"
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "SFML/Graphics/Text.hpp"
 
 
-namespace rb::sfml {
+namespace sif::sfml {
     SFML_Renderer::~SFML_Renderer() = default;
 
     SFML_Renderer::SFML_Renderer(const ast::RB_Config &info) : window_(sf::VideoMode(info.window_width, info.window_height), info.window_name) {
