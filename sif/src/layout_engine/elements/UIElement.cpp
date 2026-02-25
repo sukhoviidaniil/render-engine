@@ -1,22 +1,15 @@
 /***************************************************************
- * Project:       Pacman
- * File:          UIElement.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-11
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Pacman.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-11
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
+#include "sif/layout_engine/elements/UIElement.h"
 
-#include "layout_engine/elements/UIElement.h"
+#include <algorithm>
 
 namespace sif::ui {
     void UIElement::add(std::unique_ptr<UIElement> child)  {
@@ -62,7 +55,7 @@ namespace sif::ui {
         }
     }
 
-    void UIElement::append_render_items(rnd::RenderFrame &frame, const Context &ctx) const  {
+    void UIElement::append_render_items(rnd::RenderFrame &frame, const rnd::FrameContext &ctx) const  {
         for (const auto& c : children) {
             c->append_render_items(frame, ctx);
         }

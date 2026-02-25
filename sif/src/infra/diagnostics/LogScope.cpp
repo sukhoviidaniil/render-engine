@@ -1,25 +1,16 @@
 /***************************************************************
- * Project:       render-engine
- * File:          LogScope.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-10
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-10
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
+#include "sif/infra/diagnostics/LogScope.h"
+#include "sif/infra/diagnostics/Logger.h"
 
-#include "infra/diagnostics/LogScope.h"
-#include "infra/diagnostics/Logger.h"
-
-namespace infra::diag{
+namespace sif::infra::diag{
     LogScope::LogScope() {
         Logger::instance().add_depth();
     }

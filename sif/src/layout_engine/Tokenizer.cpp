@@ -1,28 +1,19 @@
 /***************************************************************
- * Project:       Render_Engine
- * File:          Tokenizer.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-12
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Render_Engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-12
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-
-#include "layout_engine/Tokenizer.h"
 
 #include <filesystem>
 #include <fstream>
 #include <stdexcept>
 
-#include "infra/diagnostics/Logger.h"
+#include "sif/infra/diagnostics/Logger.h"
+#include "sif/layout_engine/Tokenizer.h"
 
 namespace sif::ui {
 

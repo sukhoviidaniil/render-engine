@@ -1,22 +1,14 @@
 /***************************************************************
- * Project:       Render_Engine
- * File:          AssetRecord.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-02-01
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Render_Engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-02-01
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "asset/internal/AssetRecord.h"
+#include "sif/asset/internal/AssetRecord.h"
 
 namespace sif::asset {
     AssetRecord::AssetRecord(AssetDesc d)

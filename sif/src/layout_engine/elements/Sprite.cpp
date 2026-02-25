@@ -1,25 +1,19 @@
 /***************************************************************
- * Project:       Pacman
- * File:          SpriteElement.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-12
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Pacman.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-12
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "rb/layout_engine/elements/Sprite.h"
-#include "rb/render/Sprite.h"
+#include "sif/layout_engine/elements/Sprite.h"
+#include "sif/render/elements/Sprite.h"
 
-namespace rb::ui {
+#include <algorithm>
+
+namespace sif::ui {
     Sprite::Sprite(std::string sprite, const float sprite_width, const float sprite_height)
         : sprite_(std::move(sprite)) {
 
@@ -42,7 +36,7 @@ namespace rb::ui {
         return size;
     }
 
-    void Sprite::append_render_items(rnd::RenderFrame &frame, const Context &rb_context) const  {
+    void Sprite::append_render_items(rnd::RenderFrame &frame, const rnd::FrameContext &rb_context) const  {
         if (!visible) return;
 
         auto item = std::make_unique<rnd::Sprite>();

@@ -30,76 +30,37 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16a9d48e-3273-4a3a-850a-ebcf1e2732f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+    <list default="true" id="16a9d48e-3273-4a3a-850a-ebcf1e2732f7" name="Changes" comment="H refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sif/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/AssetHandle.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/AssetHandle.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/AssetHandle.inl" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/AssetHandle.inl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/AssetRegistry.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/AssetRegistry.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/AssetRegistry.inl" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/AssetRegistry.inl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/internal/AssetDesc.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/internal/AssetDesc.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/internal/AssetImporter.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/internal/AssetImporter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/internal/AssetRecord.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/internal/AssetRecord.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/internal/AssetState.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/internal/AssetState.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/internal/AssetType.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/internal/AssetType.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/internal/Font.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/internal/Font.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/internal/IAssetLoader.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/internal/IAssetLoader.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/internal/data/AssetDataLoader.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/internal/data/AssetDataLoader.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/internal/data/AssetDataNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/internal/data/AssetDataNode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/internal/data/AssetMetaData.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/internal/data/AssetMetaData.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/asset/internal/data/FontNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/asset/internal/data/FontNode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/diagnostics/LogScope.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/diagnostics/LogScope.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/diagnostics/Logger.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/diagnostics/Logger.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/event/Event.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/event/Event.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Bus.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Bus.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Bus.inl" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Bus.inl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Collector.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Collector.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Store.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Store.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Store.inl" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Store.inl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/event/Observer.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/event/Observer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/event/events/input_Keyboard.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/event/events/input_Keyboard.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/event/events/input_Mouse.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/event/events/input_Mouse.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/event/events/window.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/event/events/window.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/internal/Concept.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/internal/Concept.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/io/from_JSON.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/io/from_JSON.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/math/Direction.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/math/Point2.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/math/Point2.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/math/Vector2.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/math/Vector2.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/math/to_Vector2.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/internal/Alignment.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/internal/Alignment.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/internal/Color.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/internal/Color.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/internal/GUID.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/internal/GUID.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/internal/RecordID.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/internal/RecordID.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/internal/Rect.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/internal/Rect.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/internal/Size.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/internal/Size.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/internal/from_JSON.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/internal/from_JSON.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/internal/reference_serialization.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/internal/reference_serialization.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/Node.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/Node.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/Parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/Parser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/Token.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/Token.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/Tokenizer.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/Tokenizer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/UIFactory.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/UIFactory.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/LinearLayout.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/LinearLayout.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/Rectangle.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/Rectangle.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/Sprite.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/Sprite.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/Text.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/Text.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/UIElement.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/UIElement.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/V_HBox.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/elements/V_HBox.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/internal/LayoutResult.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/internal/LayoutResult.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/internal/add_attribute.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/internal/add_attribute.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/internal/attribute_check.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/internal/attribute_check.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/layout_engine/internal/make_element.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/layout_engine/internal/make_element.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/render/Context.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/render/FrameContext.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/render/RenderFrame.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/render/RenderFrame.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/render/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/render/Renderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/render/elements/Rectangle.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/render/elements/Rectangle.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/render/elements/RenderNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/render/elements/RenderNode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/render/elements/Sprite.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/render/elements/Sprite.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/include/sif/render/elements/Text.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/render/elements/Text.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/Asset_GUID_Assignment.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/Asset_GUID_Assignment.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/Asset_Reference_Serialization.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/Asset_Reference_Serialization.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sif/src/assets/AssetDataLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/AssetDataLoader.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sif/src/assets/AssetImporter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/AssetImporter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/assets/AssetRecord.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/AssetRecord.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/assets/AssetRegistry.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/AssetRegistry.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/assets/Font.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/Font.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/assets/IAssetLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/IAssetLoader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/infra/diagnostics/LogScope.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/diagnostics/LogScope.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/infra/diagnostics/Logger.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/diagnostics/Logger.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/infra/event/Event_Bus.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/event/Event_Bus.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/infra/event/Event_Store.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/event/Event_Store.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/infra/event/Observer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/event/Observer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/infra/internal/Delta_Timer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/internal/Delta_Timer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/infra/internal/ErasedObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/internal/ErasedObject.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/infra/internal/Random.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/internal/Random.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/infra/math/Point2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/math/Point2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/infra/math/Vector2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/math/Vector2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/internal/Color.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/internal/Color.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/internal/GUID.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/internal/GUID.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/internal/Size.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/internal/Size.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/Parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/Parser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/Tokenizer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/Tokenizer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/UIFactory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/UIFactory.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/elements/LinearLayout.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/elements/LinearLayout.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/elements/Rectangle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/elements/Rectangle.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/elements/Sprite.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/elements/Sprite.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/elements/Text.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/elements/Text.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/elements/UIElement.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/elements/UIElement.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,8 +178,17 @@
       <workItem from="1772013839634" duration="1000" />
       <workItem from="1772017221435" duration="21000" />
       <workItem from="1772017293483" duration="287000" />
-      <workItem from="1772017628745" duration="4861000" />
+      <workItem from="1772017628745" duration="5798000" />
     </task>
+    <task id="LOCAL-00001" summary="H refactor">
+      <option name="closed" value="true" />
+      <created>1772022529293</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1772022529293</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,5 +198,20 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="H refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="H refactor" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/sif/src/layout_engine/Parser.cpp</url>
+          <line>10</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,24 +1,16 @@
 /***************************************************************
- * Project:       render-engine
- * File:          Delta_Timer.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-11-15
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-11-15
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "infra/internal/Delta_Timer.h"
+#include "sif/infra/internal/Delta_Timer.h"
 
-namespace infra::intr {
+namespace sif::infra::intr {
 
     Delta_Timer & Delta_Timer::instance() {
         static Delta_Timer inst;

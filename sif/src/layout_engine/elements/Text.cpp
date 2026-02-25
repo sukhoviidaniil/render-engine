@@ -1,23 +1,15 @@
 /***************************************************************
- * Project:       Pacman
- * File:          Text.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-12
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Pacman.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-12
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "layout_engine/elements/Text.h"
-#include "../../../include/render/elements/Text.h"
+#include "sif/layout_engine/elements/Text.h"
+#include "sif/render/elements/Text.h"
 
 namespace sif::ui {
 
@@ -40,7 +32,7 @@ namespace sif::ui {
         return {width, height};
     }
 
-    void Text::append_render_items(rnd::RenderFrame &frame, const Context &ctx) const {
+    void Text::append_render_items(rnd::RenderFrame &frame, const rnd::FrameContext &ctx) const {
         if (!font.ready() || text.empty()) return;
         std::unique_ptr<rnd::Text> item = std::make_unique<rnd::Text>();
 

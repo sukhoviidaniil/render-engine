@@ -1,22 +1,15 @@
 /***************************************************************
- * Project:       render-engine
- * File:          Color.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-22
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-22
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-#include "internal/Color.h"
+#include "sif/internal/Color.h"
 
+#include <charconv>
 #include <stdexcept>
 
 namespace sif::intrnl {

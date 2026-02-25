@@ -1,22 +1,13 @@
 /***************************************************************
- * Project:       render-engine
- * File:          Event_Bus.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-20
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-20
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-
-#include "infra/event/Event_Bus.h"
+#include "sif/infra/event/Event_Bus.h"
 
 namespace sif::infra::event {
     Event_Bus::Subscription::~Subscription()  {

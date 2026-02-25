@@ -1,25 +1,18 @@
 /***************************************************************
- * Project:       Pacman
- * File:          Rectangle.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-12
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Pacman.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-12
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "layout_engine/elements/Rectangle.h"
+#include "sif/layout_engine/elements/Rectangle.h"
 
-#include "../../../include/render/elements/Rectangle.h"
+#include "sif/render/elements/Rectangle.h"
 
+#include <algorithm>
 
 
 namespace sif::ui {
@@ -53,7 +46,7 @@ namespace sif::ui {
         return size;
     }
 
-    void Rectangle::append_render_items(rnd::RenderFrame &frame, const Context &ctx) const {
+    void Rectangle::append_render_items(rnd::RenderFrame &frame, const rnd::FrameContext &ctx) const {
         if (!visible) return;
 
         auto item = std::make_unique<rnd::Rectangle>();

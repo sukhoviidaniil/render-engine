@@ -1,28 +1,19 @@
 /***************************************************************
- * Project:       Render_Engine
- * File:          AssetRegistry.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-13
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Render_Engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-13
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
-
 
 #include <thread>
 
-#include "infra/diagnostics/Logger.h"
-#include "infra/diagnostics/LogScope.h"
+#include "sif/infra/diagnostics/Logger.h"
+#include "sif/infra/diagnostics/LogScope.h"
 
-#include "asset/AssetRegistry.h"
+#include "sif/asset/AssetRegistry.h"
 
 namespace sif::asset {
     AssetRegistry& AssetRegistry::instance() {

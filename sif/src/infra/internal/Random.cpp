@@ -1,24 +1,16 @@
 /***************************************************************
- * Project:       render-engine
- * File:          Random.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-01
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-01
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "infra/internal/Random.h"
+#include "sif/infra/internal/Random.h"
 
-namespace infra::intr {
+namespace sif::infra::intr {
     Random & Random::instance()  {
         static Random inst;
         return inst;

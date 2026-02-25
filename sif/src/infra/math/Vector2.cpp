@@ -1,9 +1,18 @@
+/***************************************************************
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-13
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
+***************************************************************/
 
 #include <cmath>
 #include <string>
-#include "infra/math/Vector2.h"
+#include "sif/infra/math/Vector2.h"
 
-namespace infra::math {
+namespace sif::infra::math {
 
     Point2 Vector2::to_Point2() const {
         return {x, y};

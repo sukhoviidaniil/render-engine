@@ -1,25 +1,17 @@
 /***************************************************************
- * Project:       Render_Engine
- * File:          AssetImporter.cpp
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-16
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Render_Engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-16
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
 #include "sif/asset/internal/AssetImporter.h"
-
 #include "sif/asset/internal/data/AssetDataLoader.h"
 #include "sif/asset/AssetRegistry.h"
+#include "json.hpp"
 
 namespace sif::asset {
 
