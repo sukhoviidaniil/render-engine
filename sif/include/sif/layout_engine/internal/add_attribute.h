@@ -1,25 +1,19 @@
 /***************************************************************
- * Project:         Render_Engine
- * File:            add_attribute.h
- *
- * Author:          Sukhovii Daniil
- * Contact:
- * Email:           Sukhovii Daniil
- * Created:         2026-02-08
- *
- * Description:     []
- *
- * Disclaimer:
- *  This file is part of Render_Engine.
- *  Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-02-08
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_ADD_ATTRIBUTE_H
 #define RENDER_ENGINE_ADD_ATTRIBUTE_H
 #include "attribute_check.h"
-#include "internal/Size.h"
-#include "layout_engine/Node.h"
-#include "layout_engine/elements/LinearLayout.h"
-#include "layout_engine/elements/UIElement.h"
+#include "sif/internal/Size.h"
+#include "sif/layout_engine/Node.h"
+#include "sif/layout_engine/elements/LinearLayout.h"
+#include "sif/layout_engine/elements/UIElement.h"
 
 
 namespace sif::ui {

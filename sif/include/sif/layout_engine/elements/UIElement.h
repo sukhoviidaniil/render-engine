@@ -1,32 +1,24 @@
 /***************************************************************
- * Project:       render-engine
- * File:          UIElement.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-19
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-19
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_UIELEMENT_H
 #define RENDER_ENGINE_UIELEMENT_H
 
 #include <memory>
 
-#include "infra/math/Vector2.h"
-#include "internal/Size.h"
-#include "internal/Rect.h"
+#include "sif/infra/math/Vector2.h"
+#include "sif/internal/Size.h"
+#include "sif/internal/Rect.h"
 
-#include "layout_engine/internal/LayoutResult.h"
-#include "render/Context.h"
-#include "render/RenderFrame.h"
+#include "sif/layout_engine/internal/LayoutResult.h"
+#include "sif/render/FrameContext.h"
+#include "sif/render/RenderFrame.h"
 
 namespace sif::ui {
     /**
@@ -73,7 +65,7 @@ namespace sif::ui {
          */
         virtual void layout(intrnl::Rect r);
 
-        virtual void append_render_items(rnd::RenderFrame& frame, const Context& ctx) const;
+        virtual void append_render_items(rnd::RenderFrame& frame, const rnd::FrameContext& ctx) const;
 
         // ===== Configuration =====
         intrnl::Size width  = intrnl::Size::auto_(); ///< Width specification

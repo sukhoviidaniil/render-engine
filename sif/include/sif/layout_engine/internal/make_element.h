@@ -1,28 +1,20 @@
 /***************************************************************
-* Project:       Render_Engine
- * File:          make_element.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-13
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Render_Engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-13
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_MAKE_ELEMENT_H
 #define RENDER_ENGINE_MAKE_ELEMENT_H
 
 #include "add_attribute.h"
-#include "layout_engine/Node.h"
-#include "layout_engine/elements/LinearLayout.h"
-#include "layout_engine/elements/Rectangle.h"
-#include "layout_engine/elements/V_HBox.h"
+#include "sif/layout_engine/Node.h"
+#include "sif/layout_engine/elements/LinearLayout.h"
+#include "sif/layout_engine/elements/Rectangle.h"
+#include "sif/layout_engine/elements/V_HBox.h"
 
 
 namespace sif::ui {

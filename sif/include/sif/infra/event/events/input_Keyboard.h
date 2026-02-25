@@ -1,28 +1,22 @@
 /***************************************************************
- * Project:       render-engine
- * File:          input.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-21
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Project:          Render_Engine
+* File:             input_Keyboard.h
+*
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-21
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_INPUT_H
 #define RENDER_ENGINE_INPUT_H
 #include <cstdint>
 
+#include "sif/infra/event/Event.h"
 
-#include "infra/event/Event.h"
-
-namespace infra::event::input {
+namespace sif::infra::event::input {
     enum class Key : std::uint16_t {
         Unknown,
         W, A, S, D,
@@ -33,8 +27,7 @@ namespace infra::event::input {
     };
 
     struct KeyPressed {
-        static constexpr infra::event::EventMask mask =
-            infra::event::EventMask::Input;
+        static constexpr EventMask mask = EventMask::Input;
         Key key;
         bool alt;
         bool control;
@@ -43,8 +36,7 @@ namespace infra::event::input {
     };
 
     struct KeyReleased {
-        static constexpr infra::event::EventMask mask =
-            infra::event::EventMask::Input;
+        static constexpr EventMask mask = EventMask::Input;
         Key key;
     };
 }

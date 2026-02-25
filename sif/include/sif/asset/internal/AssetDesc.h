@@ -1,19 +1,11 @@
 /***************************************************************
- * Project:       Render_Engine
- * File:          AssetDesc.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-17
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Render_Engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-17
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_ASSETDESC_H
 #define RENDER_ENGINE_ASSETDESC_H
@@ -21,7 +13,7 @@
 #include <string>
 #include <utility>
 
-#include "asset/internal/data/AssetMetaData.h"
+#include "data/AssetMetaData.h"
 
 namespace sif::asset {
     struct AssetDesc {

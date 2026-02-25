@@ -19,7 +19,7 @@
 #define RENDER_ENGINE_CONCEPT_H
 #include <algorithm>
 
-namespace infra::intr {
+namespace sif::infra::intr {
     struct Concept {
         virtual ~Concept() = default;
     };

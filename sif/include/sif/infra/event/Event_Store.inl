@@ -1,19 +1,14 @@
 /***************************************************************
- * Project:       render-engine
- * File:          Event_Store.inl
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-18
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Project:          Render_Engine
+* File:             Event_Store.inl
+*
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-18
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #pragma once
 

@@ -1,19 +1,14 @@
 /***************************************************************
- * Project:       render-engine
- * File:          Point2.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-13
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Project:          Render_Engine
+* File:             Point2.h
+*
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-13
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_POINT2_H
 #define RENDER_ENGINE_POINT2_H

@@ -16,9 +16,9 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "asset/internal/data/AssetDataLoader.h"
+#include "sif/asset/internal/data/AssetDataLoader.h"
 
-#include "internal/from_JSON.h"
+#include "sif/internal/from_JSON.h"
 
 namespace sif::asset::data {
 

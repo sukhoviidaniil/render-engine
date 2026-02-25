@@ -1,26 +1,18 @@
 /***************************************************************
- * Project:       Render_Engine
- * File:          MetaAssetData.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-14
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Render_Engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-14
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_METAASSETDATA_H
 #define RENDER_ENGINE_METAASSETDATA_H
 
 #include <string>
 
-#include "asset/internal/data/AssetMetaData.h"
+#include "AssetMetaData.h"
 
 namespace sif::asset::data {
     struct  AssetDataNode {

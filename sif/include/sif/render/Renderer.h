@@ -1,19 +1,14 @@
 /***************************************************************
- * Project:       render-engine
- * File:          View.h
+* Project:          Render_Engine
+ * File:            Renderer.h
  *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-06
- * Modified:      []
+ * Author:          Daniil Sukhovii
+ * Email:           sukhovii.daniil@gmail.com
+ * Created:         2025-12-06
  *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+ * License:
+ *      c. 2026 Daniil Sukhovii. All rights reserved.
+ *      Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_VIEW_H
 #define RENDER_ENGINE_VIEW_H
@@ -21,10 +16,10 @@
 #include <memory>
 
 #include "elements/RenderNode.h"
-#include "infra/event/Observer.h"
-#include "infra/math/Vector2.h"
 
-#include "render/RenderFrame.h"
+#include "sif/infra/event/Observer.h"
+#include "sif/infra/math/Vector2.h"
+#include "sif/render/RenderFrame.h"
 
 namespace sif::rnd {
     class Renderer : RenderVisitor, infra::event::Observer{

@@ -1,24 +1,19 @@
 /***************************************************************
- * Project:       Render_Engine
- * File:          AssetDataLoader.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-17
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Description:   []
- * Disclaimer:
- *   This file is part of Render_Engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-17
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_ASSETDATALOADER_H
 #define RENDER_ENGINE_ASSETDATALOADER_H
 
 #include <filesystem>
 
-#include "asset/internal/data/AssetDataNode.h"
-#include "asset/internal/data/FontNode.h"
+#include "AssetDataNode.h"
+#include "FontNode.h"
 
 
 namespace sif::asset::data {

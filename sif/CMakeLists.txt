@@ -3,6 +3,7 @@ add_library(sif_lib STATIC ${SIF_SRC})
 
 target_include_directories(sif_lib PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${JSON_DIR}
 )
 
 # configuration Asset_GUID_Assignment

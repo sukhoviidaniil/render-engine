@@ -17,6 +17,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 endif()
 
 set(JSON_DIR "${CMAKE_SOURCE_DIR}/external/json")
+message(${JSON_DIR})
 
 option(BUILD_STANDALONE "Build standalone executable" OFF)
 

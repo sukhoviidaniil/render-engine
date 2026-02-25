@@ -1,29 +1,19 @@
 /***************************************************************
- * Project:       render-engine
- * File:          LinearLayout.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-19
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-19
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_LINEARLAYOUT_H
 #define RENDER_ENGINE_LINEARLAYOUT_H
 
-
-#include "infra/math/Vector2.h"
-#include "internal/Alignment.h"
-#include "internal/Rect.h"
-
-#include "layout_engine/elements/UIElement.h"
+#include "sif/infra/math/Vector2.h"
+#include "sif/internal/Alignment.h"
+#include "sif/internal/Rect.h"
+#include "sif/layout_engine/elements/UIElement.h"
 
 namespace sif::ui {
 

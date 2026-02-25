@@ -1,26 +1,18 @@
 /***************************************************************
- * Project:       render-engine
- * File:          Text.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-26
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-26
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_TEXT_H
 #define RENDER_ENGINE_TEXT_H
 #include "UIElement.h"
-#include "internal/Color.h"
-#include "asset/AssetHandle.h"
-#include "asset/internal/Font.h"
+#include "sif/internal/Color.h"
+#include "sif/asset/AssetHandle.h"
+#include "sif/asset/internal/Font.h"
 
 
 namespace sif::ui {
@@ -47,7 +39,7 @@ namespace sif::ui {
          * @return Desired size of the text.
          */
         infra::math::Vector2 measure(const infra::math::Vector2& available) override;
-        void append_render_items(rnd::RenderFrame& frame, const Context& ctx) const override;
+        void append_render_items(rnd::RenderFrame& frame, const rnd::FrameContext& ctx) const override;
 
 
         std::string text;

@@ -1,27 +1,22 @@
 /***************************************************************
- * Project:       render-engine
- * File:          input_Mouse.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-21
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Project:          Render_Engine
+* File:             input_Mouse.h
+*
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-21
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_INPUT_MOUSE_H
 #define RENDER_ENGINE_INPUT_MOUSE_H
 #include <cstdint>
 
-#include "infra/event/Event_Bus.h"
+#include "sif/infra/event/Event_Bus.h"
 
-namespace infra::event::input {
+namespace sif::infra::event::input {
     enum class MouseButton : std::uint8_t {
         Left,
         Right,
@@ -31,16 +26,14 @@ namespace infra::event::input {
     };
 
     struct Mouse_Moved {
-        static constexpr infra::event::EventMask mask =
-            infra::event::EventMask::Input;
+        static constexpr EventMask mask = EventMask::Input;
 
         int x;
         int y;
     };
 
     struct Mouse_ButtonPressed {
-        static constexpr infra::event::EventMask mask =
-            infra::event::EventMask::Input;
+        static constexpr EventMask mask = EventMask::Input;
 
         MouseButton button;
         int x;
@@ -48,8 +41,7 @@ namespace infra::event::input {
     };
 
     struct Mouse_ButtonReleased {
-        static constexpr infra::event::EventMask mask =
-            infra::event::EventMask::Input;
+        static constexpr EventMask mask = EventMask::Input;
 
         MouseButton button;
         int x;
@@ -57,8 +49,7 @@ namespace infra::event::input {
     };
 
     struct Mouse_WheelScrolled {
-        static constexpr infra::event::EventMask mask =
-            infra::event::EventMask::Input;
+        static constexpr EventMask mask = EventMask::Input;
 
         float delta;
         int x;

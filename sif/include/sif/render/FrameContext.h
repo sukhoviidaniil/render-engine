@@ -3,7 +3,7 @@
  * File:          ViewContext.h
  *
  * Author:        Sukhovii Daniil
- * Created:       2025-12-24
+ * Created:       2025-12-26
  * Modified:      []
  *
  * Description:   []
@@ -19,11 +19,11 @@
 #define RENDER_ENGINE_VIEWCONTEXT_H
 
 
-namespace sif {
-    struct Context {
+namespace sif::rnd {
+    struct FrameContext {
         const bool redrawing;
 
-        explicit Context(
+        explicit FrameContext(
             const bool redraw
          )
          :  redrawing(redraw)

@@ -1,24 +1,19 @@
 /***************************************************************
- * Project:       render-engine
- * File:          RenderNode.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-24
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Project:          Render_Engine
+* File:             RenderNode.h
+*
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-24
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_RENDERNODE_H
 #define RENDER_ENGINE_RENDERNODE_H
 
-#include "internal/Rect.h"
+#include "sif/internal/Rect.h"
 
 namespace sif::rnd {
 

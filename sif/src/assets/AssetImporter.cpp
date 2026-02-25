@@ -16,11 +16,10 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "asset/internal/AssetImporter.h"
+#include "sif/asset/internal/AssetImporter.h"
 
-#include "asset/internal/data/AssetDataLoader.h"
-#include "internal/from_JSON.h"
-#include "asset/AssetRegistry.h"
+#include "sif/asset/internal/data/AssetDataLoader.h"
+#include "sif/asset/AssetRegistry.h"
 
 namespace sif::asset {
 

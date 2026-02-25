@@ -1,19 +1,14 @@
 /***************************************************************
- * Project:       render-engine
- * File:          Events.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-17
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Project:          Render_Engine
+* File:             Events.h
+*
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-17
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_EVENTS_H
 #define RENDER_ENGINE_EVENTS_H
@@ -34,7 +29,8 @@ namespace sif::infra::event {
         None   = 0,        // 0000
         Input  = 1 << 0,   // 0001
         Window = 1 << 1,   // 0010
-        Game   = 1 << 2,   // 0100
+        System = 1 << 2,   // 0100
+        Program= 1 << 3,   // 1000
     };
 
 
@@ -43,7 +39,7 @@ namespace sif::infra::event {
      *
      * Allows combining and testing flags.
      */
-    inline EventMask operator&(infra::event::EventMask a, infra::event::EventMask b) {
+    inline EventMask operator&(EventMask a, EventMask b) {
         return static_cast<EventMask>(static_cast<uint32_t>(a) & static_cast<uint32_t>(b));
     }
 
@@ -91,7 +87,6 @@ namespace sif::infra::event {
         /**
          * @brief Returns a pointer to the stored event data.
          *
-         * @note TODO: clarify expected lifetime and usage pattern.
          */
         [[nodiscard]] virtual const void* data() const = 0;
 

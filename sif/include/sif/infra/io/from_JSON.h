@@ -1,27 +1,20 @@
 /***************************************************************
- * Project:       Render_Engine
- * File:          from_JSON.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2026-01-17
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of Render_Engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2026-01-17
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_IO_FROM_JSON_H
 #define RENDER_ENGINE_IO_FROM_JSON_H
 
+#include <filesystem>
 #include <fstream>
 
 #include "json.hpp"
-#include "infra/diagnostics/Logger.h"
+#include "sif/infra/diagnostics/Logger.h"
 
 namespace sif::infra::io {
 

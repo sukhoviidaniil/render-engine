@@ -1,17 +1,11 @@
 /***************************************************************
- * Project:         Render_Engine
- * File:            Size.h
- *
- * Author:          Sukhovii Daniil
- * Contact:
- * Email:           Sukhovii Daniil
- * Created:         2025-12-19
- *
- * Description:     []
- *
- * Disclaimer:
- *  This file is part of Render_Engine.
- *  Unauthorized use, reproduction, or distribution is prohibited.
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-19
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_SIZE_H
 #define RENDER_ENGINE_SIZE_H

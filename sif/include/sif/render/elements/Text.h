@@ -1,19 +1,14 @@
 /***************************************************************
- * Project:       render-engine
- * File:          RI_Text.h
+* Project:          Render_Engine
+ * File:            Text.h
  *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-24
- * Modified:      []
+ * Author:          Daniil Sukhovii
+ * Email:           sukhovii.daniil@gmail.com
+ * Created:         2025-12-24
  *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+ * License:
+ *      c. 2026 Daniil Sukhovii. All rights reserved.
+ *      Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_AST_RI_TEXT_H
 #define RENDER_ENGINE_AST_RI_TEXT_H
@@ -21,9 +16,10 @@
 #include <string>
 
 #include "RenderNode.h"
-#include "internal/Color.h"
-#include "asset/AssetHandle.h"
-#include "asset/internal/Font.h"
+
+#include "sif/internal/Color.h"
+#include "sif/asset/AssetHandle.h"
+#include "sif/asset/internal/Font.h"
 
 namespace sif::rnd {
     struct Text : RenderNode {

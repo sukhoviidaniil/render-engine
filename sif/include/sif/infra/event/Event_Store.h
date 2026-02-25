@@ -1,19 +1,14 @@
 /***************************************************************
- * Project:       render-engine
- * File:          Event_Store.h
- *
- * Author:        Sukhovii Daniil
- * Created:       2025-12-18
- * Modified:      []
- *
- * Description:   []
- *
- * Contact:
- *   Email:       sukhovii.daniil@gmail.com
- *
- * Disclaimer:
- *   This file is part of render-engine.
- *   Unauthorized use, reproduction, or distribution is prohibited.
+* Project:          Render_Engine
+* File:             Event_Store.h
+*
+* Author:           Daniil Sukhovii
+* Email:            sukhovii.daniil@gmail.com
+* Created:          2025-12-18
+*
+* License:
+*       c. 2026 Daniil Sukhovii. All rights reserved.
+*       Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 #ifndef RENDER_ENGINE_EVENT_STORE_H
 #define RENDER_ENGINE_EVENT_STORE_H
@@ -108,8 +103,6 @@ namespace sif::infra::event {
          *
          * @tparam Event Expected event type.
          * @param i Index of the event.
-         *
-         * @note TODO: clarify required preconditions for type safety.
          */
         template<typename Event>
         const Event& get(std::size_t i) const;
