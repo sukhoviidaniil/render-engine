@@ -21,9 +21,10 @@
 #include <iostream>
 #include <string>
 
-#include "../infra/diagnostics/Logger.h"
-#include "../layout_engine/Tokenizer.h"
-#include "registry/AssetImporter.h"
+#include "sif/infra/diagnostics/Logger.h"
+#include "sif/layout_engine/Tokenizer.h"
+#include "sif/asset/internal/AssetImporter.h"
+#include "sif/layout_engine/Token.h"
 
 namespace sif {
     inline void reference_serialization(const std::string& dir, const std::string& serialized_dir) {
@@ -47,7 +48,7 @@ namespace sif {
                     auto it = token.attributes.find("asset_name");
                     if (it != token.attributes.end()) {
                         std::string asset_name = it->second;
-                        asset::AssetDesc desc = sif::rgst::AssetImporter::instance().get(asset_name);
+                        asset::AssetDesc desc = sif::asset::AssetImporter::instance().get(asset_name);
                         intrnl::GUID guid = desc.meta.guid;
 
                         token.attributes.erase(it);

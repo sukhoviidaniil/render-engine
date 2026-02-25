@@ -1,0 +1,15 @@
+# Specify the path to SFML
+set(SFML_RELATIVE_DIR "external/SFML-2.6.1")
+if(WIN32)
+    set(SFML_RELATIVE_DIR "${SFML_RELATIVE_DIR}/windows")
+elseif(UNIX)
+    set(SFML_RELATIVE_DIR "${SFML_RELATIVE_DIR}/linux")
+endif()
+set(SFML_ROOT "${CMAKE_SOURCE_DIR}/${SFML_RELATIVE_DIR}")
+set(CMAKE_PREFIX_PATH "${SFML_ROOT}/lib/cmake/SFML")
+find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
+
+file(GLOB_RECURSE SFML_SIF_TEST_APP_SRC "*.cpp")
+set(SFML_SIF_TEST_APP "SFML_SIF_Test_App")
+add_executable(${SFML_SIF_TEST_APP} ${SFML_SIF_TEST_APP_SRC})
+target_link_libraries(${SFML_SIF_TEST_APP} PRIVATE sif_lib)
