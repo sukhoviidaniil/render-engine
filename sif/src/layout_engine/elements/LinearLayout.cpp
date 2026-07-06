@@ -11,10 +11,10 @@
 #include "sif/layout_engine/elements/LinearLayout.h"
 
 namespace sif::ui {
-    infra::math::Vector2 LinearLayout::measure(const infra::math::Vector2 &available) {
+    math::Vector2 LinearLayout::measure(const math::Vector2 &available) {
         const bool is_h = horizontal();
 
-        infra::math::Vector2 total{0.f, 0.f};
+        math::Vector2 total{0.f, 0.f};
         int visible_count = 0;
 
         for (auto& c : children) {
@@ -23,11 +23,11 @@ namespace sif::ui {
             visible_count++;
 
             // Limit measurement along the main axis
-            infra::math::Vector2 limit = available;
+            math::Vector2 limit = available;
             if (is_h) limit.x = std::max(0.f, available.x - total.x);
             else      limit.y = std::max(0.f, available.y - total.y);
 
-            infra::math::Vector2 cs = c->measure(limit);
+            math::Vector2 cs = c->measure(limit);
 
             if (is_h) {
                 total.x += cs.x;
@@ -52,8 +52,8 @@ namespace sif::ui {
 
             const bool is_h = horizontal();
 
-            infra::math::Point2 origin{r.x, r.y};
-            infra::math::Vector2 size{r.width, r.height};
+            math::Point2 origin{r.x, r.y};
+            math::Vector2 size{r.width, r.height};
 
             const float main  = is_h ? size.x : size.y;
             const float cross = is_h ? size.y : size.x;
@@ -70,7 +70,7 @@ namespace sif::ui {
                 if (c->flex > 0.f) {
                     flex_sum += c->flex;
                 } else {
-                    infra::math::Vector2 s = c->measure(size);
+                    math::Vector2 s = c->measure(size);
                     fixed += is_h ? s.x : s.y;
                 }
             }
@@ -85,7 +85,7 @@ namespace sif::ui {
             for (auto& c : children) {
                 if (!c->visible) continue;
 
-                infra::math::Vector2 s = c->measure(size);
+                math::Vector2 s = c->measure(size);
 
                 float main_size =
                     (c->flex > 0.f && flex_sum > 0.f)

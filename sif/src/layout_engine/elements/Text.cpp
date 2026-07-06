@@ -13,7 +13,7 @@
 
 namespace sif::ui {
 
-    infra::math::Vector2 Text::measure(const infra::math::Vector2 &available)  {
+    math::Vector2 Text::measure(const math::Vector2 &available)  {
         if (!font.ready() || text.empty()) {
             return {0.f, 0.f};
         }

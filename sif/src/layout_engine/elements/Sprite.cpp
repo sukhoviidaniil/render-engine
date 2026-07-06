@@ -21,8 +21,8 @@ namespace sif::ui {
         height.value = sprite_height;
     }
 
-    infra::math::Vector2 Sprite::measure(const infra::math::Vector2 &available)  {
-        infra::math::Vector2 size{
+    math::Vector2 Sprite::measure(const math::Vector2 &available)  {
+        math::Vector2 size{
             std::max(0.f, available.x),
             std::max(0.f, available.y)
         };

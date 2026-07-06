@@ -49,4 +49,29 @@ namespace sif::asset {
         const auto r = record_.lock();
         return r ? r->get_meta().guid: intrnl::GUID{};
     }
+
+    template<class T>
+    void AssetHandle<T>::on_ready(std::function<void(T*)> callback) const {
+        const auto r = record_.lock();
+        if (!r) {
+            // Nothing to wait for: the underlying asset no longer exists.
+            callback(nullptr);
+            return;
+        }
+
+        std::weak_ptr<AssetRecord> weak_record = record_;
+        r->on_complete([weak_record, callback = std::move(callback)](AssetState final_state) {
+            if (final_state != AssetState::Ready) {
+                callback(nullptr);
+                return;
+            }
+            const auto locked = weak_record.lock();
+            if (!locked) {
+                callback(nullptr);
+                return;
+            }
+            const auto typed = std::static_pointer_cast<T>(locked->get_data());
+            callback(typed.get());
+        });
+    }
 }

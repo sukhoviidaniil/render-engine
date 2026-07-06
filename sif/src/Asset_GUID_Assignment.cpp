@@ -9,7 +9,7 @@
 ***************************************************************/
 #include <iostream>
 
-#include "sif/infra/diagnostics/Logger.h"
+#include "sif/diagnostics/Logger.h"
 #include "sif/asset/internal/AssetImporter.h"
 
 int main(int argc, char* argv[]) {

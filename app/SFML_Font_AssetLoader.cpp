@@ -25,7 +25,7 @@
 
 
 namespace sif::sfml {
-    void SFML_Font_AssetLoader::load_asset(asset::AssetRecord &record, const std::string& asset_dir) {
+    void SFML_Font_AssetLoader::load_asset(asset::AssetRecord &record, const std::string& asset_dir, uint64_t attempt_token) {
         std::unique_ptr<asset::data::FontNode> data = asset::data::AssetDataLoader::instance().load_Font_from_file(asset_dir + record.get_conf_path());
         sf::Font font;
         const std::string path = asset_dir + data->source;
@@ -39,7 +39,9 @@ namespace sif::sfml {
 
         const std::shared_ptr<asset::Font> fff = std::make_shared<asset::Font>(std::move(ff));
 
-        record.set_data(fff);
-        record.set_state(asset::AssetState::Ready);
+        // Guarded write: discarded if a newer load attempt has since
+        // started for this asset. The Ready/Failed state transition
+        // itself is owned by IAssetLoader::try_load, not here.
+        record.set_data_if_current(attempt_token, fff);
     }
 }

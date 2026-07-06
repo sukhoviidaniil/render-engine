@@ -10,8 +10,8 @@
 
 #include <thread>
 
-#include "sif/infra/diagnostics/Logger.h"
-#include "sif/infra/diagnostics/LogScope.h"
+#include "sif/diagnostics/Logger.h"
+#include "sif/diagnostics/LogScope.h"
 
 #include "sif/asset/AssetRegistry.h"
 
@@ -32,6 +32,24 @@ namespace sif::asset {
 
     void AssetRegistry::set_asset_dir(const std::string &dir) {
         asset_dir = dir;
+    }
+
+    void AssetRegistry::set_max_concurrent_loads(size_t max_concurrent_loads) {
+        {
+            std::lock_guard lock(queue_mtx_);
+            if (max_concurrent_loads == 0) {
+                LOG("AssetRegistry::set_max_concurrent_loads - 0 is not allowed, clamping to 1");
+                max_concurrent_loads = 1;
+            }
+            max_concurrent_loads_ = max_concurrent_loads;
+        }
+        // Raising the limit may free up capacity for already queued assets.
+        try_start_next_load();
+    }
+
+    size_t AssetRegistry::max_concurrent_loads() const {
+        std::lock_guard lock(queue_mtx_);
+        return max_concurrent_loads_;
     }
 
     void AssetRegistry::register_loader(const AssetType type, std::unique_ptr<IAssetLoader> loader) {
@@ -62,41 +80,96 @@ namespace sif::asset {
         LOG_SCOPE();
         LOG("Requsted GUID: " + id.string());
         auto rec = by_guid_.find(id);
-        if (rec != by_guid_.end()) {
-            // record exist
-            const std::shared_ptr<AssetRecord> record = rec->second;
-            const AssetState state = record->get_state();
-            // If we haven't tried to download it yet, let's try it.
-            if (state == AssetState::NotRequested) {
-                const AssetType type = record->get_meta().type;
+        if (rec == by_guid_.end()) {
+            const std::string err = "Failed to load GUID: " + id.string();
+            LOG(err);
+            throw std::runtime_error(err);
+        }
 
-                // find loader
-                auto ld = loaders_.find(type);
-                if (ld != loaders_.end()) {
-                    record->set_state(AssetState::Loading);
-                    // Use a raw pointer so as not to move unique_ptr
+        const std::shared_ptr<AssetRecord> record = rec->second;
 
-                    IAssetLoader* loader = ld->second.get();
-                    std::weak_ptr<asset::AssetRecord> weak_record = record;
-                    const std::string dir = asset_dir;
-
-                    std::thread t([loader, weak_record, dir] {
-                        if (auto rec = weak_record.lock()) {
-                            loader->try_load(*rec, dir);
-                        }
-                    });
-
-                    t.detach();
-                }else{
-                    record->set_state(AssetState::Failed);
-                    const std::string err = "There is no loader for: " + to_string(type);
-                    LOG(err);
-                }
-            }
+        // If we have already requested (queued, loading, ready or
+        // failed) it before, there is nothing left to do.
+        if (record->get_state() != AssetState::NotRequested) {
             return;
         }
-        const std::string err = "Failed to load GUID: " + id.string();
-        LOG(err);
-        throw std::runtime_error(err);
+
+        const AssetType type = record->get_meta().type;
+        if (!loaders_.contains(type)) {
+            record->set_state(AssetState::Failed);
+            const std::string err = "There is no loader for: " + to_string(type);
+            LOG(err);
+            return;
+        }
+
+        // Enqueue the request; the actual background load is started
+        // by try_start_next_load once a slot is free.
+        record->set_state(AssetState::Queued);
+        {
+            std::lock_guard lock(queue_mtx_);
+            load_queue_.push(id);
+        }
+
+        try_start_next_load();
+    }
+
+    void AssetRegistry::try_start_next_load() {
+        std::lock_guard lock(queue_mtx_);
+
+        while (active_loads_ < max_concurrent_loads_ && !load_queue_.empty()) {
+            const intrnl::GUID id = load_queue_.front();
+            load_queue_.pop();
+
+            const auto rec = by_guid_.find(id);
+            if (rec == by_guid_.end()) {
+                continue; // record was removed while it was queued
+            }
+
+            const std::shared_ptr<AssetRecord> record = rec->second;
+            const AssetType type = record->get_meta().type;
+
+            const auto ld = loaders_.find(type);
+            if (ld == loaders_.end()) {
+                // Loader was unregistered after this asset was queued.
+                record->set_state(AssetState::Failed);
+                const std::string err = "There is no loader for: " + to_string(type);
+                LOG(err);
+                continue;
+            }
+
+            record->set_state(AssetState::Loading);
+            ++active_loads_;
+
+            IAssetLoader* loader = ld->second.get();
+            std::weak_ptr<asset::AssetRecord> weak_record = record;
+            const std::string dir = asset_dir;
+
+            // Use a raw pointer so as not to move unique_ptr
+            std::thread t([this, loader, weak_record, dir] {
+                if (const auto locked_record = weak_record.lock()) {
+                    try {
+                        loader->try_load(*locked_record, dir);
+                    } catch (...) {
+                        // try_load already logged the error and set
+                        // AssetState::Failed; swallow here so a
+                        // detached worker thread never propagates an
+                        // exception out of the thread function.
+                    }
+                }
+                on_load_finished();
+            });
+
+            t.detach();
+        }
+    }
+
+    void AssetRegistry::on_load_finished() {
+        {
+            std::lock_guard lock(queue_mtx_);
+            if (active_loads_ > 0) {
+                --active_loads_;
+            }
+        }
+        try_start_next_load();
     }
 }

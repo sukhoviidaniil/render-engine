@@ -12,7 +12,7 @@
 #include <fstream>
 #include <stdexcept>
 
-#include "sif/infra/diagnostics/Logger.h"
+#include "sif/diagnostics/Logger.h"
 #include "sif/layout_engine/Tokenizer.h"
 
 namespace sif::ui {

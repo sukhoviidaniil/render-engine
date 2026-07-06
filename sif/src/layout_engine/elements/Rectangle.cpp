@@ -24,8 +24,8 @@ namespace sif::ui {
         , border_width(border_w) {
     }
 
-    infra::math::Vector2 Rectangle::measure(const infra::math::Vector2 &available) {
-        infra::math::Vector2 size{
+    math::Vector2 Rectangle::measure(const math::Vector2 &available) {
+        math::Vector2 size{
             std::max(0.f, available.x),
             std::max(0.f, available.y)
         };

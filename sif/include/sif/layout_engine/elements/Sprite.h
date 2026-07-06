@@ -19,7 +19,7 @@ namespace sif::ui {
     public:
         explicit Sprite(std::string  sprite, float sprite_width, float sprite_height);
 
-        infra::math::Vector2 measure(const infra::math::Vector2& available) override;
+        math::Vector2 measure(const math::Vector2& available) override;
 
         void append_render_items(rnd::RenderFrame& frame, const rnd::FrameContext& /*ctx*/) const override;
 

@@ -12,7 +12,7 @@
 
 #include <memory>
 
-#include "sif/infra/math/Vector2.h"
+#include "sif/math/Vector2.h"
 #include "sif/internal/Size.h"
 #include "sif/internal/Rect.h"
 
@@ -53,7 +53,7 @@ namespace sif::ui {
          * @param available Available space for this element.
          * @return Desired size of the element.
          */
-        virtual infra::math::Vector2 measure(const infra::math::Vector2& available);
+        virtual math::Vector2 measure(const math::Vector2& available);
 
         /**
          * @brief Assigns the final layout rectangle to the element.
@@ -71,11 +71,11 @@ namespace sif::ui {
         intrnl::Size width  = intrnl::Size::auto_(); ///< Width specification
         intrnl::Size height = intrnl::Size::auto_(); ///< Height specification
 
-        infra::math::Vector2 min_size {0, 0};         ///< Minimum allowed size
-        infra::math::Vector2 max_size {1e9f, 1e9f};   ///< Maximum allowed size
+        math::Vector2 min_size {0, 0};         ///< Minimum allowed size
+        math::Vector2 max_size {1e9f, 1e9f};   ///< Maximum allowed size
 
-        infra::math::Vector2 margin  {0, 0}; ///< External spacing
-        infra::math::Vector2 padding {0, 0}; ///< Internal spacing
+        math::Vector2 margin  {0, 0}; ///< External spacing
+        math::Vector2 padding {0, 0}; ///< Internal spacing
 
         float flex = 0.f; ///< Flex grow factor (0 = fixed, >0 = expandable)
 
@@ -96,7 +96,7 @@ namespace sif::ui {
          * @param available Available space from the parent.
          * @return Resolved size.
          */
-        [[nodiscard]] infra::math::Vector2 resolve_size(const infra::math::Vector2 &available) const;
+        [[nodiscard]] math::Vector2 resolve_size(const math::Vector2 &available) const;
     };
 }
 

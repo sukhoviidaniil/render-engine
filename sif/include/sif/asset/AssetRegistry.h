@@ -10,6 +10,8 @@
 #ifndef RENDER_ENGINE_ASSETREGISTRY_H
 #define RENDER_ENGINE_ASSETREGISTRY_H
 
+#include <mutex>
+#include <queue>
 #include <unordered_map>
 
 #include "internal/AssetRecord.h"
@@ -18,6 +20,16 @@
 
 
 namespace sif::asset {
+    /**
+     * @brief Central registry of known assets and their load state.
+     *
+     * Asset loads go through a FIFO queue: request() enqueues the asset
+     * (if it is not already queued/loading/loaded), and up to
+     * max_concurrent_loads() requests are worked on at the same time,
+     * each on its own background thread. As soon as a load finishes
+     * (successfully or not), the next queued request (if any) is
+     * started.
+     */
     class AssetRegistry{
     public:
         static AssetRegistry& instance();
@@ -29,6 +41,22 @@ namespace sif::asset {
 
         void set_asset_dir(const std::string& dir);
 
+        /**
+         * @brief Sets how many assets may be loaded at the same time.
+         *
+         * Requesting 0 is clamped to 1 (a value of 0 would stall the
+         * queue forever) and logged as a warning. If raising the limit
+         * frees up capacity, queued requests are started immediately.
+         *
+         * @param max_concurrent_loads Maximum number of simultaneous loads.
+         */
+        void set_max_concurrent_loads(size_t max_concurrent_loads);
+
+        /**
+         * @brief Returns the current maximum number of simultaneous loads.
+         */
+        [[nodiscard]] size_t max_concurrent_loads() const;
+
         void register_loader(
             asset::AssetType type,
             std::unique_ptr<asset::IAssetLoader> loader
@@ -37,6 +65,16 @@ namespace sif::asset {
         void add_AssetRecord(asset::AssetDesc desc);
         void add_AssetRecord(const asset::AssetRecord& other);
 
+        /**
+         * @brief Requests that the asset with the given id be loaded.
+         *
+         * If the asset has not been requested before, it is placed at
+         * the back of the load queue (state becomes AssetState::Queued)
+         * and a background load is started as soon as a load slot is
+         * free (see set_max_concurrent_loads). Calling this again for
+         * an asset that is already queued, loading, ready, or failed
+         * has no effect.
+         */
         void request(intrnl::GUID id);
 
         template<typename T>
@@ -47,6 +85,21 @@ namespace sif::asset {
 
         bool uniq_GUID(const intrnl::GUID& guid) const;
 
+        /**
+         * @brief Starts background loads for queued assets while there
+         * is spare capacity (active_loads_ < max_concurrent_loads_).
+         *
+         * Safe to call any time; it is a no-op if the queue is empty or
+         * the registry is already at capacity.
+         */
+        void try_start_next_load();
+
+        /**
+         * @brief Called by a worker thread once its load attempt is
+         * over (successful or not). Frees up a load slot and tries to
+         * start the next queued load.
+         */
+        void on_load_finished();
 
         std::string asset_dir;
 
@@ -61,6 +114,13 @@ namespace sif::asset {
             asset::AssetType,
             std::unique_ptr<asset::IAssetLoader>
         > loaders_;
+
+        // ========== Load queue / concurrency control ==========
+
+        mutable std::mutex queue_mtx_; ///< Guards load_queue_, active_loads_, max_concurrent_loads_
+        std::queue<intrnl::GUID> load_queue_; ///< Assets waiting for a free load slot
+        size_t active_loads_ = 0; ///< Number of loads currently in flight
+        size_t max_concurrent_loads_ = 4; ///< Configurable cap on simultaneous loads
     };
 }
 

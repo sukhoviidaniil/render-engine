@@ -11,7 +11,7 @@
 #define RENDER_ENGINE_RB_FROM_JSON_H
 
 
-#include "sif/infra/io/from_JSON.h"
+#include "sif/io/from_JSON.h"
 
 #include "sif/asset/internal/data/AssetMetaData.h"
 #include "sif/asset/internal/data/FontNode.h"
@@ -23,6 +23,10 @@ namespace sif::asset::data {
         d.guid = intrnl::GUID(infra::io::get_checked<std::string>(j, "guid"));
         d.type = from_string(infra::io::get_checked<std::string>(j, "type"));
         d.asset_name = infra::io::get_checked<std::string>(j, "asset_name");
+
+        d.expected_load_time_seconds = infra::io::get_checked<double>(
+            j, "expected_load_time_seconds", d.expected_load_time_seconds
+        );
 
         d.record_id_to_name = infra::io::get_checked<std::unordered_map<uint32_t, std::string>>(j, "record_id_to_name", d.record_id_to_name);
         d.record_name_to_id.reserve(d.record_id_to_name.size());
@@ -36,6 +40,7 @@ namespace sif::asset::data {
             { "guid", d.guid.string() },
             { "type", to_string(d.type) },
             { "asset_name", d.asset_name },
+            { "expected_load_time_seconds", d.expected_load_time_seconds },
             { "record_id_to_name", d.record_id_to_name }
         };
     }

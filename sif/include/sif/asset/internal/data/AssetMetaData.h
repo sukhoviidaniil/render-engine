@@ -23,6 +23,17 @@ namespace sif::asset::data {
         AssetType type = AssetType::Undefined;
         std::string asset_name = "NONE";
 
+        /**
+         * @brief Promised load time, in seconds.
+         *
+         * If actually loading the asset takes longer than this, the
+         * load is considered late: a warning is logged and the load
+         * is retried once with a doubled time budget (see
+         * IAssetLoader::try_load). If the retry also exceeds its
+         * (doubled) budget, the asset is marked AssetState::Failed.
+         */
+        double expected_load_time_seconds = 5.0;
+
         std::unordered_map<
             uint32_t,
             std::string

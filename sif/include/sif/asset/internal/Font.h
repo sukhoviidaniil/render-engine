@@ -10,8 +10,8 @@
 #ifndef RENDER_ENGINE_ASSETS_FONT_H
 #define RENDER_ENGINE_ASSETS_FONT_H
 
-#include "sif/infra/internal/ErasedObject.h"
-#include "sif/infra/math/Vector2.h"
+#include "../../internal/ErasedObject.h"
+#include "sif/math/Vector2.h"
 
 namespace sif::asset {
     class Font {
@@ -25,7 +25,7 @@ namespace sif::asset {
         Font(Font&&) noexcept;
         Font& operator=(Font&&) noexcept;
 
-        [[nodiscard]] virtual infra::math::Vector2 measure_text(const std::string& str, unsigned int size) const = 0;
+        [[nodiscard]] virtual math::Vector2 measure_text(const std::string& str, unsigned int size) const = 0;
     };
 }
 

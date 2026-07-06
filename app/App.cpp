@@ -13,7 +13,7 @@
 #include "Graphics_Factory.h"
 #include "sif/infra/diagnostics/Logger.h"
 #include "sif/infra/event/events/window.hpp"
-#include "sif/infra/internal/Delta_Timer.h"
+#include "../sif/include/sif/internal/Delta_Timer.h"
 #include "sif/layout_engine/Parser.h"
 #include "sif/layout_engine/Tokenizer.h"
 #include "sif/layout_engine/UIFactory.h"

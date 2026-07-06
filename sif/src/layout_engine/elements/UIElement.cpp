@@ -16,8 +16,8 @@ namespace sif::ui {
         children.push_back(std::move(child));
     }
 
-    infra::math::Vector2 UIElement::measure(const infra::math::Vector2 &available)  {
-        infra::math::Vector2 total_size {0, 0};
+    math::Vector2 UIElement::measure(const math::Vector2 &available)  {
+        math::Vector2 total_size {0, 0};
 
         for (auto& child : children) {
             auto child_size = child->measure(available);
@@ -40,7 +40,7 @@ namespace sif::ui {
         float y_offset = r.y + padding.y;
 
         for (auto& child : children) {
-            infra::math::Vector2 child_size = child->resolve_size({r.width - padding.x*2, r.height - padding.y*2});
+            math::Vector2 child_size = child->resolve_size({r.width - padding.x*2, r.height - padding.y*2});
 
             intrnl::Rect child_rect {
                 r.x + padding.x + child->margin.x,
@@ -61,8 +61,8 @@ namespace sif::ui {
         }
     }
 
-    infra::math::Vector2 UIElement::resolve_size(const infra::math::Vector2 &available) const  {
-        infra::math::Vector2 out;
+    math::Vector2 UIElement::resolve_size(const math::Vector2 &available) const  {
+        math::Vector2 out;
 
         auto resolve = [&](const intrnl::Size s, const float avail) {
             if (s.type == intrnl::Size::Type::Pixel)   return s.value;

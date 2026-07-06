@@ -10,7 +10,7 @@
 #ifndef RENDER_ENGINE_LINEARLAYOUT_H
 #define RENDER_ENGINE_LINEARLAYOUT_H
 
-#include "sif/infra/math/Vector2.h"
+#include "sif/math/Vector2.h"
 #include "sif/internal/Alignment.h"
 #include "sif/internal/Rect.h"
 #include "sif/layout_engine/elements/UIElement.h"
@@ -52,7 +52,7 @@ namespace sif::ui {
          * @param available Available space from the parent.
          * @return Desired size of the layout.
          */
-        infra::math::Vector2 measure(const infra::math::Vector2 &available) override;
+        math::Vector2 measure(const math::Vector2 &available) override;
 
         /**
          * @brief Lays out children within the assigned rectangle.

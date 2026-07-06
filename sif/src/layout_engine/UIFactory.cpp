@@ -30,8 +30,7 @@ namespace sif::ui {
         if (it == map_.end()) {
             throw std::runtime_error("Unknown tag: " + n.tag);
         }
-
-
+        
         auto el = it->second(n);
 
         for (auto& c : n.children) {

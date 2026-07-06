@@ -15,7 +15,7 @@
 #include <string>
 #include <unordered_set>
 
-#include "sif/infra/internal/Random.h"
+#include "Random.h"
 
 namespace sif::intrnl {
     struct GUID {
@@ -53,7 +53,7 @@ namespace sif::intrnl {
         do {
             g = GUID{
                 static_cast<std::uint32_t>(
-                    infra::intr::Random::instance().next_int(
+                    Random::instance().next_int(
                         1,
                         static_cast<int>(std::numeric_limits<std::uint32_t>::max())
                     )

@@ -38,7 +38,7 @@ namespace sif::ui {
          * @param available Available space.
          * @return Desired size of the text.
          */
-        infra::math::Vector2 measure(const infra::math::Vector2& available) override;
+        math::Vector2 measure(const math::Vector2& available) override;
         void append_render_items(rnd::RenderFrame& frame, const rnd::FrameContext& ctx) const override;
 
 

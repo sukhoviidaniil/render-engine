@@ -13,7 +13,7 @@
 #include <iostream>
 #include <string>
 
-#include "sif/infra/diagnostics/Logger.h"
+#include "sif/diagnostics/Logger.h"
 #include "sif/layout_engine/Tokenizer.h"
 #include "sif/asset/internal/AssetImporter.h"
 #include "sif/layout_engine/Token.h"

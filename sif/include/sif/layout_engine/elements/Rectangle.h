@@ -10,7 +10,7 @@
 #ifndef RENDER_ENGINE_RECTANGLE_H
 #define RENDER_ENGINE_RECTANGLE_H
 
-#include "sif/infra/math/Vector2.h"
+#include "sif/math/Vector2.h"
 #include "sif/layout_engine/elements/UIElement.h"
 #include "sif/internal/Color.h"
 
@@ -25,7 +25,7 @@ namespace sif::ui {
             int border_w = 0
         );
 
-        infra::math::Vector2 measure(const infra::math::Vector2& available) override;
+        math::Vector2 measure(const math::Vector2& available) override;
 
         void append_render_items(rnd::RenderFrame& frame, const rnd::FrameContext& ctx) const override;
 
