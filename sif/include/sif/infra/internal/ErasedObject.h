@@ -18,7 +18,7 @@
 #ifndef RENDER_ENGINE_ERASEDOBJECT_H
 #define RENDER_ENGINE_ERASEDOBJECT_H
 
-#include "infra/internal/TypeId.h"
+#include "sif/infra/internal/TypeId.h"
 
 namespace sif::infra::intr {
     class ErasedObject {
@@ -67,6 +67,6 @@ namespace sif::infra::intr {
     };
 }
 
-#include "infra/internal/ErasedObject.inl"
+#include "ErasedObject.inl"
 
 #endif //RENDER_ENGINE_ERASEDOBJECT_H

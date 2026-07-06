@@ -32,8 +32,8 @@ infra::Random::instance().chance((p))
 infra::Random::instance().engine()
 
 #include <random>
-#include <cstdint>
-namespace infra::intr{
+
+namespace sif::infra::intr{
 
     /**
      * @brief Singleton random number generator utility.

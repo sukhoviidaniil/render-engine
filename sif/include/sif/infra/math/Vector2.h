@@ -16,7 +16,7 @@
 #include "Point2.h"
 #include <functional>
 
-namespace sif::infra::math {
+namespace sif::math {
     /**
      * @brief 2D vector class with floating-point coordinates.
      *

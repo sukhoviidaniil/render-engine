@@ -30,37 +30,33 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16a9d48e-3273-4a3a-850a-ebcf1e2732f7" name="Changes" comment="H refactor">
+    <list default="true" id="16a9d48e-3273-4a3a-850a-ebcf1e2732f7" name="Changes" comment="CPP refactor">
+      <change afterPath="$PROJECT_DIR$/app/App.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Graphics_Factory.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Graphics_Factory.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/include/sif/infra/diagnostics/CycleFinder.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/include/sif/infra/diagnostics/DeclarationGraphBuilder.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/include/sif/infra/diagnostics/PlantUmlExporter.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/include/sif/infra/math/Graph.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/include/sif/infra/math/Matrix.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/include/sif/infra/math/Vector.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/src/infra/diagnostics/CycleFinder.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/src/infra/diagnostics/DeclarationGraphBuilder.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/src/infra/diagnostics/PlantUmlExporter.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/src/infra/math/Graph.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/src/infra/math/Matrix.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sif/src/infra/math/Vector.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/Asset_GUID_Assignment.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/Asset_GUID_Assignment.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/Asset_Reference_Serialization.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/Asset_Reference_Serialization.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/assets/AssetDataLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/AssetDataLoader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/assets/AssetImporter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/AssetImporter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/assets/AssetRecord.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/AssetRecord.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Bus.inl" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/event/Event_Bus.inl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/internal/ErasedObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/internal/ErasedObject.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/internal/Random.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/internal/Random.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/math/Point2.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/math/Point2.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sif/include/sif/infra/math/Vector2.h" beforeDir="false" afterPath="$PROJECT_DIR$/sif/include/sif/infra/math/Vector2.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sif/src/assets/AssetRegistry.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/AssetRegistry.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/assets/Font.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/Font.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/assets/IAssetLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/assets/IAssetLoader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/infra/diagnostics/LogScope.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/diagnostics/LogScope.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/infra/diagnostics/Logger.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/diagnostics/Logger.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/infra/event/Event_Bus.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/event/Event_Bus.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/infra/event/Event_Store.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/event/Event_Store.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/infra/event/Observer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/event/Observer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/infra/internal/Delta_Timer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/internal/Delta_Timer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/infra/internal/ErasedObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/internal/ErasedObject.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/infra/internal/Random.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/internal/Random.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sif/src/infra/math/Point2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/math/Point2.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sif/src/infra/math/Vector2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/infra/math/Vector2.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/internal/Color.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/internal/Color.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/internal/GUID.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/internal/GUID.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/internal/Size.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/internal/Size.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/Parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/Parser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/Tokenizer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/Tokenizer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/UIFactory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/UIFactory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/elements/LinearLayout.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/elements/LinearLayout.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/elements/Rectangle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/elements/Rectangle.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/elements/Sprite.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/elements/Sprite.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/elements/Text.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/elements/Text.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sif/src/layout_engine/elements/UIElement.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sif/src/layout_engine/elements/UIElement.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +118,7 @@
     &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -133,7 +130,20 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sif/src/infra/diagnostics" />
+      <recent name="$PROJECT_DIR$/sif/include/sif/infra/diagnostics" />
+      <recent name="$PROJECT_DIR$/sif/include/sif/infra/math" />
+      <recent name="$PROJECT_DIR$/sif/src/infra/math" />
+    </key>
+  </component>
   <component name="RunManager" selected="CMake Application.SFML_SIF_Test_App">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Asset_GUID_Assignment" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Render_Engine" TARGET_NAME="Asset_GUID_Assignment" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Render_Engine" RUN_TARGET_NAME="Asset_GUID_Assignment">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -149,20 +159,15 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="sif_lib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Render_Engine" TARGET_NAME="sif_lib" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.SFML_SIF_Test_App" />
       <item itemvalue="CMake Application.Asset_GUID_Assignment" />
       <item itemvalue="CMake Application.Asset_Reference_Serialization" />
+      <item itemvalue="CMake Application.SFML_SIF_Test_App" />
       <item itemvalue="CMake Application.sif_lib" />
     </list>
   </component>
@@ -178,7 +183,10 @@
       <workItem from="1772013839634" duration="1000" />
       <workItem from="1772017221435" duration="21000" />
       <workItem from="1772017293483" duration="287000" />
-      <workItem from="1772017628745" duration="5798000" />
+      <workItem from="1772017628745" duration="7140000" />
+      <workItem from="1773152855331" duration="58000" />
+      <workItem from="1783340229010" duration="69000" />
+      <workItem from="1783340316768" duration="6873000" />
     </task>
     <task id="LOCAL-00001" summary="H refactor">
       <option name="closed" value="true" />
@@ -188,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772022529293</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="CPP refactor">
+      <option name="closed" value="true" />
+      <created>1772023474876</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1772023474877</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,10 +214,31 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+    <isAutomaticBootstrapAfterUpdate value="false" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="159" />
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="188" />
+                  <entry key="Table.GitHub.CommitStatus.ColumnIdWidth" value="69" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="H refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="H refactor" />
+    <MESSAGE value="CPP refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="CPP refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,7 +1,4 @@
 /***************************************************************
-* Project:          Render_Engine
-* File:             Point2.h
-*
 * Author:           Daniil Sukhovii
 * Email:            sukhovii.daniil@gmail.com
 * Created:          2025-12-13
@@ -15,7 +12,7 @@
 
 #include <iosfwd>
 
-namespace sif::infra::math {
+namespace sif::math {
     /**
      * @brief 2D point or vector with floating-point coordinates.
      *

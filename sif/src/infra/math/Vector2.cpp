@@ -12,7 +12,7 @@
 #include <string>
 #include "sif/infra/math/Vector2.h"
 
-namespace sif::infra::math {
+namespace sif::math {
 
     Point2 Vector2::to_Point2() const {
         return {x, y};

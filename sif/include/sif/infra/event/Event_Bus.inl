@@ -12,6 +12,8 @@
 ***************************************************************/
 #pragma once
 
+#include <algorithm>
+
 #include "Event.h"
 #include "Event_Bus.h"
 

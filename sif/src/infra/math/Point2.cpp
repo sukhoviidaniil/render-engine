@@ -11,7 +11,7 @@
 #include <string>
 #include "sif/infra/math/Point2.h"
 
-namespace sif::infra::math {
+namespace sif::math {
 
     constexpr Point2::Point2() = default;
 

@@ -21,10 +21,11 @@
 
 #include <string>
 
-#include "infra/event/Event_Bus.h"
-#include "rb/layout_engine/UIFactory.h"
-#include "rb/registry/AssetImporter.h"
-#include "include/App.h"
+#include "sif/infra/event/Event_Bus.h"
+#include "sif/layout_engine/UIFactory.h"
+
+#include "App.h"
+#include "sif/asset/internal/AssetImporter.h"
 
 
 int main() {
@@ -34,9 +35,8 @@ int main() {
     const std::string ui_file = serialized_scenes_dir + "ui1.ui.xml";
 
     // Instantiation of basic things
-    infra::intr::Random::instance();
-    infra::diag::Logger::instance();
-    rb::rgst::AssetImporter::instance();
+
+    sif::asset::AssetImporter::instance();
     const auto eventbus = std::make_shared<infra::event::Event_Bus>(); // GLOBAL
 
     // Load and save the Registry of assets

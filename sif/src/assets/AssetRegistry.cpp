@@ -82,7 +82,7 @@ namespace sif::asset {
 
                     std::thread t([loader, weak_record, dir] {
                         if (auto rec = weak_record.lock()) {
-                            loader->load(*rec, dir);
+                            loader->try_load(*rec, dir);
                         }
                     });
 
