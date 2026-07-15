@@ -18,23 +18,29 @@ namespace sif::asset {
         Font,
         SpriteSingle,
         SpriteAtlas,
-        SpriteGrid
+        SpriteGrid,
+        PrimitiveAnimation,
+        Sound
     };
 
     inline AssetType from_string(const std::string& s) {
-        if (s == "Font")            return AssetType::Font;
-        if (s == "SpriteSingle")    return AssetType::SpriteSingle;
-        if (s == "SpriteAtlas")     return AssetType::SpriteAtlas;
-        if (s == "SpriteGrid")      return AssetType::SpriteGrid;
+        if (s == "Font")               return AssetType::Font;
+        if (s == "SpriteSingle")       return AssetType::SpriteSingle;
+        if (s == "SpriteAtlas")        return AssetType::SpriteAtlas;
+        if (s == "SpriteGrid")         return AssetType::SpriteGrid;
+        if (s == "PrimitiveAnimation") return AssetType::PrimitiveAnimation;
+        if (s == "Sound")              return AssetType::Sound;
         return AssetType::Undefined;
     }
 
     inline std::string to_string(const AssetType& t){
         switch (t) {
-            case AssetType::Font :          return "Font";
-            case AssetType::SpriteSingle :  return "SpriteSingle";
-            case AssetType::SpriteAtlas :   return "SpriteAtlas";
-            case AssetType::SpriteGrid :    return "SpriteGrid";
+            case AssetType::Font :               return "Font";
+            case AssetType::SpriteSingle :       return "SpriteSingle";
+            case AssetType::SpriteAtlas :        return "SpriteAtlas";
+            case AssetType::SpriteGrid :         return "SpriteGrid";
+            case AssetType::PrimitiveAnimation : return "PrimitiveAnimation";
+            case AssetType::Sound :              return "Sound";
             default: return "Undefined";
         }
     }

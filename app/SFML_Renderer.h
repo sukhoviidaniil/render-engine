@@ -21,7 +21,7 @@
 #include "../../../../include/render/Renderer.h"
 #include "sif/ast/RB_Config.h"
 #include "SFML/Graphics/RenderWindow.hpp"
-#include "my_sfml/ISFML_Event_Source.h"
+#include "ISFML_Event_Source.h"
 
 namespace sif::sfml {
     class SFML_Renderer final: public Renderer, public ISFML_Event_Source {
@@ -29,10 +29,10 @@ namespace sif::sfml {
         ~SFML_Renderer() override;
         explicit SFML_Renderer(const ast::RB_Config &info);
 
-        void track_local(const std::shared_ptr<infra::event::Event_Bus>& bus) override;
-        void track_global(const std::shared_ptr<infra::event::Event_Bus>& bus) override;
+        void track_local(const std::shared_ptr<event::Event_Bus>& bus) override;
+        void track_global(const std::shared_ptr<event::Event_Bus>& bus) override;
 
-        [[nodiscard]] infra::math::Vector2 screen_size() const override;
+        [[nodiscard]] math::Vector2 screen_size() const override;
 
         void render(const rnd::RenderFrame& graph) override;
 

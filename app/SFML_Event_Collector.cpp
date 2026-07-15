@@ -16,13 +16,13 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "my_sfml/SFML_Event_Collector.h"
+#include "SFML_Event_Collector.h"
 
-#include "infra/event/Event_Collector.h"
+#include "sif/event/Event_Collector.h"
 
-#include "infra/event/events/window.hpp"
-#include "infra/event/events/input_Keyboard.h"
-#include "infra/event/events/input_Mouse.h"
+#include "sif/event/events/window.hpp"
+#include "sif/event/events/input_Keyboard.h"
+#include "sif/event/events/input_Mouse.h"
 
 
 namespace sif::sfml {
@@ -35,9 +35,9 @@ namespace sif::sfml {
         }
     }
 
-    static infra::event::input::Key to_key(sf::Keyboard::Key k) {
+    static event::input::Key to_key(sf::Keyboard::Key k) {
         using K = sf::Keyboard::Key;
-        using I = infra::event::input::Key;
+        using I = event::input::Key;
 
         switch (k) {
             case K::W:      return I::W;
@@ -56,7 +56,7 @@ namespace sif::sfml {
     }
 
     void SFML_Event_Collector::dispatch(const sf::Event &e)  {
-        using namespace infra::event;
+        using namespace event;
         switch (e.type) {
 
             // ---------- Window ----------

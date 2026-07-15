@@ -15,20 +15,46 @@
 
 #include "sif/asset/internal/data/AssetMetaData.h"
 #include "sif/asset/internal/data/FontNode.h"
+#include "sif/asset/internal/data/SpriteSingleNode.h"
+#include "sif/asset/internal/data/SpriteAtlasNode.h"
+#include "sif/asset/internal/data/SpriteGridNode.h"
+#include "sif/asset/internal/data/PrimitiveAnimationNode.h"
+#include "sif/asset/internal/data/SoundNode.h"
 #include "sif/asset/internal/AssetDesc.h"
+#include "sif/internal/Rect.h"
 
+
+namespace sif::intrnl {
+    inline void from_json(const nlohmann::json& j, Rect& r) {
+        r.x = io::get_checked<float>(j, "x");
+        r.y = io::get_checked<float>(j, "y");
+        r.width = io::get_checked<float>(j, "width");
+        r.height = io::get_checked<float>(j, "height");
+    }
+
+    inline void to_json(nlohmann::json& j, const Rect& r) {
+        j = nlohmann::json{
+            { "x", r.x },
+            { "y", r.y },
+            { "width", r.width },
+            { "height", r.height }
+        };
+    }
+}
 
 namespace sif::asset::data {
     inline void from_json(const nlohmann::json& j, AssetMetaData& d) {
-        d.guid = intrnl::GUID(infra::io::get_checked<std::string>(j, "guid"));
-        d.type = from_string(infra::io::get_checked<std::string>(j, "type"));
-        d.asset_name = infra::io::get_checked<std::string>(j, "asset_name");
+        d.guid = intrnl::GUID(io::get_checked<std::string>(j, "guid"));
+        d.type = from_string(io::get_checked<std::string>(j, "type"));
+        d.asset_name = io::get_checked<std::string>(j, "asset_name");
 
-        d.expected_load_time_seconds = infra::io::get_checked<double>(
+        d.expected_load_time_seconds = io::get_checked<double>(
             j, "expected_load_time_seconds", d.expected_load_time_seconds
         );
 
-        d.record_id_to_name = infra::io::get_checked<std::unordered_map<uint32_t, std::string>>(j, "record_id_to_name", d.record_id_to_name);
+        d.critical = io::get_checked<bool>(j, "critical", d.critical);
+
+        d.record_id_to_name = io::get_checked<std::unordered_map<uint32_t, std::string>>(j, "record_id_to_name", d.record_id_to_name);
         d.record_name_to_id.reserve(d.record_id_to_name.size());
         for (const auto& [id, name] : d.record_id_to_name) {
             d.record_name_to_id.emplace(name, id);
@@ -41,20 +67,85 @@ namespace sif::asset::data {
             { "type", to_string(d.type) },
             { "asset_name", d.asset_name },
             { "expected_load_time_seconds", d.expected_load_time_seconds },
+            { "critical", d.critical },
             { "record_id_to_name", d.record_id_to_name }
         };
     }
 
     inline void from_json(const nlohmann::json& j, FontNode& d) {
-        d.meta = infra::io::get_checked<data::AssetMetaData>(j);
-        d.source = infra::io::get_checked<std::string>(j, "source");
+        d.meta = io::get_checked<data::AssetMetaData>(j);
+        d.source = io::get_checked<std::string>(j, "source");
+    }
+
+    inline void from_json(const nlohmann::json& j, SpriteSingleNode& d) {
+        d.meta = io::get_checked<data::AssetMetaData>(j);
+        d.source = io::get_checked<std::string>(j, "source");
+    }
+
+    inline void from_json(const nlohmann::json& j, SpriteAtlasNode& d) {
+        d.meta = io::get_checked<data::AssetMetaData>(j);
+        d.source = io::get_checked<std::string>(j, "source");
+        // Optional: an atlas with no "rects" yet is valid (0 sub-sprites),
+        // so an existing asset file without this field does not break.
+        d.rects = io::get_checked<std::vector<intrnl::Rect>>(j, "rects", d.rects);
+    }
+
+    inline void to_json(nlohmann::json& j, const SpriteAtlasNode& d) {
+        j = nlohmann::json{
+            { "meta", d.meta },
+            { "source", d.source },
+            { "rects", d.rects }
+        };
+    }
+
+    inline void from_json(const nlohmann::json& j, SpriteGridNode& d) {
+        d.meta = io::get_checked<data::AssetMetaData>(j);
+        d.source = io::get_checked<std::string>(j, "source");
+        d.rows = io::get_checked<uint32_t>(j, "rows", d.rows);
+        d.cols = io::get_checked<uint32_t>(j, "cols", d.cols);
+        d.cell_width = io::get_checked<float>(j, "cell_width", d.cell_width);
+        d.cell_height = io::get_checked<float>(j, "cell_height", d.cell_height);
+    }
+
+    inline void to_json(nlohmann::json& j, const SpriteGridNode& d) {
+        j = nlohmann::json{
+            { "meta", d.meta },
+            { "source", d.source },
+            { "rows", d.rows },
+            { "cols", d.cols },
+            { "cell_width", d.cell_width },
+            { "cell_height", d.cell_height }
+        };
+    }
+
+    inline void from_json(const nlohmann::json& j, PrimitiveAnimationNode& d) {
+        d.meta = io::get_checked<data::AssetMetaData>(j);
+        d.source = io::get_checked<std::string>(j, "source");
+        d.frames = io::get_checked<std::vector<intrnl::Rect>>(j, "frames", d.frames);
+        d.frame_duration_seconds = io::get_checked<float>(j, "frame_duration_seconds", d.frame_duration_seconds);
+        d.loop = io::get_checked<bool>(j, "loop", d.loop);
+    }
+
+    inline void to_json(nlohmann::json& j, const PrimitiveAnimationNode& d) {
+        j = nlohmann::json{
+            { "meta", d.meta },
+            { "source", d.source },
+            { "frames", d.frames },
+            { "frame_duration_seconds", d.frame_duration_seconds },
+            { "loop", d.loop }
+        };
+    }
+
+    inline void from_json(const nlohmann::json& j, SoundNode& d) {
+        d.meta = io::get_checked<data::AssetMetaData>(j);
+        d.source = io::get_checked<std::string>(j, "source");
     }
 }
 
 namespace sif::asset {
     inline void from_json(const nlohmann::json& j, AssetDesc& d) {
-        d.meta = infra::io::get_checked<data::AssetMetaData>(j, "meta");
-        d.conf_path = infra::io::get_checked<std::string>(j, "conf_path");
+        d.meta = io::get_checked<data::AssetMetaData>(j, "meta");
+        d.conf_path = io::get_checked<std::string>(j, "conf_path");
     }
     inline void to_json(nlohmann::json& j, const AssetDesc& d) {
         j = nlohmann::json{

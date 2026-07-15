@@ -17,8 +17,14 @@
 #include "Event_Bus.h"
 namespace sif::event {
     /**
-     * @brief Base class for objects observing events from an Event_Bus.
+     * @brief Observer pattern: Observer is the base "subscriber" role,
+     * Event_Bus is the "subject" being observed. Deriving from Observer
+     * (rather than manually calling Event_Bus::subscribe/unsubscribe
+     * everywhere) guarantees every subscription an object holds is
+     * torn down automatically when that object is destroyed, so a
+     * dangling callback into a destroyed object is not possible.
      *
+     * Base class for objects observing events from an Event_Bus.
      * Manages the lifetime of event subscriptions and ensures that
      * all tracked subscriptions are properly unsubscribed on destruction.
      */

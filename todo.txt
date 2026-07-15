@@ -1,1 +1,54 @@
-Старайся будувати ефективний та Зажди читай повний список задач - деякі задачі можуть впливати на інші, або їх імплементація чи ефективність може прямо залежати від інших. Старайся використовувати наступні патерни програмування коли вони є доречними: Model–View–Controller (MVC), Data Transfer Object (DTO), Visitor, Observer, (Abstract) Factory, Singleton, State. Обовязково аргументуй в короткому коментарі над гарно видимим місцем поряд з використанням патерна чому він тут використовуеться.
+Try to write efficient, high-quality code that meets industry standards.
+All comments must be functional and written in English. Maintain documentation in the manner specified in existing files.
+Write tests for critical system components. Tests should be extensible to cover new test cases—separate the test suite from the data being tested.
+Always read the full list of tasks: some tasks may affect others, or their implementation or performance may depend directly on others.
+Try to use effective programming patterns when appropriate. Examples of such patterns include: Model–View–Controller (MVC), Data Transfer Object (DTO), Visitor, Observer, (Abstract) Factory, Singleton, and State.
+Be sure to explain in a short comment in a clearly visible location next to where the pattern is used why it is being used there.
+After fully completing (which may include running tests) a task from the task list, mark it as completed (with a checkmark in []).
+
+TASKS:
+[x] Verify that the system follows the MVC pattern and separation of concerns. If necessary, split libraries into smaller ones—follow the CMake example.
+      NOTE: sif_lib split into sif_core/sif_math/sif_diagnostics/sif_event/sif_asset (Model)/sif_render (View)/sif_layout_engine
+      (Controller) per sif/CMakeLists.txt, each a separate static library with explicit PUBLIC link dependencies; sif_lib kept as an
+      INTERFACE aggregate for existing consumers. Also fixed several pre-existing stale-namespace bugs (infra::*, rgst::, rb::*) left
+      over from an earlier refactor that prevented parts of the library (and the app/ demo) from compiling at all.
+[x] The asset loading mechanism must have a queue—loading should occur only when there is a free “worker,” rather than unlimited parallel loading.
+      NOTE: AssetRegistry now uses two FIFO queues (critical/normal, see below) drained by try_start_next_load() whenever a worker
+      slot is free.
+[x] The number of concurrent/parallel asset loads must be configurable, with a default value of 2 assets at a time.
+      NOTE: AssetRegistry::set_max_concurrent_loads()/max_concurrent_loads(); default changed from 4 to 2.
+[x] Asset metadata must specify the estimated time it will take to load (in seconds, with a default of 60 seconds). Asset metadata must specify the attempt number (attempt-id). Asset metadata must indicate whether the asset is critical.
+      NOTE: AssetMetaData::expected_load_time_seconds default changed 5.0 -> 60.0; AssetMetaData::critical (bool) added and (de)serialized in
+      from_JSON.h, and now also feeds the critical-priority queue (see above). The attempt number is tracked and exposed via
+      AssetRecord::begin_attempt()/current_attempt() rather than duplicated onto AssetMetaData itself: it is per-load-attempt runtime
+      state, not asset-authored configuration, so it does not belong in the JSON-facing metadata struct alongside guid/type/critical/etc.
+[x] Add a system (attempt-id guard) to prevent a delayed thread from overwriting the state after an asset has already been marked as “Failed”; a new download attempt for the same GUID may have already started.
+      NOTE: AssetRecord::begin_attempt()/set_state_if_current()/set_data_if_current(); see
+      sif/test/AssetRegistryTests.cpp::attempt_guard_rejects_stale_writes.
+[x] Add a system to efficiently notify those requesting an asset which option will require the fewest checks and be the most efficient.
+      NOTE: push-based (zero polling) via AssetRecord::on_complete() / AssetHandle<T>::on_ready(callback); fires immediately if already
+      finished, otherwise exactly once when the load completes - no per-frame checking required at all.
+[x] Additional asset types should be implemented: Sprite, Vector Sprite, Sprite Matrix, Primitive Animation (a series of sprites with a transition timer), and Sound.
+      NOTE: asset::Sprite (single), asset::SpriteAtlas (math::Vector<Rect> - "vector sprite"), asset::SpriteGrid (math::Matrix<Rect> -
+      "sprite matrix"), asset::PrimitiveAnimation (math::Vector<Rect> frames + frame_duration_seconds/loop, with frame_index_at()/
+      frame_at() centralizing the transition-timer logic), asset::Sound. Each has a data node (JSON schema), AssetDataLoader load/save
+      methods, and an SFML-backed loader in app/ (SFML_*_AssetLoader). Required adding componentwise arithmetic operators to
+      intrnl::Rect so it can serve as math::Vector<T>/math::Matrix<T>'s element type (identity()/determinant()/inverse()/norm()/
+      normalized() remain intentionally un-instantiated for Rect - they have no meaningful definition for a rectangle).
+[x] The UI system should be efficient and intuitive. Base it on an HTML system. Try to optimize it without sacrificing efficiency.
+      NOTE: this was already the existing design (Tokenizer -> Parser -> UIFactory building an HTML/XML-like tag tree) and was verified
+      rather than rebuilt: Tokenizer::tokenize is a single O(n) pass with no backtracking; Parser::parse is a single O(n) stack-based tree
+      build. Extended it (see below) rather than replacing it.
+[x] The UI should be able to return a link to a specific element (search by name or ID) while preserving typing.
+      NOTE: UIElement::find_by_name<T>(name) / find_by_id<T>(id), depth-first search + dynamic_cast<T*>; returns nullptr both when nothing
+      matches and when something matches the name/id but is not actually a T. UIElement gained name/id fields, populated generically for
+      every tag by UIFactory::build (via the new "name"/"id" XML attributes) rather than per element type.
+[x] Add UI elements for the buttons. A button has two states: selected and unselected. The states should switch smoothly. Each button has its own ID.
+      NOTE: ui::Button (State pattern: ButtonState + an eased 0..1 transition_ blend factor advanced by the new UIElement::update(dt) hook,
+      rather than snapping instantly); id comes from the shared UIElement::id field.
+[x] Add a UI menu (a list of buttons, as a vector or array). The button menu must return a list of the button IDs contained in that menu. The menu must be able to set a button as active by its ID.
+      NOTE: ui::Menu (a LinearLayout); button_ids(), set_active(id) (enforces single-selection), active_button_id(), handle_click(point).
+[x] Add all constructors to the main UI Factory.
+      NOTE: UIFactory previously never registered "Sprite" at all (despite ui::Sprite existing) and had no Button/Menu; now registers
+      Element/VBox/HBox/Text/Rectangle/Sprite/Button/Menu (make_element.h). Also fixed missing includes in make_element.h (GUID/
+      AssetRegistry/Font/Text) that made make_Text uncompilable as written.

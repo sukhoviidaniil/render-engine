@@ -150,7 +150,7 @@ namespace sif::diag {
         std::regex declRegex(R"(\b(class|struct)\s+([A-Za-z_]\w*)\s*(?:final\s*)?(?:[:][^\{;]*)?\{)");
 
         DeclarationGraphResult result;
-        std::unordered_map<std::string, DirectedGraph<std::string>::VertexId> nameToVertex;
+        std::unordered_map<std::string, math::DirectedGraph<std::string>::VertexId> nameToVertex;
         std::unordered_map<std::string, std::vector<std::string>> classesInFile; // file -> class names
 
         for (const auto& file : sourceFiles)

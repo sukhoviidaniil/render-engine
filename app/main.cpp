@@ -21,7 +21,7 @@
 
 #include <string>
 
-#include "sif/infra/event/Event_Bus.h"
+#include "sif/event/Event_Bus.h"
 #include "sif/layout_engine/UIFactory.h"
 
 #include "App.h"
@@ -37,21 +37,21 @@ int main() {
     // Instantiation of basic things
 
     sif::asset::AssetImporter::instance();
-    const auto eventbus = std::make_shared<infra::event::Event_Bus>(); // GLOBAL
+    const auto eventbus = std::make_shared<event::Event_Bus>(); // GLOBAL
 
     // Load and save the Registry of assets
-    rb::rgst::AssetImporter::instance().load_from_file(data_path + "/bin/registry.rgst.json");
-    rb::rgst::AssetImporter::instance().load_in_registry();
-    rb::rgst::AssetRegistry::instance().set_asset_dir(data_path + "graphics/");
+    sif::asset::AssetImporter::instance().load_from_file(data_path + "/bin/registry.rgst.json");
+    sif::asset::AssetImporter::instance().load_in_registry();
+    sif::asset::AssetRegistry::instance().set_asset_dir(data_path + "graphics/");
 
-    rb::ast::RB_Config rb_config {
-        .type = rb::ast::RB_Type::SFML,
+    sif::ast::RB_Config rb_config {
+        .type = sif::ast::RB_Type::SFML,
         .window_name = "Some name",
         .window_width = 800,
         .window_height = 600,
         .fps = 30
     };
-    infra::ast::Event_Collector e;
+    event::Event_Collector e;
 
     auto a = core::App(eventbus, rb_config, e, ui_file);
     a.run();

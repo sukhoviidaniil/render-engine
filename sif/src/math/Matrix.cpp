@@ -15,6 +15,7 @@
  */
 
 #include "sif/math/Matrix.h"
+#include "sif/internal/Rect.h"
 #include <string>
 
 namespace sif::math {
@@ -727,5 +728,74 @@ namespace sif::math {
     template Vector<int> operator*(const Vector<int>&, const Matrix<int>&);
     template Vector<float> operator*(const Vector<float>&, const Matrix<float>&);
     template Vector<double> operator*(const Vector<double>&, const Matrix<double>&);
+
+    // sif::intrnl::Rect now supports componentwise +, -, *, / (see
+    // Rect.h), so Matrix<Rect> can support the same broad surface as
+    // the numeric instantiations above - EXCEPT identity(),
+    // determinant(), and inverse(), which all need to construct "T(1)"
+    // (a single scalar literal converted to T). Rect has no
+    // single-float constructor (only default, and the 4-float
+    // x/y/width/height constructor), and there is no reasonable
+    // definition of "the rectangle 1" - so those three methods are
+    // intentionally never instantiated for Rect. Every other method
+    // used by asset::SpriteGrid plus the general arithmetic set is
+    // instantiated individually below (rather than
+    // "template class Matrix<Rect>;", which would also try - and fail
+    // - to instantiate identity() / determinant() / inverse()).
+    template Matrix<sif::intrnl::Rect>::Matrix();
+    template Matrix<sif::intrnl::Rect>::Matrix(size_t, size_t);
+    template Matrix<sif::intrnl::Rect>::Matrix(size_t, size_t, const sif::intrnl::Rect&);
+    template Matrix<sif::intrnl::Rect>::Matrix(std::initializer_list<std::initializer_list<sif::intrnl::Rect>>);
+    template Matrix<sif::intrnl::Rect>::Matrix(const Matrix<sif::intrnl::Rect>&);
+    template Matrix<sif::intrnl::Rect>::Matrix(Matrix<sif::intrnl::Rect>&&) noexcept;
+    template Matrix<sif::intrnl::Rect>::~Matrix();
+    template Matrix<sif::intrnl::Rect>& Matrix<sif::intrnl::Rect>::operator=(const Matrix<sif::intrnl::Rect>&);
+    template Matrix<sif::intrnl::Rect>& Matrix<sif::intrnl::Rect>::operator=(Matrix<sif::intrnl::Rect>&&) noexcept;
+
+    template sif::intrnl::Rect& Matrix<sif::intrnl::Rect>::operator()(size_t, size_t);
+    template const sif::intrnl::Rect& Matrix<sif::intrnl::Rect>::operator()(size_t, size_t) const;
+    template sif::intrnl::Rect& Matrix<sif::intrnl::Rect>::at(size_t, size_t);
+    template const sif::intrnl::Rect& Matrix<sif::intrnl::Rect>::at(size_t, size_t) const;
+    template size_t Matrix<sif::intrnl::Rect>::rows() const;
+    template size_t Matrix<sif::intrnl::Rect>::cols() const;
+    template bool Matrix<sif::intrnl::Rect>::empty() const;
+    template bool Matrix<sif::intrnl::Rect>::isSquare() const;
+
+    template void Matrix<sif::intrnl::Rect>::resize(size_t, size_t);
+    template void Matrix<sif::intrnl::Rect>::resize(size_t, size_t, const sif::intrnl::Rect&);
+    template void Matrix<sif::intrnl::Rect>::clear();
+
+    template Vector<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::getRow(size_t) const;
+    template Vector<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::getColumn(size_t) const;
+    template void Matrix<sif::intrnl::Rect>::setRow(size_t, const Vector<sif::intrnl::Rect>&);
+    template void Matrix<sif::intrnl::Rect>::setColumn(size_t, const Vector<sif::intrnl::Rect>&);
+    template Matrix<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::subMatrix(size_t, size_t, size_t, size_t) const;
+
+    template Matrix<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::operator+(const Matrix<sif::intrnl::Rect>&) const;
+    template Matrix<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::operator-(const Matrix<sif::intrnl::Rect>&) const;
+    template Matrix<sif::intrnl::Rect>& Matrix<sif::intrnl::Rect>::operator+=(const Matrix<sif::intrnl::Rect>&);
+    template Matrix<sif::intrnl::Rect>& Matrix<sif::intrnl::Rect>::operator-=(const Matrix<sif::intrnl::Rect>&);
+    template Matrix<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::operator-() const;
+    template Matrix<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::operator*(const Matrix<sif::intrnl::Rect>&) const;
+    template Matrix<sif::intrnl::Rect>& Matrix<sif::intrnl::Rect>::operator*=(const Matrix<sif::intrnl::Rect>&);
+    template Matrix<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::hadamard(const Matrix<sif::intrnl::Rect>&) const;
+
+    template Matrix<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::operator*(const sif::intrnl::Rect&) const;
+    template Matrix<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::operator/(const sif::intrnl::Rect&) const;
+    template Matrix<sif::intrnl::Rect>& Matrix<sif::intrnl::Rect>::operator*=(const sif::intrnl::Rect&);
+    template Matrix<sif::intrnl::Rect>& Matrix<sif::intrnl::Rect>::operator/=(const sif::intrnl::Rect&);
+
+    template Vector<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::operator*(const Vector<sif::intrnl::Rect>&) const;
+    template Matrix<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::fromColumnVector(const Vector<sif::intrnl::Rect>&);
+    template Matrix<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::fromRowVector(const Vector<sif::intrnl::Rect>&);
+
+    template Matrix<sif::intrnl::Rect> Matrix<sif::intrnl::Rect>::transpose() const;
+
+    template bool Matrix<sif::intrnl::Rect>::operator==(const Matrix<sif::intrnl::Rect>&) const;
+    template bool Matrix<sif::intrnl::Rect>::operator!=(const Matrix<sif::intrnl::Rect>&) const;
+
+    template std::ostream& operator<<(std::ostream&, const Matrix<sif::intrnl::Rect>&);
+    template Matrix<sif::intrnl::Rect> operator*(const sif::intrnl::Rect&, const Matrix<sif::intrnl::Rect>&);
+    template Vector<sif::intrnl::Rect> operator*(const Vector<sif::intrnl::Rect>&, const Matrix<sif::intrnl::Rect>&);
 
 }

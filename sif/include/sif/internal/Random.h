@@ -20,16 +20,16 @@
 
 
 #define RAND_INT(min, max) \
-infra::Random::instance().next_int((min), (max))
+intrnl::Random::instance().next_int((min), (max))
 
 #define RAND_FLOAT(min, max) \
-infra::Random::instance().next_float((min), (max))
+intrnl::Random::instance().next_float((min), (max))
 
 #define RAND_CHANCE(p) \
-infra::Random::instance().chance((p))
+intrnl::Random::instance().chance((p))
 
 #define RAND_ENGINE() \
-infra::Random::instance().engine()
+intrnl::Random::instance().engine()
 
 #include <random>
 

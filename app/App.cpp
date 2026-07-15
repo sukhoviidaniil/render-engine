@@ -11,8 +11,8 @@
 
 
 #include "Graphics_Factory.h"
-#include "sif/infra/diagnostics/Logger.h"
-#include "sif/infra/event/events/window.hpp"
+#include "sif/diagnostics/Logger.h"
+#include "sif/event/events/window.hpp"
 #include "../sif/include/sif/internal/Delta_Timer.h"
 #include "sif/layout_engine/Parser.h"
 #include "sif/layout_engine/Tokenizer.h"
@@ -22,16 +22,16 @@
 App::~App() = default;
 
 App::App(
-    const std::shared_ptr<infra::event::Event_Bus> &eventbus,
-    const rb::ast::RB_Config &rb_config,
-    const infra::ast::Event_Collector & ecoll_config,
+    const std::shared_ptr<event::Event_Bus> &eventbus,
+    const App::Config &rb_config,
+    const event::Event_Collector & ecoll_config,
     const std::string& ui_file)
 :g_eventbus_(eventbus) {
 
     // Be sure to track at least one event that will complete the cycle.
     track(
-        eventbus->subscribe<infra::event::window::Window_Closed>(
-            [this](const infra::event::window::Window_Closed&) {
+        eventbus->subscribe<event::window::Window_Closed>(
+            [this](const event::window::Window_Closed&) {
                 running_ = false;
             }
         )
@@ -44,13 +44,13 @@ App::App(
     // -- The next part is related to the UI. --
 
     // Read and tokenize UI data
-    std::vector<rb::ui::Token> tokens = rb::ui::Tokenizer::tokenize(ui_file);
+    std::vector<ui::Token> tokens = ui::Tokenizer::tokenize(ui_file);
 
     // Go through the tokens and create an AST UI nodes
-    auto node_root = rb::ui::Parser::parse(tokens);
+    auto node_root = ui::Parser::parse(tokens);
 
     // Create real UI elements from AST nodes
-    root_ = rb::ui::UIFactory::instance().build(*node_root);
+    root_ = ui::UIFactory::instance().build(*node_root);
 }
 
 void App::run() {
@@ -60,15 +60,15 @@ void App::run() {
         throw std::runtime_error(err);
     }
 
-    infra::intr::Delta_Timer::instance();
+    intrnl::Delta_Timer::instance();
     while (running_) {
         // The clock, if the model will run on them
-        float delta = infra::intr::Delta_Timer::instance().tick();
+        float delta = intrnl::Delta_Timer::instance().tick();
 
         // -- Rendering UI content --
 
         // Find out the window dimensions
-        const infra::math::Vector2 screen_size = renderer_->screen_size();
+        const math::Vector2 screen_size = renderer_->screen_size();
         // Find out if the window needs to be redrawn (not yet optimized)
         bool redraw = true;
 
@@ -77,9 +77,9 @@ void App::run() {
         root_->layout({0, 0, screen_size.x, screen_size.y});
 
         // Create an empty frame that will be drawn
-        rb::rnd::RenderFrame frame;
+        rnd::RenderFrame frame;
         // Create context for UI elements
-        const rb::Context ctx(redraw);
+        const rnd::FrameContext ctx(redraw);
 
         // Collect elements for rendering from the UI
         root_->append_render_items(frame, ctx);
@@ -91,8 +91,8 @@ void App::run() {
 
         event_collector_->collect();
         while (!event_collector_->event_store_.empty()) {
-            std::unique_ptr<infra::event::EventConcept> ev =  event_collector_->event_store_.pop_concept();
-            if (static_cast<bool>(ev->mask() & infra::event::EventMask::Window)) {
+            std::unique_ptr<event::EventConcept> ev =  event_collector_->event_store_.pop_concept();
+            if (static_cast<bool>(ev->mask() & event::EventMask::Window)) {
                 g_eventbus_->emit(*ev);
             }
         }

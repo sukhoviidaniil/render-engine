@@ -32,7 +32,18 @@ namespace sif::asset::data {
          * IAssetLoader::try_load). If the retry also exceeds its
          * (doubled) budget, the asset is marked AssetState::Failed.
          */
-        double expected_load_time_seconds = 5.0;
+        double expected_load_time_seconds = 60.0;
+
+        /**
+         * @brief Whether this asset is critical.
+         *
+         * Critical assets jump ahead of non-critical ones in
+         * AssetRegistry's load queue (see AssetRegistry::request), so
+         * that essential assets (e.g. a loading-screen background or
+         * a UI font needed immediately) do not wait behind a long tail
+         * of less important ones under a limited concurrency budget.
+         */
+        bool critical = false;
 
         std::unordered_map<
             uint32_t,

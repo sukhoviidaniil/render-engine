@@ -16,9 +16,9 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "my_sfml/SFML_Renderer.h"
+#include "SFML_Renderer.h"
 
-#include "infra/event/events/window.hpp"
+#include "sif/event/events/window.hpp"
 #include "sif/render/Rectangle.h"
 #include "sif/render/Text.h"
 #include "SFML/Graphics/RectangleShape.hpp"
@@ -34,12 +34,12 @@ namespace sif::sfml {
         window_.setFramerateLimit(static_cast<unsigned int>(info.fps));
     }
 
-    void SFML_Renderer::track_local(const std::shared_ptr<infra::event::Event_Bus> &bus) {
+    void SFML_Renderer::track_local(const std::shared_ptr<event::Event_Bus> &bus) {
     }
 
-    void SFML_Renderer::track_global(const std::shared_ptr<infra::event::Event_Bus> &bus) {\
+    void SFML_Renderer::track_global(const std::shared_ptr<event::Event_Bus> &bus) {\
 
-        using namespace infra::event::window;
+        using namespace event::window;
         // Closing the window
         track(
             bus->subscribe<Window_Closed>(
@@ -62,7 +62,7 @@ namespace sif::sfml {
         );
     }
 
-    infra::math::Vector2 SFML_Renderer::screen_size() const {
+    math::Vector2 SFML_Renderer::screen_size() const {
         return {static_cast<float>(window_.getSize().x), static_cast<float>(window_.getSize().y)};
     }
 
@@ -82,7 +82,7 @@ namespace sif::sfml {
     }
 
     void SFML_Renderer::visit(const rnd::Text & r) {
-        rgst::AssetHandle<asset::Font> ast_h = r.font;
+        asset::AssetHandle<asset::Font> ast_h = r.font;
         if (!ast_h.ready()) {
             return;
         }

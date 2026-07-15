@@ -61,6 +61,24 @@ namespace sif::ui {
         }
     }
 
+    void UIElement::update(const float dt) {
+        for (auto& c : children) {
+            c->update(dt);
+        }
+    }
+
+    UIElement* UIElement::find_if(const std::function<bool(const UIElement&)>& predicate) {
+        if (predicate(*this)) {
+            return this;
+        }
+        for (auto& c : children) {
+            if (UIElement* found = c->find_if(predicate)) {
+                return found;
+            }
+        }
+        return nullptr;
+    }
+
     math::Vector2 UIElement::resolve_size(const math::Vector2 &available) const  {
         math::Vector2 out;
 

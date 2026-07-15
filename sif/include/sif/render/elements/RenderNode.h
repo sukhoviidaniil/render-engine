@@ -21,6 +21,16 @@ namespace sif::rnd {
     struct Rectangle;
     struct Sprite;
 
+    /**
+     * @brief Visitor pattern: double-dispatches a RenderNode to the
+     * concrete render call matching its real type (Text/Rectangle/
+     * Sprite), without RenderNode/RenderFrame needing to know anything
+     * about *how* a Text is drawn versus a Rectangle. Adding a new
+     * backend (an alternative to SFML_Renderer) means implementing this
+     * interface once; adding a new render item type means adding one
+     * visit() overload here and in every backend - the tradeoff the
+     * Visitor pattern makes explicit either way.
+     */
     struct RenderVisitor {
         virtual ~RenderVisitor() = default;
 

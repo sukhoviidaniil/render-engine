@@ -23,12 +23,21 @@ namespace sif::asset {
     /**
      * @brief Central registry of known assets and their load state.
      *
-     * Asset loads go through a FIFO queue: request() enqueues the asset
-     * (if it is not already queued/loading/loaded), and up to
-     * max_concurrent_loads() requests are worked on at the same time,
-     * each on its own background thread. As soon as a load finishes
-     * (successfully or not), the next queued request (if any) is
-     * started.
+     * Singleton pattern (see instance()): every asset in the program
+     * needs to be requested/looked up through the same registry, so
+     * a single shared instance (rather than one per subsystem) is the
+     * whole point - two registries would mean two independent load
+     * queues and two copies of "is this asset ready yet".
+     *
+     * Asset loads go through two FIFO queues, one for critical assets
+     * (AssetMetaData::critical) and one for everything else: request()
+     * enqueues the asset into the appropriate queue (if it is not
+     * already queued/loading/loaded), and up to max_concurrent_loads()
+     * requests are worked on at the same time, each on its own
+     * background thread. The critical queue is always drained first,
+     * so a critical asset never waits behind a long tail of
+     * non-critical ones. As soon as a load finishes (successfully or
+     * not), the next queued request (if any) is started.
      */
     class AssetRegistry{
     public:
@@ -69,11 +78,11 @@ namespace sif::asset {
          * @brief Requests that the asset with the given id be loaded.
          *
          * If the asset has not been requested before, it is placed at
-         * the back of the load queue (state becomes AssetState::Queued)
-         * and a background load is started as soon as a load slot is
-         * free (see set_max_concurrent_loads). Calling this again for
-         * an asset that is already queued, loading, ready, or failed
-         * has no effect.
+         * the back of the load queue matching its criticality (state
+         * becomes AssetState::Queued) and a background load is started
+         * as soon as a load slot is free (see set_max_concurrent_loads).
+         * Calling this again for an asset that is already queued,
+         * loading, ready, or failed has no effect.
          */
         void request(intrnl::GUID id);
 
@@ -89,8 +98,10 @@ namespace sif::asset {
          * @brief Starts background loads for queued assets while there
          * is spare capacity (active_loads_ < max_concurrent_loads_).
          *
-         * Safe to call any time; it is a no-op if the queue is empty or
-         * the registry is already at capacity.
+         * Drains critical_queue_ before normal_queue_, so critical
+         * assets are always dispatched first. Safe to call any time;
+         * it is a no-op if both queues are empty or the registry is
+         * already at capacity.
          */
         void try_start_next_load();
 
@@ -117,10 +128,11 @@ namespace sif::asset {
 
         // ========== Load queue / concurrency control ==========
 
-        mutable std::mutex queue_mtx_; ///< Guards load_queue_, active_loads_, max_concurrent_loads_
-        std::queue<intrnl::GUID> load_queue_; ///< Assets waiting for a free load slot
+        mutable std::mutex queue_mtx_; ///< Guards both queues, active_loads_, max_concurrent_loads_
+        std::queue<intrnl::GUID> critical_queue_; ///< Critical assets waiting for a free load slot
+        std::queue<intrnl::GUID> normal_queue_; ///< Non-critical assets waiting for a free load slot
         size_t active_loads_ = 0; ///< Number of loads currently in flight
-        size_t max_concurrent_loads_ = 4; ///< Configurable cap on simultaneous loads
+        size_t max_concurrent_loads_ = 2; ///< Configurable cap on simultaneous loads
     };
 }
 

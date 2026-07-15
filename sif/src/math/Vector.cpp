@@ -16,6 +16,7 @@
 
 #include "sif/math/Vector.h"
 #include "sif/math/Matrix.h"
+#include "sif/internal/Rect.h"
 #include <cmath>
 #include <algorithm>
 
@@ -495,5 +496,60 @@ namespace sif::math {
     template Vector<int> operator*(const int&, const Vector<int>&);
     template Vector<float> operator*(const float&, const Vector<float>&);
     template Vector<double> operator*(const double&, const Vector<double>&);
+
+    // sif::intrnl::Rect now supports componentwise +, -, *, / (see
+    // Rect.h), so Vector<Rect> can support the same broad surface as
+    // the numeric instantiations above - EXCEPT norm() / normalized(),
+    // which cast each element to double (a rectangle has no single
+    // scalar magnitude, so that cast is intentionally not provided).
+    // Those two methods are therefore never instantiated for Rect;
+    // every other method used by asset::SpriteAtlas / PrimitiveAnimation
+    // plus the general arithmetic set is instantiated individually
+    // below (rather than "template class Vector<Rect>;", which would
+    // also try - and fail - to instantiate norm()/normalized()).
+    template Vector<sif::intrnl::Rect>::Vector();
+    template Vector<sif::intrnl::Rect>::Vector(size_t);
+    template Vector<sif::intrnl::Rect>::Vector(size_t, const sif::intrnl::Rect&);
+    template Vector<sif::intrnl::Rect>::Vector(std::initializer_list<sif::intrnl::Rect>);
+    template Vector<sif::intrnl::Rect>::Vector(const Vector<sif::intrnl::Rect>&);
+    template Vector<sif::intrnl::Rect>::Vector(Vector<sif::intrnl::Rect>&&) noexcept;
+    template Vector<sif::intrnl::Rect>::~Vector();
+    template Vector<sif::intrnl::Rect>& Vector<sif::intrnl::Rect>::operator=(const Vector<sif::intrnl::Rect>&);
+    template Vector<sif::intrnl::Rect>& Vector<sif::intrnl::Rect>::operator=(Vector<sif::intrnl::Rect>&&) noexcept;
+
+    template sif::intrnl::Rect& Vector<sif::intrnl::Rect>::operator[](size_t);
+    template const sif::intrnl::Rect& Vector<sif::intrnl::Rect>::operator[](size_t) const;
+    template sif::intrnl::Rect& Vector<sif::intrnl::Rect>::at(size_t);
+    template const sif::intrnl::Rect& Vector<sif::intrnl::Rect>::at(size_t) const;
+    template size_t Vector<sif::intrnl::Rect>::size() const;
+
+    template Vector<sif::intrnl::Rect> Vector<sif::intrnl::Rect>::operator+(const Vector<sif::intrnl::Rect>&) const;
+    template Vector<sif::intrnl::Rect> Vector<sif::intrnl::Rect>::operator-(const Vector<sif::intrnl::Rect>&) const;
+    template Vector<sif::intrnl::Rect>& Vector<sif::intrnl::Rect>::operator+=(const Vector<sif::intrnl::Rect>&);
+    template Vector<sif::intrnl::Rect>& Vector<sif::intrnl::Rect>::operator-=(const Vector<sif::intrnl::Rect>&);
+    template Vector<sif::intrnl::Rect> Vector<sif::intrnl::Rect>::operator-() const;
+
+    template Vector<sif::intrnl::Rect> Vector<sif::intrnl::Rect>::operator*(const sif::intrnl::Rect&) const;
+    template Vector<sif::intrnl::Rect> Vector<sif::intrnl::Rect>::operator/(const sif::intrnl::Rect&) const;
+    template Vector<sif::intrnl::Rect>& Vector<sif::intrnl::Rect>::operator*=(const sif::intrnl::Rect&);
+    template Vector<sif::intrnl::Rect>& Vector<sif::intrnl::Rect>::operator/=(const sif::intrnl::Rect&);
+
+    template Vector<sif::intrnl::Rect> Vector<sif::intrnl::Rect>::hadamard(const Vector<sif::intrnl::Rect>&) const;
+    template sif::intrnl::Rect Vector<sif::intrnl::Rect>::dot(const Vector<sif::intrnl::Rect>&) const;
+
+    template bool Vector<sif::intrnl::Rect>::operator==(const Vector<sif::intrnl::Rect>&) const;
+    template bool Vector<sif::intrnl::Rect>::operator!=(const Vector<sif::intrnl::Rect>&) const;
+
+    template std::vector<sif::intrnl::Rect>::iterator Vector<sif::intrnl::Rect>::begin();
+    template std::vector<sif::intrnl::Rect>::iterator Vector<sif::intrnl::Rect>::end();
+    template std::vector<sif::intrnl::Rect>::const_iterator Vector<sif::intrnl::Rect>::begin() const;
+    template std::vector<sif::intrnl::Rect>::const_iterator Vector<sif::intrnl::Rect>::end() const;
+
+    template std::ostream& operator<<(std::ostream&, const Vector<sif::intrnl::Rect>&);
+    template Vector<sif::intrnl::Rect> operator*(const sif::intrnl::Rect&, const Vector<sif::intrnl::Rect>&);
+
+    // Needed by Matrix<Rect>::fromColumnVector / fromRowVector (see Matrix.cpp).
+    template Matrix<sif::intrnl::Rect> Vector<sif::intrnl::Rect>::toColumnMatrix() const;
+    template Matrix<sif::intrnl::Rect> Vector<sif::intrnl::Rect>::toRowMatrix() const;
 
 }

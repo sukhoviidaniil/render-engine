@@ -16,9 +16,9 @@
  *   Unauthorized use, reproduction, or distribution is prohibited.
 ***************************************************************/
 
-#include "my_sfml/SFML_Font_AssetLoader.h"
+#include "SFML_Font_AssetLoader.h"
 
-#include "my_sfml/SFMLFont.h"
+#include "SFMLFont.h"
 #include "sif/asset/Font.h"
 #include "sif/asset/data/AssetDataLoader.h"
 #include "SFML/Graphics/Font.hpp"

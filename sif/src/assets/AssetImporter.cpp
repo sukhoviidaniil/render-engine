@@ -11,7 +11,11 @@
 #include "sif/asset/internal/AssetImporter.h"
 #include "sif/asset/internal/data/AssetDataLoader.h"
 #include "sif/asset/AssetRegistry.h"
+#include "sif/internal/from_JSON.h"
+#include "sif/diagnostics/Logger.h"
 #include "json.hpp"
+
+#include <fstream>
 
 namespace sif::asset {
 
@@ -62,7 +66,7 @@ namespace sif::asset {
         nlohmann::json j = nlohmann::json::array();
 
         for (const auto& [guid, desc] : by_guid_) {
-            j.push_back(desc); // relies on to_json(AssetDesc)
+            j.push_back(nlohmann::json(desc)); // relies on to_json(AssetDesc)
         }
 
         std::ofstream out(filepath, std::ios::binary);
@@ -98,7 +102,7 @@ namespace sif::asset {
         guids_.clear();
 
         for (const auto& jd : j) {
-            auto desc = infra::io::get_checked<AssetDesc>(jd);
+            auto desc = io::get_checked<AssetDesc>(jd);
             add(desc);
         }
     }

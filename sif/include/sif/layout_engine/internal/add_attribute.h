@@ -9,6 +9,8 @@
 ***************************************************************/
 #ifndef RENDER_ENGINE_ADD_ATTRIBUTE_H
 #define RENDER_ENGINE_ADD_ATTRIBUTE_H
+#include <cstdint>
+
 #include "attribute_check.h"
 #include "sif/internal/Size.h"
 #include "sif/layout_engine/Node.h"
@@ -35,6 +37,37 @@ namespace sif::ui {
         if (n.attributes.contains(attribute)) {
             try {
                 element->height = intrnl::Size(n.attributes.at(attribute));
+            } catch (const std::exception& ex) {
+                invalid_attribute(from, attribute, n.attributes.at(attribute), ex.what());
+            }
+        }
+    }
+
+    /**
+     * @brief Applies the optional "name" attribute, used by UIElement::find_by_name.
+     *
+     * Common to every element type (unlike width/height/padding, which
+     * only some elements interpret), so UIFactory::build applies this
+     * once for every tag rather than each make_* function repeating it.
+     */
+    inline void add_attribute_name(const Node& n, UIElement * element) {
+        const std::string attribute = "name";
+        if (n.attributes.contains(attribute)) {
+            element->name = n.attributes.at(attribute);
+        }
+    }
+
+    /**
+     * @brief Applies the optional "id" attribute, used by UIElement::find_by_id
+     * and by ui::Menu::set_active.
+     *
+     * Common to every element type, applied once by UIFactory::build.
+     */
+    inline void add_attribute_id(const Node& n, const std::string& from, UIElement * element) {
+        const std::string attribute = "id";
+        if (n.attributes.contains(attribute)) {
+            try {
+                element->id = intrnl::RecordID(static_cast<std::uint32_t>(std::stoul(n.attributes.at(attribute))));
             } catch (const std::exception& ex) {
                 invalid_attribute(from, attribute, n.attributes.at(attribute), ex.what());
             }

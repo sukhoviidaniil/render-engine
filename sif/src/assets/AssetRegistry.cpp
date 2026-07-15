@@ -102,12 +102,17 @@ namespace sif::asset {
             return;
         }
 
-        // Enqueue the request; the actual background load is started
-        // by try_start_next_load once a slot is free.
+        // Enqueue the request (critical assets get their own queue,
+        // always drained first - see try_start_next_load); the actual
+        // background load is started once a slot is free.
         record->set_state(AssetState::Queued);
         {
             std::lock_guard lock(queue_mtx_);
-            load_queue_.push(id);
+            if (record->get_meta().critical) {
+                critical_queue_.push(id);
+            } else {
+                normal_queue_.push(id);
+            }
         }
 
         try_start_next_load();
@@ -116,9 +121,12 @@ namespace sif::asset {
     void AssetRegistry::try_start_next_load() {
         std::lock_guard lock(queue_mtx_);
 
-        while (active_loads_ < max_concurrent_loads_ && !load_queue_.empty()) {
-            const intrnl::GUID id = load_queue_.front();
-            load_queue_.pop();
+        while (active_loads_ < max_concurrent_loads_ && (!critical_queue_.empty() || !normal_queue_.empty())) {
+            // Critical assets always jump the line ahead of normal ones.
+            std::queue<intrnl::GUID>& queue = !critical_queue_.empty() ? critical_queue_ : normal_queue_;
+
+            const intrnl::GUID id = queue.front();
+            queue.pop();
 
             const auto rec = by_guid_.find(id);
             if (rec == by_guid_.end()) {
